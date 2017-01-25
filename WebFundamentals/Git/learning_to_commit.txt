@@ -1,0 +1,56 @@
+Akash-Jagannathans-MacBook-194:~ Akash$ cd Desktop
+Akash-Jagannathans-MacBook-194:Desktop Akash$ mkdir test
+Akash-Jagannathans-MacBook-194:Desktop Akash$ cd test
+Akash-Jagannathans-MacBook-194:test Akash$ touch index.html
+Akash-Jagannathans-MacBook-194:test Akash$ touch styles.css
+Akash-Jagannathans-MacBook-194:test Akash$ touch aboutMe.txt
+Akash-Jagannathans-MacBook-194:test Akash$ git init
+Initialized empty Git repository in /Users/Akash/Desktop/test/.git/
+Akash-Jagannathans-MacBook-194:test Akash$ git commit -m "initial commit"
+On branch master
+
+Initial commit
+
+Untracked files:
+	aboutMe.txt
+	index.html
+	styles.css
+
+nothing added to commit but untracked files present
+Akash-Jagannathans-MacBook-194:test Akash$ git add aboutMe.txt
+Akash-Jagannathans-MacBook-194:test Akash$ git commit -m "initial commit"
+[master (root-commit) 1463b84] initial commit
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 aboutMe.txt
+Akash-Jagannathans-MacBook-194:test Akash$ git add aboutMe.txt
+Akash-Jagannathans-MacBook-194:test Akash$ git commit -m "updated aboutMe"
+[master adfe049] updated aboutMe
+ 1 file changed, 1 insertion(+)
+Akash-Jagannathans-MacBook-194:test Akash$ git add aboutMe.txt
+Akash-Jagannathans-MacBook-194:test Akash$ git commit -m "added favorite movie to aboutMe"
+[master 4d5dbd4] added favorite movie to aboutMe
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+Akash-Jagannathans-MacBook-194:test Akash$ git log
+commit 4d5dbd4fee066c4b95d861fb84bf984aaf17bdcb
+Author: Akash Jag <akashjagannathan408@gmail.com>
+Date:   Mon Jan 23 18:38:49 2017 -0800
+
+    added favorite movie to aboutMe
+
+commit adfe0492a0c99eb7cfdb9061a3e7fef5ce509607
+Author: Akash Jag <akashjagannathan408@gmail.com>
+Date:   Mon Jan 23 18:37:52 2017 -0800
+
+    updated aboutMe
+
+commit 1463b8450f4422c59f4460dfdf18ddd217ee90ac
+Author: Akash Jag <akashjagannathan408@gmail.com>
+Date:   Mon Jan 23 18:36:09 2017 -0800
+
+    initial commit
+Akash-Jagannathans-MacBook-194:test Akash$ git revert -n 4d5dbd4f
+Akash-Jagannathans-MacBook-194:test Akash$ git add aboutMe.txt
+Akash-Jagannathans-MacBook-194:test Akash$ git commit -m "favorite movie updated"
+[master ccca6ca] favorite movie updated
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+Akash-Jagannathans-MacBook-194:test Akash$ 
