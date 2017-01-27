@@ -1,0 +1,212 @@
+.header{
+  height: 100px;
+  width: 970px;
+  background-color: white;
+  display:block;
+}
+
+.header h1{
+  display: inline-block;
+  vertical-align: 20px;
+}
+.header img{
+  height: 75px;
+  width: 75px;
+  display: inline-block;
+  vertical-align: -10px;
+}
+
+.header b{
+  color: blue;
+}
+
+.double-header{
+    background-color: blue;
+    color: white;
+    height: 50px;
+    width: 970px;
+    display: block;
+    margin-top: -30px;
+    padding-top: 10px;
+    padding-left: 20px;
+  }
+
+
+
+.side-bar{
+  display:inline-block;
+  height: 600px;
+  width: 230px;
+  vertical-align: top;
+}
+
+.the-question{
+  height: 300px;
+  width: 230px;
+  display: inline-block;
+}
+
+.codingdojo{
+  height: 300px;
+  width: 220px;
+  display: inline-block;
+}
+
+.codingdojo h3{
+  color: white;
+  display: inline-block;
+  position: absolute;
+  width: 220px;
+  margin-top: -300px;
+  text-align: center;
+}
+
+
+.background{
+  height: 300px;
+  width: 220px;
+  display: inline-block;
+}
+
+.ninja{
+  height: 100px;
+  width: 70px;
+  position: absolute;
+  display: inline-block;
+  margin-top: -250px;
+  margin-left: 80px;
+}
+
+.codingdojo input{
+  background-color: blue;
+  color: white;
+  display: inline-block;
+  position: absolute;
+  margin-top: -40px;
+  margin-left: 70px;
+}
+
+.main_content{
+  display: inline-block;
+  background-color: white;
+  height: 800px;
+  width: 600px;
+  margin-left:20px;
+}
+
+.misc_bar{
+  height: 70px;
+  width: 700px;
+  border-bottom: solid;
+  border-width: thin;
+  display: inline-block;
+}
+
+.home{
+  height: 25px;
+  width: 25px;
+  display: inline-block;
+  position: absolute;
+}
+
+
+.phone{
+  height: 35px;
+  width: 35px;
+  display: inline-block;
+  position: absolute;
+  margin-left: 510px;
+}
+
+.numbers{
+  height: 100px;
+  width: 600px;
+  display: inline-block;
+}
+
+.days{
+  display: inline-block;
+  position: absolute;
+  margin-top: -10px;
+  margin-left: 580px;
+}
+
+.number{
+  color: blue;
+  display: inline-block;
+  position: absolute;
+  margin-top: 7px;
+  margin-left: 550px;
+}
+
+
+.international{
+  display: inline-block;
+  position: absolute;
+  margin-top: 30px;
+  margin-left: 553px;
+}
+
+.clients_nd_servers{
+  height: 300px;
+  width: 600px;
+  margin-top: -50px;
+  display: inline-block;
+}
+
+h4{
+  color: blue;
+  display: inline-block;
+}
+
+.clients_nd_servers p{
+  margin-top: -20px;
+}
+
+
+.clients_nd_servers img{
+  height: 100px;
+  width: 300px;
+  display: inline-block;
+  margin-left: 175px;
+}
+
+.really-tho{
+  display: inline-block;
+  height: 200px;
+  width: 600px;
+}
+
+.really-tho ol{
+  margin-top: -20px;
+}
+.big_tres{
+  display: inline-block;
+  border-style: solid;
+  border-width: thick;
+  border-color: blue;
+  height: 150px;
+  width: 600px;
+  padding: 15px;
+}
+
+
+.big_tres img{
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+}
+
+.big_tres h4{
+  vertical-align: top;
+  margin-left: 10px;
+}
+
+.p1{
+  margin-top: -40px;
+  margin-left: 110px;
+}
+
+.p2{
+  margin-left:110px;
+}
