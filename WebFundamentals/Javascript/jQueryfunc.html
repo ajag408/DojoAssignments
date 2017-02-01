@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery Functions</title>
+    <style>
+      .sd-p{
+        display:none;
+      }
+
+      .FIT{
+        display:none;
+        color:red;
+      }
+
+      .FOT{
+        color:orange;
+      }
+
+
+      .burn{
+        color:green;
+      }
+
+      .datadiv{
+        color:black;
+      }
+
+      span{
+        color:red;
+      }
+
+
+    </style>
+    <script type="text/javascript" src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('h1').click(function(){
+          alert("This concludes the test for .click");
+        });
+
+        $('h2').click(function(){
+          alert("We have hidden");
+          $('h2').hide(function(){
+            alert("we are shown");
+            $('h2').show();
+          });
+        });
+
+        $('.toggle_button').click(function(){
+          $('.toggle_text').toggle(function(){
+          });
+        });
+
+        $('.sd-butt').click(function(){
+          if($('.sd-p').is(":hidden")){
+            $('.sd-p').slideDown();
+          }
+          });
+
+        $('.su-butt').click(function(){
+          $(this).parent().slideUp("slow");
+        });
+
+        $('.stog').click(function(){
+          $('.stog-text').slideToggle();
+        });
+
+        $('.fadeI').click(function(){
+          $('.FIT').fadeIn();
+        });
+
+        $('.fadeO').click(function(){
+          $('.FOT').fadeOut();
+        });
+
+        $('.addClass').click(function(){
+          $('.ACT').addClass('burn');
+        });
+
+        $('.martin').before($('.remy'));
+
+        $('.bottles').after($('.martin'));
+
+        $('.toappend').append("*mother");
+
+        $('.addHTML').click(function(){
+          $('.added').html("Hi (success)");
+        });
+
+        var title=$('.meaning').attr('title');
+        $('.att-revealed').text(title);
+
+        $('.valfeeder').click(function(){
+          var text = "Now i am hungry for brains";
+          $(".valeater").val(text);
+        });
+
+        $('.datadiv').data("yo",{first: "done", last: "assignment"});
+        $("span:first").text($('.datadiv').data("yo").first);
+        $("span:last").text($('.datadiv').data("yo").last);
+
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Test of .click</h1>
+
+    <h2>Test of .hide and .show</h2>
+
+    <button class ="toggle_button">Test of .toggle</button>
+      <p class = "toggle_text">I'm toggling around</p>
+
+    <button class = "sd-butt">Test of slideDown</button>
+      <p class = "sd-p">I slide down, bruh</p>
+
+    <div>
+      <button class ="su-butt">Slide Up, b</button>
+      <input type="text" value="One">
+    </div>
+
+    <button class = "stog">Test of slideToggle</button>
+      <p class = "stog-text">New dance step: slide and toggle</p>
+
+    <button class ="fadeI">Test of fadeIn</button>
+      <p class ="FIT">Watch me fade right in!</p>
+
+    <button class ="fadeO">Test of fade out</button>
+      <p class = "FOT">I'm outro!</p>
+
+    <button class="addClass">Test of addClass</button>
+      <p class = "ACT">Black turns to green</p>
+
+    <p class ="martin">Martin</p>
+    <p class="remy">Remy</p>
+    <p class="bottles">...bottle service</p>
+
+    <p class="toappend">Motha</p>
+
+    <button class ="addHTML">test .html, click to add html</button>
+      <p class = "added">Bye!</p>
+
+    <p>The <b class = "meaning" title="essence"> quality </b> of coding is of the essence</p>
+    <p>The title of the quality word is: <div class = "att-revealed"></div></p>
+
+    <button class = "valfeeder">Feed me (I eat clicks)</button>
+    <input class = "valeater" type="text" value="">
+
+    <div class="datadiv">
+      <p>I am <span></span> with this <span></span></p>
+    </div>
+
+  </body>
+</html>
