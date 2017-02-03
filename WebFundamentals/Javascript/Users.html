@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="Users.css">
+    <title>Users</title>
+    <style>
+      table, th, td{
+        border: 1px solid black;
+        border-collapse: collapse;
+        margin-bottom: 200px;
+      }
+    </style>
+    <script type="text/javascript" src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('form').submit(function(e){
+          $('table').append("<tr><td>"+$('.sn').val()+"</td><td>"+$('.ln').val()+"</td><td>"+$('.ea').val()+"</td><td>"+$('.cn').val()+"</tr>");
+            e.preventDefault();
+        });
+      });
+    </script>
+  </head>
+
+    <div class="wrapper">
+      <table>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email Address</th>
+          <th>Contact #</th>
+        </tr>
+      </table>
+      <form>
+        First Name: <input class="sn" type="text" name="firstname" value=""><br>
+        Last Name: <input class="ln" type="text" name="lastname" value=""><br>
+        Email Address: <input class="ea" type="text" name="email" value=""><br>
+        Contact No.: <input class="cn" type="text" name="contact" value=""><br>
+        <input type = "submit" value="Add User">
+      </form>
+
+
+  </body>
+</html>

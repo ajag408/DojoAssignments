@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My Own Weather App</title>
+    <script type="text/javascript" src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('form').submit(function() {
+          var url = "http://api.openweathermap.org/data/2.5/weather?q=" + $('.user').val()+"&&appid=9a4a7cfff24fecbcbc090cf4b19717a4";
+          $.get(url, function(res) {
+            console.log(res);
+            var html_title="<h1>"+$('.user').val()+"</h1>";
+            var temp= Math.floor((9 / 5)*(res.main.temp-273)+32);
+            var html_temp="<p>Temperature: " + temp + "</p>";
+            $('body').html(html_title+html_temp);
+          }, 'json');
+          return false;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <form>
+      <input class="user" type="text" name="city" value="">
+      <input type="submit" value="Search Weather">
+    </form>
+  </body>
+</html>
