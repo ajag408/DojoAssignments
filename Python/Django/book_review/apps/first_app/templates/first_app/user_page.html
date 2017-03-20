@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>User Page</title>
+  </head>
+  <body>
+    <form action = '/logout' method = 'POST'>
+      {%csrf_token%}
+      <input type = "submit" value="Log out">
+    </form><br><br>
+  
+
+    <a href = '/review_home/{{user.id}}' method = 'POST'>Home</a><br><br>
+
+    <h2>User Alias: {{rendered_user.first_name}}</h2>
+    <h3>Name: {{rendered_user.first_name}} {{rendered_user.last_name}}</h3>
+    <h3>Email: {{rendered_user.email}}</h3>
+    <h3>Total Reviews: {{review_count}}</h3><br><br>
+
+    <h3>Posted Reviews on the following books:</h3>
+    {%for user_review in user_reviews%}
+      <p>{{user_review.book_id.title}}</p>
+    {%endfor%}
+  </body>
+</html>

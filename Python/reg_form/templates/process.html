@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Registration Form</title>
+  </head>
+  <body>
+    {% with messages = get_flashed_messages(category_filter=["category1"]) %}
+      {% if messages %}
+        {%for message in messages%}
+            {{message}}
+          {%endfor%}
+      {%endif%}
+      {%endwith%}<br>
+        Email: <input type='text' name='email'><br>
+
+          {% with messages = get_flashed_messages(category_filter=["category2"]) %}
+            {% if messages %}
+              {%for message in messages%}
+                  {{message}}
+                {%endfor%}
+            {%endif%}
+          {%endwith%}
+          {% with messages = get_flashed_messages(category_filter=["category6"]) %}
+            {% if messages %}
+              {%for message in messages%}
+                  {{message}}
+                {%endfor%}
+            {%endif%}
+          {%endwith%}<br>
+        First Name: <input type='text' name='first_name'><br>
+        {% with messages = get_flashed_messages(category_filter=["category3"]) %}
+          {% if messages %}
+            {%for message in messages%}
+                {{message}}
+              {%endfor%}
+          {%endif%}
+          {%endwith%}
+          {% with messages = get_flashed_messages(category_filter=["category6"]) %}
+            {% if messages %}
+              {%for message in messages%}
+                  {{message}}
+                {%endfor%}
+            {%endif%}
+          {%endwith%}<br>
+        Last Name: <input type='text' name='last_name'><br>
+        {% with messages = get_flashed_messages(category_filter=["category4"]) %}
+          {% if messages %}
+            {%for message in messages%}
+                {{message}}
+              {%endfor%}
+          {%endif%}
+          {%endwith%}<br>
+        Password: <input type='password' name='password'><br>
+        {% with messages = get_flashed_messages(category_filter=["category5"]) %}
+          {% if messages %}
+            {%for message in messages%}
+                {{message}}
+              {%endfor%}
+          {%endif%}
+          {%endwith%}<br>
+
+        Confirm Password: <input type='password' name='confirm_password'>
+
+
+  </body>
+</html>

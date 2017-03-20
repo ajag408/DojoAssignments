@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add Book and Review</title>
+  </head>
+  <body>
+    <form action = '/logout' method = 'POST'>
+      {%csrf_token%}
+      <input type = "submit" value="Log out">
+    </form><br><br>
+
+    <a href = '/review_home/{{user.id}}' method = 'POST'>Home</a><br><br>
+
+    <form action = '/add_book/{{user.id}}' method = 'POST'>
+      {%csrf_token%}
+      Book Title:  <input type = 'text' name = 'title'><br>
+      Author:<br>
+            Choose from the list: <select name="my_hoffa">
+                                    <option disabled selected value> -- select an option -- </option>
+                                    {%for book in books%}
+                                    <option value='{{book.author}}'>{{book.author}}</option>
+                                    {%endfor%}
+                                  </select><br>
+            Or add a new author:  <input type = 'text' name = 'author'><br>
+      Review:  <textarea name="review" rows="10" cols="30">
+        </textarea><br>
+      Rating: <select name="rating">
+                  <option value="5">5</option>
+                  <option value="4">4</option>
+                  <option value="3">3</option>
+                  <option value="2">2</option>
+                  <option value="1">1</option>
+              </select><br>
+      <input type = 'submit' value = "Add Book and Review">
+  </body>
+</html>

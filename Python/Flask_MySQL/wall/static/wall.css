@@ -1,0 +1,21 @@
+.fancy{
+  border-bottom-color: black;
+  border-bottom-width: medium;
+  border-style: solid;
+  height:100px;
+}
+
+.title{
+  display: inline-block;
+}
+
+.welcome{
+  display:inline-block;
+  position: relative;
+  left: 800px;
+  bottom: 100px;
+}
+
+.comments{
+  margin-left: 100px;
+}

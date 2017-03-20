@@ -1,0 +1,16 @@
+Error 1: Traceback (most recent call last):
+  File "server.py", line 3, in <module>
+    from mysqlconnection import MySQLConnector
+  File "/Users/Akash/Desktop/flask_mysql/mysqlconnection.py", line 2
+    from flask_sqlalchemy #import SQLAlchemy
+                                           ^
+SyntaxError: invalid syntax
+
+Fix: make sure to import SQLAlchemy
+
+Error 2: Traceback (most recent call last):
+  File "server.py", line 6, in <module>
+    mysql = MySQLConnector(app)
+TypeError: MySQLConnector() takes exactly 2 arguments (1 given)
+
+Fix: make sure to pass a database to the MySQLConnector function

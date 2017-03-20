@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Page</title>
+  </head>
+  <body>
+
+
+
+    <h2>Edit Friend</h2>
+    {%for friend in this_friend%}
+    <form action='/friends/{{friend["id"]}}' method='POST'>
+      <label for="first_name">First Name:<input type="text" name="first_name" value="{{friend['first_name']}}"></label><br>
+      <label for="last_name">Last Name:<input type="text" name="last_name" value="{{friend['last_name']}}"></label><br>
+      <label for="occupation">Occupation:<input type="text" name="occupation" value = "{{friend['occupation']}}"></label><br>
+      <input type="submit" value="Update">
+    </form>
+    {%endfor%}
+  </body>
+</html>
