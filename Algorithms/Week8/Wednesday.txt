@@ -1,0 +1,78 @@
+Recursive Binary Search (P.103)
+
+
+function rSearch(arr,val){
+  midpt = arr[Math.floor(arr.length/2)];
+  if(midpt === val){
+    console.log("true");
+  }
+  else if(midpt>val && val>arr[0]){
+    newarr = [];
+    for(var i = 0; i<arr.length/2; i++){
+      newarr.push(arr[i]);
+    }
+    rSearch(newarr,val);
+  }
+  else if(midpt<val && val<arr[arr.length-1]){
+    newarr = [];
+    for(var i = Math.floor(arr.length/2); i<arr.length; i++){
+      newarr.push(arr[i])
+    }
+    rSearch(newarr,val);
+  }
+  else if(arr.length === 1 || val>arr[arr.length-1] || val<arr[0]){
+    console.log("false")
+  }
+}
+
+Binary String Expansion (P.105)
+
+function binStrExpand(str){
+  var solutions = [];
+  var temp = [];
+  temp.push(str);
+  var count = 0;
+  var arr = str.split("")
+  for(var d = 0; d<arr.length; d++){
+    if(arr[d] == "?"){
+      count++;
+    }
+  }
+  rbinStrExpand(temp, count)
+  for(var a = 0; a<temp.length; a++){
+    check = temp[a].split("?")
+    if(check[0].length == arr.length){
+       solutions.push(temp[a]);
+    }
+
+  }
+  return solutions;
+}
+
+function rbinStrExpand(temp, count){
+  if(count === 0){
+    return temp;
+  }else{
+    
+    crikey = temp.length
+    for(var b = 0; b<crikey; b++){
+      arr = temp[b].split("");
+      for(var c = arr.length-1; c>=0; c--){
+        if(arr[c] == "?"){
+          this_one = c;
+         }
+       }
+      almost = temp[b].slice(0,this_one);
+      one = almost + "0";
+      two = almost + "1";
+      temp.push(one + temp[b].slice(this_one+1, arr.length));
+      temp.push(two + temp[b].slice(this_one+1, arr.length));
+    }
+    count--;
+    rbinStrExpand(temp, count);
+  }
+}
+
+
+answer = binStrExpand("11?00?0?")
+console.log(answer)
