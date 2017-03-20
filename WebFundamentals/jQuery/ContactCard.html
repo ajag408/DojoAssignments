@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>AJ Contact Page</title>
+  </head>
+  <style>
+    .front{
+      display:inline-block;
+      position:relative;
+      height:200px;
+      width:400px;
+      border-style:solid;
+      border-width:thin;
+
+
+    }
+
+
+    h1{
+      text-align:center;
+    }
+
+    h3{
+      text-align: center;
+      position:relative;
+      top:100px;
+    }
+
+    h2{
+      text-align: center;
+    }
+
+    form{
+      margin-bottom: 50px;
+    }
+  </style>
+  <script type="text/javascript" src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+
+  <body>
+    <form>
+      First Name: <input class = "fn" type="text" name="firstname" value=""><br>
+      Last Name: <input class = "ln" type="text" name="lastname" value=""><br>
+      Description:<br> <textarea class "descrip" name="description">Enter description here</textarea><br>
+      <input type = "submit" value="Add User">
+    </form>
+
+
+  <!--  <div>
+      <h1>$('.fn').val() $('.ln').val()</h1>
+      <h3>Click to flip</h3>
+
+
+    </div>  -->
+
+
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+        $('form').submit(function(e){
+          $('body').append("<div class='front'><h1>"+$('.fn').val()+" " + $('.ln').val()+"</h1><h3>Click to flip</h3></div>");
+              $('.front').click(function(){
+                $(this).hide();
+                $(this).append("<div class='front'><h2>It works</h2></div>");
+
+              });
+          e.preventDefault();
+        });
+      });
+    </script>
+  </body>
+
+</html>
