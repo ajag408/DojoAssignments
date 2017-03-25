@@ -1,0 +1,43 @@
+
+DList: Prepend Value, Append Value (P. 94)
+
+
+function DLNode(value){
+  this.val = value;
+  this.prev = null;
+  this.next = null;
+}
+
+function DList(){
+  this.head = null;
+  this.tail = null;
+  this.append = function(DList, exist_val, new_val){
+    if(DList.head.val == exist_val){
+      nNode = new DLNode(exist_val);
+      nNode.prev = DList.head;
+      nNode.next = DList.head.next;
+    }
+    runner = DList.head;
+    while(runner.val != exist_val){
+      runner = runner.next;
+    } 
+    nNode = new DLNode(new_val);
+    nNode.prev = runner;
+    nNode.next = runner.next;
+  };
+  
+   this.prepend = function(DList, exist_val, new_val){
+    if(DList.head.val == exist_val){
+      nNode = new DLNode(exist_val);
+      nNode.prev = DList.head.prev;
+      nNode.next = DList.head;
+    }
+    runner = DList.head;
+    while(runner.val != exist_val){
+      runner = runner.next;
+    } 
+    nNode = new DLNode(new_val);
+    nNode.next = runner;
+    nNode.prev = runner.prev;
+  };
+}
