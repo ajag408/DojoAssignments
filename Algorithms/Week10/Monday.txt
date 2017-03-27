@@ -1,0 +1,44 @@
+Enqueue/Dequeue Array
+
+function enQ(arr, val){
+  arr.push(val);
+  for(var x = arr.length-1; x>0; x--){
+    temp = arr[x];
+    arr[x] = arr[x-1];
+    arr[x-1] = temp;
+  }
+  console.log(arr)
+}
+
+enQ([3,2,1], 4)
+
+function dQ(arr){
+  console.log(arr.pop());
+}
+
+dQ([4,3,2,1])
+
+SLQueue: Enqueue/Dequeue (P. 70)
+
+function Node(value){
+  this.val = value;
+  this.next = null;
+}
+
+function SLQueue(){
+  var head = null;
+  var tail = null;
+  this.enqueue = function(SLQueue, val){
+    eQ = new Node(val);
+    SLQueue.head.prev = eQ;
+    eQ.next = SLQueue.head;
+    SLQueue.head = eQ;
+  }
+  
+  this.dequeue = function(SLQueue){
+    dQ = SLQueue.tail;
+    SLQueue.tail = dQ.prev;
+    SLQueue.tail.next = null;
+    dQ.prev = null;
+  }
+}
