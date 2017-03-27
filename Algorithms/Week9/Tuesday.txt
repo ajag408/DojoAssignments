@@ -11,11 +11,12 @@ function DLNode(value){
 function DList(){
   this.head = null;
   this.tail = null;
-  this.append = function(DList, exist_val, new_val){
+  this.append_after = function(DList, exist_val, new_val){
     if(DList.head.val == exist_val){
-      nNode = new DLNode(exist_val);
+      nNode = new DLNode(new_val);
       nNode.prev = DList.head;
       nNode.next = DList.head.next;
+      DList.head.next = nNode
     }
     runner = DList.head;
     while(runner.val != exist_val){
@@ -24,13 +25,15 @@ function DList(){
     nNode = new DLNode(new_val);
     nNode.prev = runner;
     nNode.next = runner.next;
+    runner.next = nNode
   };
   
    this.prepend = function(DList, exist_val, new_val){
     if(DList.head.val == exist_val){
-      nNode = new DLNode(exist_val);
+      nNode = new DLNode(new_val);
       nNode.prev = DList.head.prev;
       nNode.next = DList.head;
+      DList.head.prev = nNode;
     }
     runner = DList.head;
     while(runner.val != exist_val){
@@ -39,5 +42,6 @@ function DList(){
     nNode = new DLNode(new_val);
     nNode.next = runner;
     nNode.prev = runner.prev;
+    runner.prev = nNode;
   };
 }
