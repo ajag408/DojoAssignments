@@ -1,0 +1,23 @@
+DList: Reverse (P. 94)
+
+function DLNode(value){
+  this.val = value;
+  this.prev = null;
+  this.next = null;
+}
+
+function DList(){
+  this.head = null;
+  this.tail = null;
+  this.reverse = function(DList){
+    DList.head = DList.tail
+    runner = DList.head
+    while(runner != null){
+      temp = runner.next
+      runner.next = runner.prev
+      runner.prev = temp
+      runner = runner.next
+    }
+   DList.tail = runner.prev
+  };
+}

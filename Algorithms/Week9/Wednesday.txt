@@ -1,0 +1,57 @@
+Delete Middle Node
+
+function DLNode(value){
+  this.val = value;
+  this.prev = null;
+  this.next = null;
+}
+
+function DList(){
+  this.head = null;
+  this.tail = null;
+  this.append = function(DList, exist_val, new_val){
+    if(DList.head.val == exist_val){
+      nNode = new DLNode(new_val);
+      nNode.prev = DList.head;
+      nNode.next = DList.head.next;
+      DList.head.next = nNode
+    }
+    runner = DList.head;
+    while(runner.val != exist_val){
+      runner = runner.next;
+    } 
+    nNode = new DLNode(new_val);
+    nNode.prev = runner;
+    nNode.next = runner.next;
+    runner.next = nNode
+  };
+  this.rem_middle = function(DList){
+    if(DList.head == null){
+      return("This is an empty linked list")
+    } else if(DList.head.next = null){
+      DList.head = DList.head.prev;
+      DList.head.next = null;
+      return("Done")
+    }
+    count = 0;
+    runner = DList.head;
+    while(runner.next != null){
+      runner = runner.next;
+      count++;
+    }
+    if(count%2 !== 0){
+      return("There is no middle");
+    } 
+    real_run = DList.head;
+    real_count = 0
+    while(real_count <= count/2 - 1){
+      real_run = real_run.next;
+      real_count++;
+    }
+    middle = real_one.next;
+    real_one.next = real_one.next.next;
+    middle.prev = null;
+    middle.next = null;
+    real_one.next.prev = real_one;
+    }
+}

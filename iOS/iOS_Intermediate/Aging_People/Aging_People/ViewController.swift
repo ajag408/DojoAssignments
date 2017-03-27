@@ -40,6 +40,7 @@ class ViewController: UIViewController, UITableViewDataSource{
         let random_age = arc4random_uniform(91) + 5
         
         cell.detailTextLabel?.text = String(random_age) + " years old"
+      
         
         return cell
     }
