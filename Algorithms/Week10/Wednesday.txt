@@ -1,0 +1,43 @@
+SLQueue: Enqueue/Dequeue (P. 70)
+
+function Node(value){
+  this.val = value;
+  this.next = null;
+}
+
+function SLQueue(){
+  var head = null;
+  var tail = null;
+  this.mergeStacks = function(stack1, stack2){
+    SLQueue = new SLQueue();
+    if(stack1.length != stack2.length){
+      return(“Please make stacks = in length”);
+    }
+    runner = SLQueue.head;
+    for(var i = stack1.length; i>0; i++){
+      node = new Node(stack1.pop());
+      node.next = new Node(stack2.pop());
+      if(SLQueue.head == null){
+        SLQueue.head = node;
+      }else{
+        runner.next = node;
+      }
+      runner = node.next;
+    }
+    return SLQueue;
+  }
+  this.enqueue = function(SLQueue, val){
+    eQ = new Node(val);
+    eQ.next = SLQueue.head;
+    SLQueue.head = eQ;
+  }
+  
+  this.dequeue = function(SLQueue){ 
+    runner = SLQueue.head
+    while(runner.next.next != null){
+      runner = runner.next
+    }
+    dQprev = runner
+    dQprev.next = null;
+  }
+}
