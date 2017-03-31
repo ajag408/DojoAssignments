@@ -46,10 +46,6 @@ class GeotificationsViewController: UIViewController, TimeSpentTableDelegate {
       let navigationController = segue.destination as! UINavigationController
       let vc = navigationController.topViewController as! TimeSpentTable
       vc.delegate = self
-      for location in geotifications{
-        vc.geotifications.append(location.note)
-      }
-      
     }
   }
   //Core Location requires each geofence to be represented as a CLCircularRegion instance before it can be registered for monitoring
@@ -145,6 +141,9 @@ class GeotificationsViewController: UIViewController, TimeSpentTableDelegate {
       }
     }
   }
+  
+
+  
   
   // MARK: Other mapview functions
   @IBAction func zoomToCurrentLocation(sender: AnyObject) {

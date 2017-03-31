@@ -1,0 +1,41 @@
+Stack: Switch Pairs, Stack: Mirror (P.74)
+
+
+function Node(value){
+  this.val = value;
+  this.next = null;
+}
+
+function SLQueue(){
+  var head = null;
+  var tail = null;
+}
+
+function switchStack(stack){
+   QS = new SLQueue();  
+   temp = stack.pop();
+   QS.head = new Node(stack.pop());
+   QS.head.next = new Node(temp);
+   runner = QS.head.next.next;
+   count = 2;
+   while(stack.length > 1){
+     temp = stack.pop()
+     runner = new Node(stack.pop());
+     runner.next = new Node(temp);
+     runner = runner.next.next;
+     count = count + 2;
+   }
+   if(stack.length == 1){
+     runner = new Node(stack.pop())
+     count = count + 1
+   }
+   for(var i = count - 1; i >= 0; i--){
+     stack[i] = QS.dequeue();
+   }
+}
+  
+function mirror(stack){
+    for(var x = stack.length - 1; x>=0; x--){
+      stack.push(stack[x]);
+    }
+ }

@@ -13,10 +13,12 @@ import CoreData
 
 extension AppDelegate: CLLocationManagerDelegate {
   //when the device enters a CLRegion, while you fire locationManager(_:didExitRegion:) when the device exits a CLRegion.
-
   func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
     if region is CLCircularRegion {
+       
       handleEvent(forRegion: region)
+//      notes[note(fromRegionIdentifier: region.identifier)] = timeTest()
+
     }
   }
   
@@ -28,7 +30,7 @@ extension AppDelegate: CLLocationManagerDelegate {
 }
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate{
   
   var window: UIWindow?
   
@@ -49,7 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       UIApplication.shared.presentLocalNotificationNow(notification)
     }
   }
-
+  
+//  var test = note(fromRegionIdenti)
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
     locationManager.delegate = self
     locationManager.requestAlwaysAuthorization()
@@ -63,26 +66,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let savedItems = UserDefaults.standard.array(forKey: PreferencesKeys.savedItems) as? [NSData]
     let geotifications = savedItems?.map { NSKeyedUnarchiver.unarchiveObject(with: $0 as Data) as? Geotification }
     let index = geotifications?.index { $0?.identifier == identifier }
-    print(geotifications?[index!]?.note)
     let date = Date()
     let calendar = Calendar.current
     let hour = calendar.component(.hour, from: date)
     let minutes = calendar.component(.minute, from: date)
     //let seconds = calendar.component(.second, from: date)
-    print("hours = \(hour):\(minutes)")
 
     return index != nil ? geotifications?[index!]?.note : nil
   }
   
-    func timeTest(){
+    func timeTest() -> String{
     let date = Date()
     let calendar = Calendar.current
     let hour = calendar.component(.hour, from: date)
     let minutes = calendar.component(.minute, from: date)
     let seconds = calendar.component(.second, from: date)
-    print("hours = \(hour):\(minutes):\(seconds)")
+    var currentTime = "\(hour):\(minutes):\(seconds)"
+    return currentTime
     
   }
+  
+
+
   
 }
   

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 protocol TimeSpentTableDelegate: class{
   func timeSpentTableDelegate(by controller: TimeSpentTable, didPressCancelButton button: UIBarButtonItem)
 }

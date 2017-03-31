@@ -28,17 +28,18 @@ function Node(value){
 function SLQueue(){
   var head = null;
   var tail = null;
-  this.enqueue = function(SLQueue, val){
+  this.enqueue = function(val){
     eQ = new Node(val);
-    SLQueue.head.prev = eQ;
-    eQ.next = SLQueue.head;
-    SLQueue.head = eQ;
+    eQ.next = this.head;
+    this.head = eQ;
   }
   
-  this.dequeue = function(SLQueue){
-    dQ = SLQueue.tail;
-    SLQueue.tail = dQ.prev;
-    SLQueue.tail.next = null;
-    dQ.prev = null;
+  this.dequeue = function(){ 
+    runner = this.head
+    while(runner.next.next != null){
+      runner = runner.next
+    }
+    dQprev = runner
+    dQprev.next = null;
   }
 }
