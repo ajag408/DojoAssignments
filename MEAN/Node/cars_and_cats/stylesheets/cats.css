@@ -1,0 +1,6 @@
+.cats{
+  height: 300px;
+  width: 300px;
+  display: inline-block;
+  margin: 5px;
+}

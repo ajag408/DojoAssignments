@@ -1,0 +1,59 @@
+BST: Add/Contains (P. 116)
+
+function BTNode(value){
+  this.val = value;
+  this.left = null;
+  this.right = null;
+}
+
+function BST(){
+  this.root = null;
+  this.contains = function(val){
+    chill = this.root;
+    if(chill.val === val){
+      return true;
+    }
+    while(chill.val != val){
+      if(val>chill.val){
+        if(chill.right != null){
+          chill = chill.right;
+        } else {
+          return false;
+        }
+      } else {
+        if(chill.left != null){
+          chill = chill.left;
+        } else {
+          return false;
+        }
+      }
+      return true;
+    }
+  };
+  this.add = function(val){
+    if(this.root === null){
+      this.root = new BTNode(val);
+      return this;
+    }
+    var chill = this.root;
+    while(val != chill.val){
+      if(val>chill.val){
+        if(chill.right != null){
+          chill = chill.right;
+        } else {
+          chill.right = new BTNode(val);
+          chill = chill.right;
+        }
+      } else {
+        if(chill.left != null){
+          chill = chill.left
+        } else {
+          chill.left = new BTNode(val);
+          chill = chill.left
+        }
+      }
+    }
+    return this;
+  }
+}
+
