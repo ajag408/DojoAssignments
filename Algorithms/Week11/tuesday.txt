@@ -1,0 +1,25 @@
+BST: min/max (P.116)
+
+function BTNode(value){
+  this.val = value;
+  this.left = null;
+  this.right = null;
+}
+
+function BST(){
+  this.root = null;
+  this.min = function(){
+    chill = this.root;
+    while(chill.left != null){
+      chill = chill.left;
+    }
+    return chill.val;
+  };
+  this.max = function(){
+    chill = this.root;
+    while(chill.right != null){
+      chill = chill.right;
+    }
+    return chill.val;
+  }
+}

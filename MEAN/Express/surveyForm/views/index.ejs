@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Survey Form</title>
+  </head>
+  <body>
+    <form action='/result' method='post'>
+        Your Name: <input type='text' name='name'><br>
+        Dojo Location:
+          <select name='location'>
+            <option value = "San Jose">San Jose</option>
+            <option value = "Yo Momma's Kitchen">Yo Momma's Kitchen</option>
+          </select><br>
+        Favorite Language:
+          <select name='language'>
+            <option value = "Python">Python</option>
+            <option value = "Chinese">Chinese</option>
+          </select><br>
+        Comments (optional):
+          <textarea name = "comment"></textarea><br>
+        <input type='submit' value='create user'>
+      </form>
+  </body>
+</html>
