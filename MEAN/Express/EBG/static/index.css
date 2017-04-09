@@ -1,0 +1,13 @@
+#epic{
+  height: 100px;
+  width: 400px;
+  background-color: blue;
+  font-size: 30pt;
+  color:white;
+}
+
+#reset{
+  height: 50px;
+  width: 100px;
+  background-color: red;
+}
