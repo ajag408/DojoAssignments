@@ -1,0 +1,19 @@
+Array: Bubble Sort (P. 124)
+
+function BubbleSort(arr){
+  for(var i = 0; i<arr.length-1; i++){
+    var count = 0;
+    for(var j = 1; j < arr.length; j++){
+      if(arr[j] < arr[j-1]){
+        var temp = arr[j];
+        arr[j] = arr[j-1];
+        arr[j-1] = temp;
+        count += 1;
+      }
+    }
+    if(count === 0){
+      return arr;
+      break;
+    }
+  }
+}

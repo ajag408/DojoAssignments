@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Group Chat</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript">
+      $(document).ready(function (){
+        var socket = io.connect();
+        var new_user = prompt("Your name");
+        socket.emit('new_user', {name: new_user});
+        socket.on('user_view', function(data){
+            for(var x = 0; x<data.messages.length; x++){
+              $('#chat_window').append("<p class = 'comment'>"+ data.messages[x].name + ": " + data.messages[x].content + "</p>")
+            }
+            $('form').submit(function(e){
+              socket.emit('comment', {user: data.name, content: $('#text_box').val()})
+              e.preventDefault()
+            });
+        })
+        socket.on('comment_post', function(data){
+          $('#chat_window').append("<p class = 'comment'>"+ data.name + ": " + data.content + "</p>")
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <h4>Conversation Board</h4><br>
+    <div id = 'chat_window'>
+    </div><br>
+    <form>
+      <input id = 'text_box' type = 'text' name = 'message' placeholder = 'enter your message here...'><br>
+      <input type="submit" value="Send">
+    </form>
+  </body>
+</html>

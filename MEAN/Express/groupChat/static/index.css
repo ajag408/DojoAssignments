@@ -1,0 +1,10 @@
+#chat_window{
+  width: 90%;
+  height: 500px;
+  border-style: solid;
+  border-color: black;
+}
+
+#text_box{
+  width: 90%;
+}
