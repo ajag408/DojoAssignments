@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app = 'app'>
+  <head>
+    <meta charset="utf-8">
+    <title>Controlling Users</title>
+    <script src = 'bower_components/angular/angular.js'></script>
+    <script>
+      var app = angular.module('app', []);
+      app.controller('userController', ['$scope', function($scope){
+        $scope.users = [];
+        $scope.createUser = function (){
+          // add to the array
+          $scope.users.push($scope.newUser);
+          // clear the form values
+          $scope.newUser = {};
+        }
+
+        $scope.deleteUser = function(index){
+          $scope.users.splice(index, 1);
+        }
+      }]);
+    </script>
+  </head>
+  <body ng-controller = 'userController'>
+    <h1>Users Controller</h1>
+      <form ng-submit = 'createUser()'>
+        First Name: <input type='text' ng-model='newUser.first_name'><br>
+        Last Name: <input type='text' ng-model='newUser.last_name'><br>
+        Favorite Language: <input type='text' ng-model='newUser.language'><br>
+        <input type='submit' value='Create User'>
+      </form><br><br>
+
+
+    <table>
+      <tr ng-repeat="user in users track by $index">
+        <td>{{user.first_name}}</td>
+        <td>{{user.last_name}}</td>
+        <td>{{user.language}}</td>
+        <td><button ng-click = "deleteUser($index)">Delete</button></td>
+      </tr>
+    </table>
+  </body>
+</html>

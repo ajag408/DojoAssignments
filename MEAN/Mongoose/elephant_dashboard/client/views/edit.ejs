@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Info</title>
+  </head>
+  <body>
+    <form action = '/elephant/<%= elephant[0].id%>' method = post>
+      Name: <input type = 'text' name = 'name' value = '<%= elephant[0].name%>'><br><br>
+      Age: <input type = 'text' name = 'age' value = '<%= elephant[0].age%>'><br><br>
+      <input type = 'submit' value = 'Save Changes'/>
+    </form><br>
+  </body>
+</html>

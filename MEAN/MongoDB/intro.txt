@@ -1,0 +1,49 @@
+> use introDB
+
+> db.createCollection('students')
+
+
+> db.introDB.insert({name: "Akash", home_state: "CA", lucky_number: 23, birthday:{month: 1, day: 5, year: 1992}})
+
+> db.introDB.insert({name: "Anisha", home_state: "CA", lucky_number: 14, birthday:{month: 9, day: 6, year: 1995}})
+
+> db.introDB.insert({name: "Akshar", home_state: "CA", lucky_number: 7, birthday:{month: 8, day: 1, year: 1991}})
+
+> db.introDB.insert({name: "Jagan", home_state: "CA", lucky_number: 10, birthday:{month: 8, day: 3, year: 1957}})
+
+> db.introDB.insert({name: "Radha", home_state: "CA", lucky_number: 9, birthday:{month: 5, day: 16, year: 1961}})
+
+> db.introDB.find()
+
+db.introDB.find({$or: [{home_state: "CA}",{home_state: "Washington"}]})
+
+
+> db.introDB.find({lucky_number:{$gt: 3}})
+
+> db.introDB.find({lucky_number:{$lte: 10}})
+
+> db.introDB.find({ $and: [{lucky_number:{$gte: 1}}, {lucky_number: {$lte: 9}}]})
+
+> db.introDB.update({}, {$set: {interests: ['coding', 'brunch', 'MongoDB']}},{multi: true})
+
+> db.introDB.update({name: "Anisha"}, {$set: {interests: ['being fat']}})
+
+> db.introDB.update({name: "Jagan"}, {$push: {interests: 'taxes'}})
+
+> db.introDB.update({name: "Jagan"}, {$pop: {interests: 1}})
+
+> db.introDB.remove({home_state: "Washington"},false)
+
+> db.introDB.remove({name: "Akshar"})
+
+> db.introDB.remove({lucky_number: {$gt: 5}}, true)
+
+> db.introDB.update({}, {$set: {number_of_belts:0}},{multi:true})
+
+> db.introDB.update({home_state: "Seattle"}, {$set: {number_of_belts:1}},{multi:true})
+
+> db.introDB.update({}, {$rename: {"number_of_belts": "belts_earned"}}, {multi: true})
+
+> db.introDB.update({}, {$unset: {lucky_number: ""}}, {multi: true})
+
+> db.introDB.update({}, {$set: {updated_on: new Date()}}, {multi: true})
