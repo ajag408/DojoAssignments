@@ -1,40 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" ng-app = 'app'>
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-  <script src = 'bower_components/angular/angular.js'>
-  </script>
-  <script>
-  var app = angular.module('app', []);
-  app.controller('myController', ['$scope', function($scope){
-    //printController will show the current $scope
-    $scope.printController = function(a){
-      console.log(a);
-    }
-  }]);
-  </script>
-</head>
-<body>
-    <div ng-controller = "myController" id = "myController">
-      <input type="text" ng-model = 'myModel'>
-      <label>
-        ng-model = "myModel"
-      </label>
-      <p>
-        When we type in our input, the $scope.myModel object is created in our controller (two way binding), even though we didn't declare it in our intial model description
-      </p>
-      <div id ='model' ng-if = "myModel">
-        <span>
-          ***INPUT: {{myModel}}***
-        </span>
-        <b>
-          If you click the button, you will get the $scope object.  Find myModel in it!  Refresh the page and don't enter anything into the input field and see if you can find myModel..., and printController
-        </b>
-      </div>
-      <button ng-click = "printController(myModel);">
-        Show our $scope!
-       </button>
-    </div>
-</body>
+<html ng-app = 'myApp'>
+  <head>
+    <meta charset="utf-8">
+    <title>Tester</title>
+    <script src = 'bower_components/angular/angular.js'></script>
+    <script>
+    var myAppModule = angular.module('myApp', []);
+    // Create a factory (attached to this module)
+    myAppModule.factory('studentFactory', function (){
+        // The factory is nothing more than a function that returns an object
+        var students = [
+            {name: 'Mike', age: 34},
+            {name: 'John', age: 24},
+            {name: 'Trey', age: 24}];
+        var factory = {};
+        // Add a getStudents key to the factory object with a value of a function.
+        factory.getStudents = function (callback){
+            // Pass the students to a callback to be used by whoever calls the method
+            callback(students);
+        }
+        // Most important step: return the object so it can be used by the rest of our angular code
+        return factory;
+    });
+
+
+    // Create a controller (attached to this module), and inject the studentFactory in it.
+    myAppModule.controller('studentsController', ['$scope', 'studentFactory', function ($scope, studentFactory){
+        //  initialize an empty array so $scope.students maintains a consistent data type
+        $scope.students = [];
+        // run the getStudents method and set $scope data in the callback
+        studentFactory.getStudents(function (data){
+            $scope.students = data;
+        })
+    }])
+    </script>
+  </head>
+  <body ng-controller = 'studentsController'>
+    <p ng-repeat="student in students">{{ student.name }}</p>
+  </body>
 </html>

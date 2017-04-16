@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="angular/angular.js"></script>
+    <script src="angular-route/angular-route.js"></script>
+    <script>
+      var app = angular.module('app', ['ngRoute']);
+
+      app.config(function ($routeProvider) {
+        $routeProvider
+          .when('/',{
+            templateUrl: 'partials/customizeUsers.html',
+          })
+          .when('/partial2',{
+            templateUrl: 'partials/userList.html'
+          })
+          .otherwise({
+            redirectTo: '/'
+          });
+      });
+
+      app.factory('userFactory', function(){
+        var users = [];
+        var factory = {};
+
+        factory.index = function(callback){
+          callback(users)
+        }
+
+        factory.create = function(newUser){
+          users.push(newUser);
+        }
+
+        factory.delete = function(userIndex){
+          users.splice(userIndex, 1);
+        }
+
+        factory.show = function(userIndex){
+
+        }
+        return factory;
+      })
+
+      app.controller('CustomizeUsersController', ['$scope', 'userFactory', '$location', function($scope, userFactory, $location){
+        $scope.users = [];
+
+        userFactory.index(function(data){
+          $scope.users = data;
+        })
+
+        $scope.createUser = function(){
+          userFactory.create($scope.newUser)
+          $scope.newUser = {};
+          $location.url('/partial2')
+        }
+
+        $scope.deleteUser = function(index){
+          userFactory.delete(index);
+        }
+      }]);
+
+      app.controller('UserListsController', ['$scope', 'userFactory', function($scope, userFactory){
+        $scope.users = [];
+
+        userFactory.index(function(data){
+          $scope.users = data;
+        })
+      }]);
+    </script>
+  </head>
+  <body>
+    <div ng-app='app'>
+      <a href="#!/">Customize Users</a> | <a href="#!/partial2">User List</a>
+      <div ng-view="">
+      </div>
+  </div>
+  </body>
+</html>

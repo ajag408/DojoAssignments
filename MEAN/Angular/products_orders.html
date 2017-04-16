@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html ng-app = 'app'>
+  <head>
+    <meta charset="utf-8">
+    <title>Products and Orders</title>
+    <script src = 'bower_components/angular/angular.js'></script>
+    <script>
+      var app = angular.module('app', []);
+      app.factory('productFactory', function(){
+        var products = [];
+        var factory = {};
+
+        factory.index = function(callback){
+          callback(products)
+        }
+
+        factory.add = function(newProduct){
+          newProduct.price = Number(newProduct.price);
+          newProduct.quantity = 50;
+          products.push(newProduct);
+        }
+
+        factory.delete = function(productIndex){
+          products.splice(productIndex, 1);
+        }
+
+        factory.buy = function(productIndex){
+          if(products[productIndex].quantity >= 1){
+            products[productIndex].quantity = products[productIndex].quantity - 1;
+          }
+        }
+        return factory;
+      })
+      app.controller('productController', ['$scope', 'productFactory', function($scope, productFactory){
+        $scope.products = [];
+
+        productFactory.index(function(data){
+          $scope.products = data;
+        })
+
+        $scope.addProduct = function(){
+          productFactory.add($scope.newProduct)
+          $scope.newProduct = {};
+        }
+
+        $scope.deleteProduct = function(index){
+          productFactory.delete(index);
+        }
+      }]);
+
+      app.controller('orderController', ['$scope', 'productFactory', function($scope, productFactory){
+        $scope.products = [];
+
+        productFactory.index(function(data){
+          $scope.products = data;
+        })
+
+        $scope.buyOne = function(index){
+          productFactory.buy(index);
+        }
+      }]);
+    </script>
+  </head>
+  <body>
+    <div ng-controller = 'productController'>
+      <h1>Products Controller</h1>
+        <form ng-submit = 'addProduct()'>
+          Product Name: <input type='text' ng-model='newProduct.name'><br>
+          Product Price (no $ sign): <input type='text' ng-model='newProduct.price'><br>
+          <input type='submit' value='Add Product'>
+        </form><br><br>
+
+        <!-- <button ng-click = "printController()">Show scope</button> -->
+        <table>
+          <tr ng-repeat="product in products track by $index">
+            <td>{{product.name}}</td>
+            <td>{{product.price | currency}}</td>
+            <td><button ng-click = "deleteProduct($index)">Delete</button></td>
+          </tr>
+        </table>
+    </div>
+
+    <div ng-controller = 'orderController'>
+      <h1>Orders Controller</h1>
+      <table>
+        <tr ng-repeat="product in products track by $index">
+          <td>{{product.name}}</td>
+          <td>{{product.price | currency}}</td>
+          <td>{{product.quantity}}</td>
+          <td><button ng-click = "buyOne($index)">Buy</button></td>
+        </tr>
+      </table>
+    </div>
+
+  </body>
+</html>

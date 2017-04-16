@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app = 'app'>
+  <head>
+    <meta charset="utf-8">
+    <title>Products with a Factory</title>
+    <script src = 'bower_components/angular/angular.js'></script>
+    <script>
+      var app = angular.module('app', []);
+      app.factory('productFactory', function(){
+        var products = [];
+        var factory = {};
+
+        factory.index = function(callback){
+          callback(products)
+        }
+
+        factory.add = function(newProduct){
+          newProduct.price = Number(newProduct.price);
+          products.push(newProduct);
+        }
+
+        factory.delete = function(productIndex){
+          products.splice(productIndex, 1);
+        }
+        return factory;
+      })
+      app.controller('productController', ['$scope', 'productFactory', function($scope, productFactory){
+        $scope.products = [];
+
+        productFactory.index(function(data){
+          $scope.products = data;
+        })
+
+        $scope.addProduct = function(){
+          productFactory.add($scope.newProduct)
+          $scope.newProduct = {};
+        }
+
+        $scope.deleteProduct = function(index){
+          productFactory.delete(index);
+        }
+
+
+        $scope.printController = function(){
+          console.log($scope.newProduct);
+          console.log($scope.products);
+        }
+      }]);
+    </script>
+  </head>
+  <body ng-controller = "productController">
+    <h1>Products Controller</h1>
+      <form ng-submit = 'addProduct()'>
+        Product Name: <input type='text' ng-model='newProduct.name'><br>
+        Product Price (no $ sign): <input type='text' ng-model='newProduct.price'><br>
+        <input type='submit' value='Add Product'>
+      </form><br><br>
+
+      <!-- <button ng-click = "printController()">Show scope</button> -->
+      <table>
+        <tr ng-repeat="product in products track by $index">
+          <td>{{product.name}}</td>
+          <td>{{product.price | currency}}</td>
+          <td><button ng-click = "deleteProduct($index)">Delete</button></td>
+        </tr>
+      </table>
+  </body>
+</html>

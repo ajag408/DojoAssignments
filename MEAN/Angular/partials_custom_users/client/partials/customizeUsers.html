@@ -1,0 +1,19 @@
+<div ng-controller = 'CustomizeUsersController'>
+  <h1>Users Controller</h1>
+    <form ng-submit = 'createUser()'>
+      First Name: <input type='text' ng-model='newUser.first_name'><br>
+      Last Name: <input type='text' ng-model='newUser.last_name'><br>
+      Favorite Language: <input type='text' ng-model='newUser.language'><br>
+      <input type='submit' value='Create User'>
+    </form><br><br>
+
+
+  <table>
+    <tr ng-repeat="user in users track by $index">
+      <td>{{user.first_name}}</td>
+      <td>{{user.last_name}}</td>
+      <td>{{user.language}}</td>
+      <td><button ng-click = "deleteUser($index)">Delete</button></td>
+    </tr>
+  </table>
+</div>
