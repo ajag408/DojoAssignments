@@ -1,0 +1,33 @@
+SList: Priority Queue (P.135)
+
+function PriQNode(value, pri){
+  this.val = value;
+  this.next = null;
+  this.pri = pri;
+}
+
+function PriQueue(){
+  var head = null;
+  var tail = null;
+  this.push = function(value, pri){
+    var N = new PriQNode(value,pri);
+    if(this.isEmpty()){
+      this.head = N;
+    } else {
+      if(N.pri > this.head.pri){
+        N.next = this.head;
+        this.head = N;
+      } else if (N.pri < this.tail.pri){
+        this.tail.next = N;
+        this.tail = N;
+      } else {
+        var runner = this.head;
+        while(runner.next.pri > N.pri){
+          runner = runner.next;
+        }
+        N.next = runner.next;
+        runner.next = N;
+      }
+    }
+  }
+}

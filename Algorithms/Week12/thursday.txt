@@ -1,0 +1,60 @@
+Array: Combine (P.125)
+
+function insertZeroAt(arr, idx){
+  arr.length = arr.length + 1;
+  for(var x = arr.length - 2; x>=idx; x--){
+    arr[x+1] = arr[x];
+    arr[x] = 0;
+  }
+  return arr;
+}
+
+
+function combineArrs(arr1,arr2){
+    if(arr1[0]<arr2[0]){
+      var j = 0;
+      for(var i = 0; i<arr1.length; i++){
+        while(arr1[i]>arr2[j]){
+         insertZeroAt(arr1, i)
+         arr1[i] = arr2[j];
+         i++;
+         j++;
+        }
+      }
+      while(j<arr2.length){
+        arr1[i] = arr2[j];
+        i++;
+        j++;
+      }
+    }else if(arr1[0]>arr2[0]){
+      var j = 0;
+      for(var i = 0; i<arr2.length; i++){
+        while(arr2[i]>arr1[j]){
+         insertZeroAt(arr2, i)
+         arr2[i] = arr1[j];
+         i++;
+         j++;
+        }
+      }
+      while(j<arr1.length){
+        arr2[i] = arr1[j];
+        i++;
+        j++;
+      }
+      arr1 = arr2;
+    }
+  console.log(arr1);
+  
+}
+
+
+combineArrs([108, 420], [1,29,36,47, 58, 69,100, 102, 107, 500]);
+
+// var testArr = [0,1,2]
+// testArr.length = testArr.length + 1;
+// console.log(testArr.length);
+// console.log(testArr);
+
+// var arr1 = [1,2,3];
+// arr1[3]=4;
+// console.log(arr1);
