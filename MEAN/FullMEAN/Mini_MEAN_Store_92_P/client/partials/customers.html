@@ -1,0 +1,13 @@
+<h4>Add a new customer</h4>
+<form ng-submit = 'create()'>
+  Customer Name: <input type='text' ng-model='newCustomer.name'><br>
+  <input type='submit' value='Add'>
+</form><br><br>
+
+<table>
+  <tr ng-repeat="customer in customers">
+    <td>{{customer.name}}</td>
+    <td>{{customer.createdAt}}</td>
+    <td><button ng-click = "delete(customer._id)">Remove</button></td>
+  </tr>
+</table>

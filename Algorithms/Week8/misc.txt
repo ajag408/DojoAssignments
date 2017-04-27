@@ -1,0 +1,16 @@
+Recursive Fibonacci (P.101)
+
+function rFib(num){
+  num = Math.floor(num);
+  if(num >= 0){
+    if(num == 0){
+      return 0;
+    } else if(num == 1){
+      return 1;
+    } else {
+      return rFib(num-1) + rFib(num-2);
+    }
+  } else {
+    return 0;
+  }
+}

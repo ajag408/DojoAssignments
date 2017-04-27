@@ -1,0 +1,22 @@
+<h4>Add a new order</h4>
+{{error}}
+<form ng-submit = 'create()'>
+  Customer: <select ng-model = 'newOrder.customer'>
+    <option ng-repeat="customer in customers" >{{customer.name}}</option>
+  </select>
+  Product: <select ng-model = 'newOrder.product'>
+    <option ng-repeat="product in products">{{product.name}}</option>
+  </select>
+  Qty: <input type = 'text' ng-model = 'newOrder.qty'><br>
+  <input type='submit' value='Order'>
+</form><br><br>
+
+
+<table>
+  <tr ng-repeat="order in orders">
+    <td>{{order.customer}}</td>
+    <td>{{order.product}}</td>
+    <td>{{order.qty}}</td>
+    <td>{{order.createdAt}}</td>
+  </tr>
+</table>

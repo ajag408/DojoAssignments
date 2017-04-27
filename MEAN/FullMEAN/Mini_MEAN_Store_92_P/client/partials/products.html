@@ -1,0 +1,18 @@
+
+<input type="text" ng-model="filter_name">
+<div>
+  <div ng-repeat="product in products | filter: filter_name">
+    <p>product.img</p>
+    {{product.name}}<br>
+    ({{product.qty}}) left
+  </div>
+</div>
+
+<h4>Add new product </h4>
+<form ng-submit = 'create()'>
+  Name: <input type='text' ng-model='newProduct.name'><br>
+  Image (url): <input type='text' ng-model='newProduct.image' placeholder = 'http://'><br>
+  Description: <textarea rows = '3' cols = '50' ng-model = 'newProduct.description'></textarea>
+  Initial Quantity: <input type = 'text' ng-model = 'newProduct.qty'>
+  <input type='submit' value='Create'>
+</form><br><br>
