@@ -1,0 +1,46 @@
+
+
+body{
+  height: 100%;
+  width: 100%;
+  background-color: #DEB887;
+}
+
+
+.header{
+  height: 20%;
+}
+
+.header img{
+  width: 10%;
+  height: 10%;
+}
+
+h1{
+  display: inline-block;
+}
+
+.headerPicLeft{
+  margin-left: 20%;
+}
+
+.main{
+  height: 80%;
+  margin-left: 20px;
+}
+
+.main img{
+  width: 15%;
+  height: 15%;
+  padding: 1%;
+  border: 2px solid black;
+  margin: 2px;
+}
+
+.one{
+  background-color: blue;
+}
+
+.two{
+  background-color: red;
+}
