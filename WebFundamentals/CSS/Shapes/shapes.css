@@ -1,0 +1,63 @@
+.square{
+  width: 140px;
+  height: 140px;
+  background: blue;
+}
+
+.circle{
+  width: 140px;
+  height: 140px;
+  background: blue;
+  border-radius: 70px;
+}
+
+.square1, .square2, .square3{
+  width: 140px;
+  display: inline-block;
+  margin-right: -4px;
+}
+
+.square1, .square3{
+  height:140px;
+  background-color: white;
+}
+
+.square2{
+  height: 120px;
+  background-color: blue;
+}
+
+.square1{
+  transform: rotate(30deg);
+  position: relative;
+  top: -25px;
+  left: 47px;
+}
+
+.square3{
+  transform: rotate(-30deg);
+  position: relative;
+  top: -25px;
+  right: 47px;
+}
+
+.pcircle, .psquare{
+  display: inline-block;
+}
+
+.pcircle{
+  width: 140px;
+  height: 140px;
+  border-radius: 70px;
+  background-color: blue;
+}
+
+.psquare{
+  width: 70px;
+  height: 70px;
+  background-color: white;
+  position: relative;
+  transform: rotate(45deg);
+  bottom: 35px;
+  right: 58px;
+}

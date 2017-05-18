@@ -55,15 +55,61 @@ body{
   margin-top: 13px;
 }
 
-.side2{
-
+.side1box1 h2, p{
+  color: white;
 }
+
+.side1box1 h2{
+  padding-left: 6px;
+}
+
+.side1box1 p{
+  padding-left: 15px;
+  padding-right: 10px;
+}
+
+.side2{
+  width: 730px;
+  margin-left: 40px;
+  vertical-align: top;
+  margin-top: 13px;
+}
+
 .box2{
+  width: 190px;
+  height: 150px;
+  margin-right: 50px;
   display: inline-block;
+}
+
+.box3{
+  width: 340px;
+  height: 150px;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.box4{
+  width: 685px;
+  height: 110px;
+  display: inline-block;
+  margin-top: 10px;
 }
 
 .footer{
   height: 65px;
   width: 1000px;
   background-color: turquoise;
+}
+
+.footer p{
+  color: black;
+  margin-left: 300px;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.footer a{
+  color:blue;
+  text-decoration: underline;
 }
