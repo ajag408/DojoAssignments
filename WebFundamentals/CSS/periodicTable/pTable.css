@@ -1,0 +1,56 @@
+body{
+  height: 600px;
+  width: 1000px;
+  background-color:whitesmoke;
+}
+
+.header{
+  list-style-type:none;
+  height:25px;
+  width:1000px;
+  padding-left: 0px;
+  margin-bottom: -8px;
+}
+
+.header li{
+  display: inline;
+  color:red;
+  margin-right: 35px;
+}
+
+.fissure{
+  padding-right:6px;
+}
+
+.sideNum{
+  height: 460px;
+  width: 45px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.sideNum ul{
+  list-style-type: none;
+  padding-left: 0px;
+  margin-top: 0px;
+  color:red;
+}
+
+.sideNum li{
+  margin-bottom: 42px;
+  padding-left: 18px;
+  margin-top: 20px;
+}
+
+.main-table{
+  display: inline-block;
+  width: 950px;
+  height: 460px;
+}
+
+.leftBlue{
+  background-color:blue;
+  display:inline-block;
+  height:460px;
+  width:100px;
+}
