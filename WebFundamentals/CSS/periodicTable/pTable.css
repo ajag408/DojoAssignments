@@ -4,17 +4,23 @@ body{
   background-color:whitesmoke;
 }
 
+.header, .sideNum ul{
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.header li, .sideNum ul{
+  color:red;
+}
+
 .header{
-  list-style-type:none;
   height:25px;
   width:1000px;
-  padding-left: 0px;
   margin-bottom: -8px;
 }
 
 .header li{
   display: inline;
-  color: red;
 }
 
 .normal{
@@ -29,19 +35,21 @@ body{
   padding-right:6px;
 }
 
+.sideNum, .main-table, .leftBlue, .middleRed, .yellowRight{
+  display: inline-block;
+}
+
+.sideNum, .leftBlue, .middleRed{
+  vertical-align: top;
+}
 
 .sideNum{
   height: 360px;
   width: 45px;
-  display: inline-block;
-  vertical-align: top;
 }
 
 .sideNum ul{
-  list-style-type: none;
-  padding-left: 0px;
   margin-top: 0px;
-  color:red;
 }
 
 .sideNum li{
@@ -51,124 +59,93 @@ body{
 }
 
 .main-table{
-  display: inline-block;
   width: 950px;
+}
+
+.main-table, .leftBlue, .middleRed, .yelloRight{
   height: 360px;
 }
 
+.Li, .blankBlock, .blueBlock, .blueBlock2, .topRowRedBox1, .topRowRedBox, .leftRedBox, .redBox, .yBox1, .yBoxCol1, .yBox, .greenBlock{
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+}
+
 .leftBlue{
-  display:inline-block;
-  height:380px;
   width:100px;
-  vertical-align: top;
+}
+
+.Li, .blueBlock, .blueBlock2{
+  background-color: blue;
 }
 
 .Li{
-  width: 40px;
-  height: 40px;
-  background-color: blue;
-  display: inline-block;
   margin-top: 30px;
   margin-left: 15px;
+  margin-bottom: 4px;
 }
 
-.blankBlock{
-  background-color: whitesmoke;
-  display:inline-block;
-  width: 40px;
-  height: 40px;
+.Li p{
+  text-align: center;
+  font-size: 8pt;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  }
+
+.element{
+  color:midnightblue;
 }
 
 .blueBlock{
   margin-left: 15px;
-  width: 40px;
-  height: 40px;
-  background-color: blue;
-  display: inline-block;
 }
 
-.blueBlock2{
-  display:inline-block;
-  width: 40px;
-  height: 40px;
-  background-color: blue;
-}
 .middleRed{
-  display: inline-block;
   width: 445px;
-  height: 380px;
   margin-left: 7px;
-  vertical-align: top;
+}
+
+.topRowRedBox1, .topRowRedBox, .leftRedBox, .redBox{
+  background-color: red;
 }
 
 .topRowRedBox1{
-  width: 40px;
-  height: 40px;
   margin-left: 6px;
   margin-top: 162px;
-  display: inline-block;
-  background-color: red;
 }
 
 .topRowRedBox{
-  width: 40px;
-  height: 40px;
   margin-top: 162px;
-  display: inline-block;
-  background-color: red;
 }
 
 .leftRedBox{
-  width: 40px;
-  height: 40px;
   margin-left: 6px;
-  display: inline-block;
-  background-color: red;
-}
-
-.redBox{
-  width: 40px;
-  height: 40px;
-  display: inline-block;
-  background-color: red;
 }
 
 .yellowRight{
   width: 270px;
-  display: inline-block;
-  height: 380px;
+}
+
+.yBox1, .yBoxCol1, .yBox{
+  background-color: yellow;
 }
 
 .yBox1{
-  width: 40px;
-  height: 40px;
-  display: inline-block;
-  background-color: yellow;
   margin-left: 217px;
   margin-top: 30px;
 }
 
 
 .yBoxCol1{
-  width: 40px;
-  height: 40px;
-  display: inline-block;
-  background-color: yellow;
   margin-left: -3px;
-}
-
-.yBox{
-  width: 40px;
-  height: 40px;
-  display: inline-block;
-  background-color: yellow;
 }
 
 .bottomBlock{
   width: 750px;
   height: 120px;
-  margin-top: 0px;
   margin-left: 45px;
+  margin-top: 0px;
 }
 
 .bottomBlock p{
@@ -189,8 +166,5 @@ body{
 }
 
 .greenBlock{
-  width: 40px;
-  height: 40px;
-  display: inline-block;
   background-color: green;
 }
