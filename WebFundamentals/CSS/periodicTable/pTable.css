@@ -53,7 +53,7 @@ body{
 .main-table{
   display: inline-block;
   width: 950px;
-  height: 380px;
+  height: 360px;
 }
 
 .leftBlue{
@@ -165,8 +165,32 @@ body{
 }
 
 .bottomBlock{
-  width: 300px;
-  height: 200px;
+  width: 750px;
+  height: 120px;
+  margin-top: 0px;
+  margin-left: 45px;
+}
+
+.bottomBlock p{
+  color: red;
+  display: inline;
+}
+
+.Llabel{
+  margin-right: 22px;
+}
+
+.Alabel{
+  margin-right:31px;
+}
+
+.asterisk{
+  margin-right: -4px;
+}
+
+.greenBlock{
+  width: 40px;
+  height: 40px;
+  display: inline-block;
   background-color: green;
-  margin-top: 20px;
 }
