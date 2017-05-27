@@ -5,15 +5,34 @@
     <title>AJ Contact Page</title>
   </head>
   <style>
+    form{
+      display:inline-block;
+      vertical-align: top;
+    }
+
+    .card{
+      display:inline-block;
+      width:500px;
+      height: 800px;;
+      margin-left:180px;
+    }
+
     .front{
       display:inline-block;
-      position:relative;
       height:200px;
       width:400px;
+      margin-bottom: 20px;
       border-style:solid;
       border-width:thin;
+    }
 
-
+    .back{
+      display:inline-block;
+      height:200px;
+      width:400px;
+      margin-bottom: 20px;
+      border-style:solid;
+      border-width:thin;
     }
 
 
@@ -23,27 +42,36 @@
 
     h3{
       text-align: center;
-      position:relative;
-      top:100px;
     }
 
-    h2{
-      text-align: center;
-    }
 
-    form{
-      margin-bottom: 50px;
-    }
   </style>
   <script type="text/javascript" src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+  <script type="text/javascript">
+    //flip back feature
+    //delete feature
+    //animation when flipped
+    $(document).ready(function(){
 
+      $('form').submit(function(e){
+        $('.card').append("<div class='front'><h1>"+$('.fn').val()+" " + $('.ln').val()+"</h1><h3>Click to flip</h3></div>");
+        e.preventDefault();
+      });
+      $('.card').on('click', '.front', function(){
+        $(this).html("<div class = 'back'><p>"+$('.descrip').val()+"</p></div>");
+      })
+    });
+  </script>
   <body>
     <form>
       First Name: <input class = "fn" type="text" name="firstname" value=""><br>
       Last Name: <input class = "ln" type="text" name="lastname" value=""><br>
-      Description:<br> <textarea class "descrip" name="description">Enter description here</textarea><br>
+      Description:<br> <textarea  rows = '10' cols = '50' class = "descrip" name="description">Enter description here</textarea><br>
       <input type = "submit" value="Add User">
     </form>
+
+    <div class = 'card'>
+    </div>
 
 
   <!--  <div>
@@ -55,20 +83,7 @@
 
 
 
-    <script type="text/javascript">
-      $(document).ready(function(){
 
-        $('form').submit(function(e){
-          $('body').append("<div class='front'><h1>"+$('.fn').val()+" " + $('.ln').val()+"</h1><h3>Click to flip</h3></div>");
-              $('.front').click(function(){
-                $(this).hide();
-                $(this).append("<div class='front'><h2>It works</h2></div>");
-
-              });
-          e.preventDefault();
-        });
-      });
-    </script>
   </body>
 
 </html>
