@@ -180,12 +180,52 @@
       document.getElementById('lives').innerHTML = output2;
     }
 
+    function randDirectionGen(){
+      return Math.floor(Math.random()*4);
+    }
+
+    function moveGhost(){
+      var direction = randDirectionGen();
+      var moved = false;
+      if(direction == 0 && world[ghost.y-1][ghost.x] != 2){
+        ghost.y--;
+        displayGhost();
+        moved = true;
+      } else if(direction == 1 && world[ghost.y][ghost.x+1] != 2){
+        ghost.x++;
+        displayGhost();
+        moved = true;
+      } else if(direction == 2 && world[ghost.y+1][ghost.x] != 2){
+        ghost.y++;
+        displayGhost();
+        moved = true;
+      } else if(direction == 3 && world[ghost.y][ghost.x-1] != 2){
+        ghost.x--;
+        displayGhost();
+        moved = true;
+      } else{
+        moveGhost();
+      }
+      if(moved == true){
+        if(pacman.y == ghost.y && pacman.x == ghost.x){
+          lives--;
+          displayLives();
+          pacman.x = 1;
+          pacman.y = 1;
+          displayPacman();
+        }
+      }
+    }
+
+
 
     displayWorld();
     displayPacman();
     displayGhost();
     displayScore();
     displayLives();
+
+    setInterval(moveGhost, 400);
 
     document.onkeydown = function(e){
       if(e.keyCode==37 && world[pacman.y][pacman.x-1] != 2){
