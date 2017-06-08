@@ -5,27 +5,28 @@ body{
 
 .header{
   background-color: gray;
-  height: 90px;
-  width: 900px;
+  height: 17%;
+  width: 95%;
   padding-left: 20px;
   padding-top: 10px;
 }
 
 h2{
-  font-size: 200%;
+  font-size: 2em;
   margin-top: 0px;
   margin-bottom: 0px;
 }
 
 h3{
-  font-size: 150%;
+  font-size: 1.5em;
   margin-bottom: 0px;
   margin-top: 10px;
+  padding-bottom:10px;
 }
 
 .navbar{
-  height: 65px;
-  width: 900px;
+  height: 8%;
+  width: 100%;
 }
 
 ul{
@@ -49,18 +50,37 @@ li{
 
 
 .main-content{
-  height: 450px;
-  width: 920px;
+  height: 75%;
+  width: 100%;
   display:inline-block;
 }
 
-.ipsum-block{
-  height: 450px;
+.ipsum-block, .ipsum-block-last{
+  height: 100%;
   display: inline-block;
-  width:227px;
+  width: 24%;
   vertical-align:top;
 }
 
-.ipsum-block p{
+p{
   padding-right: 20px;
+}
+
+@media only screen and (max-width:793px) {
+  .navbar{
+    height: 0px;
+    width: 0px;
+  }
+
+  ul, li{
+    visibility: hidden;
+  }
+
+  .ipsum-block{
+    width: 32%;
+  }
+
+  .ipsum-block-last{
+    width: 100%;
+  }
 }
