@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <title>Date Validations</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $( "#from" ).datepicker();
+        $( "#to" ).datepicker();
+        $('form').on('submit', function(e){
+          var from = ($('#from').val());
+          var to = ($('#to').val());
+          var name = ($('#name').val());
+
+          if(name == ''){
+            $("#effect").animate({
+              backgroundColor: "#aa0000",
+              color: "#fff",
+            }, 1000);
+
+            $('.error').css('visibility', 'visible');
+
+          } else {
+            $('#effect').css('backgroundColor', 'white');
+            $('#effect').css('color', 'black');
+            $('.error').css('visibility', 'hidden');
+            alert('Thanks ' + name + '! Your cruise leaves on ' + from + ' and returns on ' + to + '!');
+          }
+
+          e.preventDefault();
+        })
+      });
+    </script>
+    <style>
+      .error{
+        color: red;
+        visibility: hidden;
+        display: inline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to plan-a-cruise!</h1><br><br>
+
+    <form>
+      From: <input type="text" id="from" name="from"><br><br>
+      To: <input type="text" id="to" name="to"><br><br>
+      Name: <input type="text" id = "name" name="name">
+      <p class = 'error'>Your name can't be blank!</p><br>
+      <input type="submit" id = "effect" value="Check Dates">
+    </form>
+
+  </body>
+</html>
