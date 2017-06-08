@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <title>Accordian and Tab</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $( function() {
+        $( "#accordion" ).accordion({
+          collapsible: true
+        });
+        $( "#tabs" ).tabs({
+          event: "mouseover"
+        });
+        $( "#progressbar" ).progressbar({
+          value: false
+        });
+      } );
+    </script>
+  </head>
+  <body>
+    <div id = 'accordion'>
+      <h3>Akash</h3>
+      <div>
+        <p>Lorem ipsizzle dolor shizzle my nizzle crocodizzle amizzle, dope adipiscing shizznit. Nullizzle sapien velizzle, funky fresh volutpizzle, suscipizzle fo shizzle, sheezy vel, yo. Pellentesque get down get down tortor. Pot eros. Fusce you son of a bizzle izzle fizzle turpizzle the bizzle. Mauris pellentesque yo mamma izzle boom shackalack. Pimpin' izzle da bomb. Pellentesque boofron rhoncizzle sizzle. In hac habitasse platea dictumst. Break it down boofron. The bizzle fizzle urna, pretium eu, mattizzle break it down, eleifend vitae, shit. Ghetto suscipizzle. Integizzle semper velit sed purizzle.</p>
+      </div>
+      <h3>Jagan</h3>
+      <div>
+        <p>I am a man, he's a man, we're men! Ok, tell me how your feeling. I feel delicate... and annoyed, and... I think I'm ugly. I don't see how they couldn't just keep it as it was. How hard is it to remember 911? It's my term for my time of the month. Oh. What time of the month? The weekend? Carrie, Moss! First scene in Carrie! Oh. Okay Hello, IT.</p>
+      </div>
+      <h3>Radha</h3>
+      <div>
+        <p>Today there are 12 million undocumented immigrants in America, most of them working in our communities, attending our churches, and contributing to our country. On the other end, we've heard my former pastor, Reverend Jeremiah Wright, use incendiary language to express views that have the potential not only to widen the racial divide, but views that denigrate both the greatness and the goodness of our nation; that rightly offend white and black alike.</p>
+      </div>
+      <h3>Anisha</h3>
+      <div>
+        <p>Knowing the difference between their/there/they're thinking about trying yoga Breaking Bad rock climbing.</p>
+      </div>
+    </div><br><br>
+
+    <div id = 'tabs'>
+      <ul>
+        <li><a href="#tabs-1">Akash</a></li>
+        <li><a href="#tabs-2">Jagan</a></li>
+        <li><a href="#tabs-3">Radha</a></li>
+        <li><a href="#tabs-4">Anisha</a></li>
+      </ul>
+      <div id="tabs-1">
+        <p>Hello</p>
+      </div>
+      <div id="tabs-2">
+        <p>Goodbye</p>
+      </div>
+      <div id="tabs-3">
+        <p>Shalom</p>
+      </div>
+      <div id="tabs-4">
+        <p>Nayghee</p>
+      </div>
+    </div><br><br>
+
+    <div id="progressbar"></div>
+
+  </body>
+</html>
