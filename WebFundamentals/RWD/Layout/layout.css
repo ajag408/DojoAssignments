@@ -50,5 +50,17 @@ li{
 
 .main-content{
   height: 450px;
-  width: 900px;
+  width: 920px;
+  display:inline-block;
+}
+
+.ipsum-block{
+  height: 450px;
+  display: inline-block;
+  width:227px;
+  vertical-align:top;
+}
+
+.ipsum-block p{
+  padding-right: 20px;
 }
