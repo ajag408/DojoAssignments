@@ -30,9 +30,9 @@
         $('form').on('submit', function(e){
           e.preventDefault();
         });
-        $("#password").complexify({}, callback(valid, complexity){
+        $('#password').complexify({}, function (valid, complexity) {
           document.getElementById("PassValue").value = complexity;
-        })
+        });
       });
 
     </script>
@@ -72,9 +72,9 @@
         <input type = 'submit' value = 'do you know?'>
     </form>
 
-    <div class = 'belson'>
-      Check password complexity: <input type="password" id = 'password' name="psw">
+    <p class = 'belson'>
+      Check password complexity: <input type="password" id = 'password' name="psw"/>
       <meter value="0" id="PassValue" max="100"></meter>
-    </div>
+    </p>
   </body>
 </html>
