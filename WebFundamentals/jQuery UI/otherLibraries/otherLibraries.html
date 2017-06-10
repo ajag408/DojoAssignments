@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Library Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.arctext.js"></script>
+    <script type="text/javascript" src="fancyInput.js"></script>
+    <link rel="stylesheet" href="fancyInput.css">
+    <script type="text/javascript" src="./jquery.complexify.js-master/jquery.complexify.js"></script>
+    <script type = 'text/javascript'>
+      $(document).ready(function(){
+        $('h1').arctext({
+          radius: 85,
+          dir: 1
+        });
+        $('button').on('click', function(){
+          $('h1').arctext('set', {
+            radius: 100,
+            dir: -1,
+            animation: {
+              speed: 300
+            }
+          });
+          $('button').css('visibility', 'hidden');
+        });
+
+        $('div :input').fancyInput();
+        $('form').on('submit', function(e){
+          e.preventDefault();
+        });
+        $("#password").complexify({}, callback(valid, complexity){
+          alert("Password complexity: " + complexity);
+        });
+      });
+
+    </script>
+    <style>
+      h1{
+        text-align: center;
+        font-size:4em;
+        color: red;
+      }
+
+      button{
+        margin-left: 40%;
+      }
+
+      form{
+        margin-top: 7%;
+        margin-left: 30%;
+      }
+
+      form div{
+        display: inline-block;
+      }
+
+      .belson{
+        margin-top: 7%;
+        margin-left: 30%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello</h1>
+    <button>Turn that frown upside down</button>
+    <form>
+      <div>
+        What do you want to see (click here to type)? <input type = 'text' name = 'choice'>
+      </div>
+        <input type = 'submit' value = 'do you know?'>
+    </form>
+
+    <div class = 'belson'>
+      Check password complexity: <input type="password" id = 'password' name="psw">
+    </div>
+  </body>
+</html>
