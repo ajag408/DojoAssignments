@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Highcharts and Tablesorter</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript" src="jquery.tablesorter.js"></script>
+    <script type = 'text/javascript'>
+      $(document).ready(function(){
+        var myChart = Highcharts.chart('container', {
+          chart: {
+          type: 'bar'
+        },
+        title: {
+          text: 'Predictions'
+        },
+        xAxis: {
+          categories: ['DojoAlum', 'Cavs', 'Dubs']
+        },
+        yAxis: {
+          title: {
+            text: 'Chance Meter'
+          }
+        },
+        series: [{
+          name: 'Akash',
+          data: [1, 4, 0]
+        }, {
+          name: 'Jagan',
+          data: [0, 0, 5]
+        }]
+        });
+
+
+         $("#myTable").tablesorter();
+      });
+
+
+
+    </script>
+  </head>
+  <body>
+    <div id="container" style="width:100%; height:400px;"></div>
+
+    <table id="myTable" class="tablesorter">
+<thead>
+<tr>
+    <th>Last Name</th>
+    <th>First Name</th>
+    <th>Age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>J</td>
+    <td>Akash</td>
+    <td>akooshoo@yahoo.com</td>
+</tr>
+<tr>
+    <td>J</td>
+    <td>Jagan</td>
+    <td>jagan@ahista.com</td>
+</tr>
+<tr>
+    <td>J</td>
+    <td>Radha</td>
+    <td>radjag@yahoo.com</td>
+</tr>
+<tr>
+    <td>J</td>
+    <td>Anisha</td>
+    <td>anishajag@yahoo.com</td>
+</tr>
+</tbody>
+</table>
+  </body>
+</html>
