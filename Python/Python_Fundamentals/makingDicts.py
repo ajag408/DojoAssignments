@@ -9,8 +9,8 @@ def make_dict(arr1, arr2):
 
 
 
-name = ["Anna", "Eli", "Pariece", "Brendan", "Amy", "Shane", "Oscar"]
-favorite_animal = ["horse", "cat", "spider", "giraffe", "ticks", "dolphins", "llamas"]
-
-test = make_dict(name, favorite_animal)
-print test
+# name = ["Anna", "Eli", "Pariece", "Brendan", "Amy", "Shane", "Oscar"]
+# favorite_animal = ["horse", "cat", "spider", "giraffe", "ticks", "dolphins", "llamas"]
+#
+# test = make_dict(name, favorite_animal)
+# print test
