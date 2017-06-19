@@ -1,9 +1,7 @@
-def multiply(arr,num):
-    for x in arr:
-        x *= num
-    return arr
+products = ['mafia', 'killer', 'killer']
 
-
-a = [2,4,10,16]
-b = multiply(a,5)
-print b
+for product in products:
+    if product == 'killer':
+        idx = products.index(product)
+        print idx
+        break
