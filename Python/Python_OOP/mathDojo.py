@@ -3,7 +3,7 @@ class MathDojo(object):
         self.total = 0
     def add(self, *args):
         for arg in args:
-            if type(arg) is list:
+            if type(arg) is list or type(arg) is tuple:
                 for num in arg:
                     self.total += num
             else:
@@ -11,7 +11,7 @@ class MathDojo(object):
         return self
     def subtract(self, *args):
         for arg in args:
-            if type(arg) is list:
+            if type(arg) is list or type(arg) is tuple:
                 sub_total = 0
                 for num in arg:
                     sub_total += num
@@ -25,5 +25,5 @@ class MathDojo(object):
 
 
 
-md = MathDojo().add([1],3,4).add([3,5,7,8],[2,4.3,1.25]).subtract(2, [2,3], [1.1, 2.3]).result()
+md = MathDojo().add([1],3,4).add((3,5,7,8),[2,4.3,1.25]).subtract(2, (2,3), [1.1, 2.3]).result()
 print md
