@@ -33,35 +33,6 @@ class Product(object):
         print info
         return self
 
-class Store(object):
-    def __init__(self, products, location, owner):
-        self.products = products
-        self.location = location
-        self.owner = owner
-    def add_product(self, product):
-        self.products.append(product)
-        return self
-    def remove_product(self, product_name):
-        for product in self.products:
-            if product.name == product_name:
-                idx = self.products.index(product)
-                self.products.pop(idx)
-                break
-        return self
-    def inventory(self):
-        print "******* Product List *********"
-        for product in self.products:
-            product.displayInfo()
-        return self
-
 product1 = Product(25, 'undies', '2 kg', 'hanes', 2)
-product2 = Product(50, 'reeboks', '2 lb', 'grouch', 49)
-
-safeway = Store([product1], 'Sunnyvale', 'MoolahBaby')
-safeway.inventory()
-
-safeway.add_product(product2)
-safeway.inventory()
-
-safeway.remove_product('undies')
-safeway.inventory()
+real_price = product1.addTax(0.08)
+print real_price
