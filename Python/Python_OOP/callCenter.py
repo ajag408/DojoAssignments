@@ -24,6 +24,15 @@ class CallCenter(object):
         self.calls.pop(0)
         self.qSize -= 1
         return self
+    def findCall(self, number):
+        for call in self.calls:
+            if call.number == number:
+                idx = self.calls.index(call)
+        self.calls.pop(idx)
+        self.qSize -= 1
+        return self
+    def testFindCall(self):
+        return self.calls[2].number
     def display(self):
         for call in self.calls:
             print '**************'
@@ -34,8 +43,10 @@ class CallCenter(object):
 
 call1 = Call('akash', 'to dance')
 call2 = Call('james', 'to eat')
-call2.display()
+call3 = Call('bertrand', 'to fuck')
 
-att = CallCenter().add(call1).add(call2)
-att.remove()
+att = CallCenter().add(call1).add(call2).add(call3)
+att.display()
+pertinent_number = att.testFindCall()
+att.findCall(pertinent_number)
 att.display()
