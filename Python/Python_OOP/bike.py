@@ -14,22 +14,24 @@ class Bike(object):
     def reverse(self):
         print "Reversing"
         self.miles -= 5
-        
+    def __repr__(self):
+        return "<Bike object, price {}, max_speed {}, miles {}>".format(self.price, self.max_speed, self.miles)
 
-bike1 = Bike(200, 25)
-bike1.ride()
-bike1.ride()
-bike1.ride()
-bike1.reverse()
-bike1.displayInfo()
-bike2 = Bike(300, 35)
-bike2.ride()
-bike2.ride()
-bike2.reverse()
-bike2.reverse()
-bike2.displayInfo()
-bike3 = Bike(500, 95)
-bike3.reverse()
-bike3.reverse()
-bike3.reverse()
-bike3.displayInfo()
+if __name__ == '__main__':
+    bike1 = Bike(200, 25)
+    bike1.ride()
+    bike1.ride()
+    bike1.ride()
+    bike1.reverse()
+    bike1.displayInfo()
+    bike2 = Bike(300, 35)
+    bike2.ride()
+    bike2.ride()
+    bike2.reverse()
+    bike2.reverse()
+    bike2.displayInfo()
+    bike3 = Bike(500, 95)
+    bike3.reverse()
+    bike3.reverse()
+    bike3.reverse()
+    bike3.displayInfo()
