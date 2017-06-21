@@ -33,6 +33,9 @@ class CallCenter(object):
         return self
     def testFindCall(self):
         return self.calls[2].number
+    def sortAsc(self):
+        self.calls = sorted(self.calls)
+        return self
     def display(self):
         for call in self.calls:
             print '**************'
@@ -42,11 +45,13 @@ class CallCenter(object):
         print self.qSize
 
 call1 = Call('akash', 'to dance')
+call1.display()
 call2 = Call('james', 'to eat')
-call3 = Call('bertrand', 'to fuck')
+call2.display()
+call3 = Call('bertrand', 'to chuck')
+call3.display()
 
-att = CallCenter().add(call1).add(call2).add(call3)
+att = CallCenter().add(call3).add(call2).add(call1)
 att.display()
-pertinent_number = att.testFindCall()
-att.findCall(pertinent_number)
+att.sortAsc()
 att.display()
