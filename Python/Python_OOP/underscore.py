@@ -20,8 +20,11 @@ class Underscore(object):
             total = callback(total, arr[pointer])
             pointer += 1
         return total
-    # def find(self):
-    #     # your code here
+    def find(self, arr, callback):
+        for val in arr:
+            if callback(val) == True:
+                return val
+        return "undefined"
     def filter(self, arr, callback):
         new_arr = []
         for val in arr:
@@ -30,11 +33,15 @@ class Underscore(object):
             else:
                 continue
         return new_arr
-    # def reject(self):
-        # your code
+    def reject(self, arr, callback):
+        new_arr = []
+        for val in arr:
+            if callback(val) is False:
+                new_arr.append(val)
+        return new_arr
 # you just created a library with 5 methods!
 # let's create an instance of our class
 _ = Underscore() # yes we are setting our instance to a variable that is an underscore
-total = _.reduce([1], lambda x, y: x + y, 1)
-print total
+odds = _.reject([1, 2, 3, 4, 5, 6], lambda x: x % 2 == 0)
+print odds
 # should return [2, 4, 6] after you finish implementing the code above
