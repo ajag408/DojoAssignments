@@ -6,6 +6,8 @@ class Patient(object):
         self.name = name
         self.allergies = allergies
         self.bed_number = None
+    def __repr__(self):
+        return "<Patient object, name is {}>".format(self.name)
 
 
 
@@ -38,15 +40,19 @@ class Hospital(object):
     def testBedNumAssign(self):
         for patient in self.patients:
             print patient.bed_number
+    def __repr__(self):
+        return "<Hospital object, name is {}, capacity is {}>".format(self.name, self.capacity)
 
-akash = Patient('Akash', ['Cold water', 'Color weather'])
 
-charles = Patient('Charlie', [])
+if __name__ == '__main__':
+    akash = Patient('Akash', ['Cold water', 'Color weather'])
 
-kaiser = Hospital('Kaiser', 30)
+    charles = Patient('Charlie', [])
 
-kaiser.admit(akash)
-kaiser.admit(charles)
-kaiser.testBedNumAssign()
-kaiser.discharge('Akash')
-kaiser.testBedNumAssign()
+    kaiser = Hospital('Kaiser', 30)
+
+    kaiser.admit(akash)
+    kaiser.admit(charles)
+    kaiser.testBedNumAssign()
+    kaiser.discharge('Akash')
+    kaiser.testBedNumAssign()

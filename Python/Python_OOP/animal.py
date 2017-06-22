@@ -11,9 +11,12 @@ class Animal(object):
     def displayHealth(self):
         print "Name: " + self.name + " health: " + str(self.health)
         return self
+    def __repr__(self):
+        return "<Animal object name {}, health {}>".format(self.name, self.health)
 
-animal = Animal("animal")
-animal.walk().walk().walk().run().run().displayHealth()
+if __name__ == '__main__':
+    animal = Animal("animal")
+    animal.walk().walk().walk().run().run().displayHealth()
 
 
 class Dog(Animal):
@@ -26,9 +29,12 @@ class Dog(Animal):
     def pet(self):
         self.health += 5
         return self
+    def __repr__(self):
+        return "<Dog object name {}, health {}>".format(self.name, self.health)
 
-dog = Dog('dog')
-dog.walk().walk().walk().run().run().pet().displayHealth()
+if __name__ == '__main__':
+    dog = Dog('dog')
+    dog.walk().walk().walk().run().run().pet().displayHealth()
 
 class Dragon(Animal):
     def __init__(self,name):
@@ -43,6 +49,10 @@ class Dragon(Animal):
         print "this is a dragon"
         super(Dragon, self).displayHealth()
         return self
+    def __repr__(self):
+        return "<Dragon object name {}, health {}>".format(self.name, self.health)
 
-dragon = Dragon('drodro')
-dragon.walk().walk().walk().run().run().fly().fly().displayHealth()
+
+if __name__ == '__main__':
+    dragon = Dragon('drodro')
+    dragon.walk().walk().walk().run().run().fly().fly().displayHealth()
