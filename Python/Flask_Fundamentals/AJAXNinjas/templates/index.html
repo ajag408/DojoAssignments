@@ -7,9 +7,23 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/ninjas.js') }}"></script>
   </head>
   <body>
+    <div id = 'picture'>
+      {%if text%}
+        <h1>{{text}}</h1>
+      {%endif%}
+
+      {% if img %}
+        <img src= {{img}}>
+      {% endif %}
+    </div>
     <button id = 'red'>red</button>
     <button id = 'blue'>blue</button>
     <button id = 'orange'>orange</button>
-    <button id = 'purple'>purple</button>
+    <button id = 'purple'>purple</button><br><br>
+    <p>Or choose a custom color:</p>
+    <form action = '/form' method = 'post'>
+      <input type = 'text' name = 'customColor'>
+      <input type = 'submit' value = 'Enter'>
+    </form>
   </body>
 </html>
