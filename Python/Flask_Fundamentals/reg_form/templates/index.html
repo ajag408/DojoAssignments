@@ -53,6 +53,14 @@
           {%endif%}
           {%endwith%}<br>
         Confirm Password: <input type='password' name='confirm_password'><br>
+        {% with messages = get_flashed_messages(category_filter=["bday"]) %}
+          {% if messages %}
+            {%for message in messages%}
+                {{message}}
+              {%endfor%}
+          {%endif%}
+          {%endwith%}<br>
+        Enter birthday: <input type = 'date' name = 'birthdate'><br>
         <input type='submit' value='Register'>
       </form>
   </body>
