@@ -5,21 +5,18 @@ app = Flask(__name__)
 def load_index():
     return render_template("index.html")
 
-@app.route('/red')
-def red():
-    return jsonify(img = 'imgs/raphael.jpg', text = 'You chose Raphael!')
+@app.route('/<color>')
+def returnIt(color):
+    print color
+    if color == 'red':
+        return jsonify(img = 'imgs/raphael.jpg', text = 'You chose Raphael!')
+    elif color == 'blue':
+        return jsonify(img = 'imgs/leonardo.jpg', text = 'You chose Leonardo!')
+    elif color == 'orange':
+        return jsonify(img = 'imgs/michelangelo.jpg', text = 'You chose Michelangelo!')
+    elif color == 'purple':
+        return jsonify(img = 'imgs/donatello.jpg', text = 'You chose Donatello!')
 
-@app.route('/blue')
-def blue():
-    return jsonify(img = 'imgs/leonardo.jpg', text = 'You chose Leonardo!')
-
-@app.route('/orange')
-def orange():
-    return jsonify(img = 'imgs/michelangelo.jpg', text = 'You chose Michelangelo!')
-
-@app.route('/purple')
-def purple():
-    return jsonify(img = 'imgs/donatello.jpg', text = 'You chose Donatello!')
 
 @app.route('/form', methods = ['POST'])
 def delineate():
