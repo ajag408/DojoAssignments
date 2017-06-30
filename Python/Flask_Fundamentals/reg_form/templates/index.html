@@ -6,13 +6,54 @@
   </head>
   <body>
     <form action = '/process' method = 'post'>
+      {% with messages = get_flashed_messages(category_filter=["success"]) %}
+        {% if messages %}
+          {%for message in messages%}
+              {{message}}
+            {%endfor%}
+        {%endif%}
+        {%endwith%}<br>
+      {% with messages = get_flashed_messages(category_filter=["email"]) %}
+        {% if messages %}
+          {%for message in messages%}
+              {{message}}
+            {%endfor%}
+        {%endif%}
+        {%endwith%}<br>
         Email: <input type='text' name='email'><br>
+        {% with messages = get_flashed_messages(category_filter=["fName"]) %}
+          {% if messages %}
+            {%for message in messages%}
+                {{message}}
+              {%endfor%}
+          {%endif%}
+        {%endwith%}<br>
         First Name: <input type='text' name='first_name'><br>
+        {% with messages = get_flashed_messages(category_filter=["lName"]) %}
+          {% if messages %}
+            {%for message in messages%}
+                {{message}}
+              {%endfor%}
+          {%endif%}
+          {%endwith%}<br>
         Last Name: <input type='text' name='last_name'><br>
+        {% with messages = get_flashed_messages(category_filter=["pword"]) %}
+          {% if messages %}
+            {%for message in messages%}
+                {{message}}
+              {%endfor%}
+          {%endif%}
+          {%endwith%}<br>
         Password: <input type='password' name='password'><br>
+        {% with messages = get_flashed_messages(category_filter=["cword"]) %}
+          {% if messages %}
+            {%for message in messages%}
+                {{message}}
+              {%endfor%}
+          {%endif%}
+          {%endwith%}<br>
         Confirm Password: <input type='password' name='confirm_password'><br>
         <input type='submit' value='Register'>
-
       </form>
   </body>
 </html>
