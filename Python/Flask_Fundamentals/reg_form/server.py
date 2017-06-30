@@ -61,6 +61,9 @@ def process():
       if len(request.form['password']) <= 8:
           Off = True
           flash("password must be 8 characters", 'pword')
+      elif request.form['password'].isalpha() is True or request.form['password'].islower() is True:
+          Off = True
+          flash('password must have at least one uppercase letter and at least one digit', 'pword')
       else:
           if len(request.form['confirm_password']) < 1:
               Off = True
