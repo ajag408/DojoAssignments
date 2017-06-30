@@ -7,6 +7,13 @@
   <body>
     <!-- read on to learn about form actions, we'll talk about the method in a later section -->
     <form action='/result' method='post'>
+      {% with messages = get_flashed_messages(category_filter=["category1"]) %}
+        {% if messages %}
+          {%for message in messages%}
+              {{message}}
+            {%endfor%}
+        {%endif%}
+      {%endwith%}
         Your Name: <input type='text' name='name'><br>
         Dojo Location:
           <select name='location'>
@@ -18,6 +25,13 @@
             <option value = "Python">Python</option>
             <option value = "Chinese">Chinese</option>
           </select><br>
+          {% with messages = get_flashed_messages(category_filter=["category2"]) %}
+            {% if messages %}
+              {%for message in messages%}
+                  {{message}}
+                {%endfor%}
+            {%endif%}
+          {%endwith%}
         Comments (optional):
           <textarea name = "comment"></textarea><br>
         <input type='submit' value='create user'>

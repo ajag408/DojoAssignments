@@ -13,21 +13,28 @@ def create_user():
    # we'll talk about the following two lines after we learn a little more
    # about form
    if len(request.form['name']) < 1:
+       nameOff = True
        flash("name cannot be empty!", 'category1')
-       Name = ""
+    #    return redirect('/')
    else:
+       nameOff = False
        Name = request.form['name']
-   Location = request.form['location']
-   Language = request.form['language']
-   if len(request.form['comment'])<1:
-       flash("comment box cannot be empty!", 'category2')
-       Comment = ""
-   elif len(request.form['comment'])>120:
-       flash("comment should not be longer than 120 characters", 'category3')
-       Comment = ""
-   else:
-       Comment = request.form['comment']
-   print flash
+       Location = request.form['location']
+       Language = request.form['language']
 
-   return render_template("result.html", name = Name, location = Location, language = Language, comment = Comment )
+   if len(request.form['comment'])<1:
+       commentOff = True
+       flash("comment box cannot be empty!", 'category2')
+   elif len(request.form['comment'])>120:
+       commentOff = True
+       flash("comment should not be longer than 120 characters", 'category2')
+   else:
+       commentOff = False
+       Comment = request.form['comment']
+
+   if nameOff or commentOff:
+       return redirect('/')
+   else:
+       return render_template("result.html", name = Name, location = Location, language = Language, comment = Comment )
+
 app.run(debug=True) # run our server

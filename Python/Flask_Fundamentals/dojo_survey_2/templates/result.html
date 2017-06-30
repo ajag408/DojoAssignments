@@ -6,32 +6,10 @@
   </head>
   <body>
 
-    <p>Name: {{name}}
-    {% with messages = get_flashed_messages(category_filter=["category1"]) %}
-      {% if messages %}
-        {%for message in messages%}
-            {{message}}
-          {%endfor%}
-      {%endif%}
-    {%endwith%}</p>
+    <p>Name: {{name}}</p>
     <p>Favorite Location: {{location}}</p>
     <p>Favorite Language: {{language}}</p>
-    <p>Comments: {{comment}}
-      {% with messages = get_flashed_messages(category_filter=["category2"]) %}
-        {% if messages %}
-          {%for message in messages%}
-              {{message}}
-            {%endfor%}
-        {%endif%}
-      {%endwith%}
-      {% with messages = get_flashed_messages(category_filter=["category3"]) %}
-        {% if messages %}
-          {%for message in messages%}
-              {{message}}
-            {%endfor%}
-        {%endif%}
-      {%endwith%}
-    </p>
+    <p>Comments: {{comment}}</p>
 
   </body>
 </html>
