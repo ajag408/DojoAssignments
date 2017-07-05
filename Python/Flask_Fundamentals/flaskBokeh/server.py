@@ -15,37 +15,25 @@ def index():
 def plot():
     x = []
     xVals = request.form['xVals']
-    idxChk = None
     for char in xVals:
-        print '***char****'
-        print char
-        if idxChk and xVals.index(char) < idxChk:
-            print 'continued'
-            continue
-        else:
-            if char.isdigit():
-                doubleDigit = char
-                # if xVals.index(char) < len(xVals) - 1:
-                runner = xVals.index(char) + 1
-                while runner < len(xVals):
-                    if xVals[runner].isdigit():
-                        doubleDigit = doubleDigit + xVals[runner]
-                        runner = runner + 1
-                        idxChk = runner
-                    else:
-                        break
+        if char.isdigit():
+            x.append(int(char))
 
-                print doubleDigit
+    y = []
+    yVals = request.form['yVals']
+    for char in yVals:
+        if char.isdigit():
+            y.append(int(char))
         # elif char == ',':
         #     print char
     # x = [1, 2, 3, 4, 5]
     # y = [6, 7, 2, 4, 5]
-    # output_file("success.html")
-    # p = figure(title="simple line example", x_axis_label='x', y_axis_label='y')
-    #
-    # p.line(x, y, line_width=2)
-    #
-    # show(p)
+    output_file("success.html")
+    p = figure(title="simple line example", x_axis_label='x', y_axis_label='y')
+
+    p.line(x, y, line_width=2)
+    
+    show(p)
 
     return redirect('/')
 
