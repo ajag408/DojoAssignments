@@ -38,16 +38,17 @@
 -- WHERE YEAR(leads.registered_datetime) = 2011
 -- GROUP BY clients.client_id;
 
-SELECT clients.first_name, clients.last_name, COUNT(leads.leads_id), MONTH(leads.registered_datetime)
-FROM clients
-LEFT JOIN sites 
-ON sites.client_id = clients.client_id
-LEFT JOIN leads
-ON sites.site_id = leads.site_id
-WHERE YEAR(leads.registered_datetime) = 2011 AND 
-	(MONTH(leads.registered_datetime)>=1 AND
-    MONTH(leads.registered_datetime)<=6);
-
+-- SELECT clients.first_name, clients.last_name, COUNT(leads.leads_id), MONTH(leads.registered_datetime)
+-- FROM clients
+-- LEFT JOIN sites 
+-- ON sites.client_id = clients.client_id
+-- LEFT JOIN leads
+-- ON sites.site_id = leads.site_id
+-- WHERE YEAR(leads.registered_datetime) = 2011 AND 
+-- 	(MONTH(leads.registered_datetime)>=1 AND
+--     MONTH(leads.registered_datetime)<=6)
+-- GROUP BY leads.leads_id;
+-- 
 -- SELECT clients.first_name, clients.last_name, sites.domain_name, COUNT(leads.leads_id)
 -- FROM leads
 -- LEFT JOIN sites
@@ -67,3 +68,10 @@ WHERE YEAR(leads.registered_datetime) = 2011 AND
 -- ON sites.client_id = clients.client_id
 -- GROUP BY leads.site_id
 
+SELECT clients.client_id, SUM(billing.amount), MONTH(billing.charged_datetime), 
+	YEAR(billing.charged_datetime)
+FROM clients
+LEFT JOIN billing
+ON billing.client_id = clients.client_id
+GROUP BY MONTH(billing.charged_datetime), YEAR(billing.charged_datetime), clients.client_id
+ORDER BY clients.client_id
