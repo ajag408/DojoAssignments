@@ -29,14 +29,24 @@
 --   (YEAR(leads.registered_datetime) = 2011 AND
 --   MONTH(leads.registered_datetime) = 1)
 
-SELECT clients.first_name, clients.last_name, clients.client_id, COUNT(leads.leads_id)
+-- SELECT clients.first_name, clients.last_name, clients.client_id, COUNT(leads.leads_id)
+-- FROM clients
+-- LEFT JOIN sites
+-- ON sites.client_id = clients.client_id
+-- LEFT JOIN leads
+-- ON sites.site_id = leads.site_id
+-- WHERE YEAR(leads.registered_datetime) = 2011
+-- GROUP BY clients.client_id;
+
+SELECT clients.first_name, clients.last_name, COUNT(leads.leads_id), MONTH(leads.registered_datetime)
 FROM clients
-LEFT JOIN sites
+LEFT JOIN sites 
 ON sites.client_id = clients.client_id
 LEFT JOIN leads
 ON sites.site_id = leads.site_id
-WHERE YEAR(leads.registered_datetime) = 2011
-GROUP BY clients.client_id;
+WHERE YEAR(leads.registered_datetime) = 2011 AND 
+	(MONTH(leads.registered_datetime)>=1 AND
+    MONTH(leads.registered_datetime)<=6);
 
 -- SELECT clients.first_name, clients.last_name, sites.domain_name, COUNT(leads.leads_id)
 -- FROM leads
