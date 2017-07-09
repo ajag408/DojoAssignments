@@ -68,10 +68,16 @@
 -- ON sites.client_id = clients.client_id
 -- GROUP BY leads.site_id
 
-SELECT clients.client_id, SUM(billing.amount), MONTH(billing.charged_datetime), 
-	YEAR(billing.charged_datetime)
+-- SELECT clients.client_id, SUM(billing.amount), MONTH(billing.charged_datetime), 
+-- 	YEAR(billing.charged_datetime)
+-- FROM clients
+-- LEFT JOIN billing
+-- ON billing.client_id = clients.client_id
+-- GROUP BY MONTH(billing.charged_datetime), YEAR(billing.charged_datetime), clients.client_id
+-- ORDER BY clients.client_id
+
+SELECT clients.first_name, clients.last_name, GROUP_CONCAT(sites.domain_name)
 FROM clients
-LEFT JOIN billing
-ON billing.client_id = clients.client_id
-GROUP BY MONTH(billing.charged_datetime), YEAR(billing.charged_datetime), clients.client_id
-ORDER BY clients.client_id
+JOIN sites
+ON sites.client_id = clients.client_id
+GROUP BY clients.client_id
