@@ -81,3 +81,4 @@ FROM clients
 JOIN sites
 ON sites.client_id = clients.client_id
 GROUP BY clients.client_id
+
