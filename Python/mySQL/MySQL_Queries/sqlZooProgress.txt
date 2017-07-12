@@ -1,1 +1,1 @@
-Finished numerics
+Working on self-join number 10
