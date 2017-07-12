@@ -1,1 +1,33 @@
 Working on self-join number 10
+
+JOIN route AS b
+ON a.num = b.num
+JOIN stops AS stopb
+ON b.stop = stopb.id
+
+ AND b.num IN  AND (stopa.name = stopb.name)
+
+
+((a.num IN (SELECT num FROM route JOIN stops ON route.stop = stops.id WHERE name = 'Craiglockhart') OR b.num IN (SELECT num FROM route JOIN stops ON route.stop = stops.id WHERE name = 'Sighthill') AND a.num != b.num) 
+
+
+JOIN route AS b
+ON a.num = b.num
+JOIN stops AS stopb
+ON b.stop = stopb.id
+
+a.num IN (SELECT num FROM route JOIN stops ON route.stop = stops.id WHERE name = 'Craiglockhart') OR b.num IN (SELECT num FROM route JOIN stops ON route.stop = stops.id WHERE name = 'Sighthill')
+
+
+
+Query 1
+SELECT a.num, a.company
+FROM route AS a
+JOIN stops AS stopa
+ON a.stop = stopa.id
+WHERE a.stop = 53
+
+Query2
+SELECT b.num, b.company
+FROM route AS b
+WHERE b.stop = 213
