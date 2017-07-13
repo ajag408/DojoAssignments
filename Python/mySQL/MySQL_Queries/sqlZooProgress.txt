@@ -18,16 +18,15 @@ ON b.stop = stopb.id
 
 a.num IN (SELECT num FROM route JOIN stops ON route.stop = stops.id WHERE name = 'Craiglockhart') OR b.num IN (SELECT num FROM route JOIN stops ON route.stop = stops.id WHERE name = 'Sighthill')
 
-
-
-Query 1
-SELECT a.num, a.company
+Most Recent Version
+SELECT a.num, a.company, name
 FROM route AS a
-JOIN stops AS stopa
-ON a.stop = stopa.id
-WHERE a.stop = 53
+JOIN route AS b
+ON (a.company = b.company AND a.num = b.num)
+JOIN stops
+ON b.stop = stops.id
+WHERE a.stop IN (SELECT stop FROM route JOIN stops ON route.stop = stops.id WHERE name = 'Craiglockhart') AND b.stop IN (SELECT b.stop FROM route AS a JOIN route AS b ON a.num = b.num JOIN stops ON a.stop = stops.id WHERE name = 'Sighthill')
 
-Query2
-SELECT b.num, b.company
-FROM route AS b
-WHERE b.stop = 213
+SCRatch
+
+b.stop IN (SELECT b.stop FROM route AS a JOIN route AS b ON a.num = b.num JOIN stops ON a.stop = stops.id WHERE name = 'Sighthill')
