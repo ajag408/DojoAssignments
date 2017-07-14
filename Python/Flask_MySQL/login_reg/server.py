@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, redirect, session, flash
 import re
 from mysqlconnection import MySQLConnector
-from flask.ext.bcrypt import Bcrypt
+import md5
+import os, binascii
 app = Flask(__name__)
 app.secret_key = 'KeepItSecretKeepItSafe'
-bcrypt = Bcrypt(app)
 mysql = MySQLConnector(app,'login_reg')
 # our index route will handle rendering our form
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
@@ -33,16 +33,18 @@ def register():
 
 
         password = request.form['password']
-        pw_hash = bcrypt.generate_password_hash(password)
+        salt =  binascii.b2a_hex(os.urandom(15))
+        hashed_pw = md5.new(password + salt).hexdigest()
 
-        query = "INSERT INTO users (first_name, last_name, email, pw_hash, created_at)\
-                 VALUES (:first_name, :last_name, :email, :pw_hash, NOW())"
+        query = "INSERT INTO users (first_name, last_name, email, password, salt, created_at)\
+                 VALUES (:first_name, :last_name, :email, :hashed_pw, :salt, NOW())"
     # We'll then create a dictionary of data from the POST data received.
         data = {
                 'first_name': request.form['first_name'],
                 'last_name': request.form['last_name'],
                 'email': request.form['email'],
-                'pw_hash': pw_hash               }
+                'hashed_pw': hashed_pw,
+                'salt': salt               }
     # Run query, with dictionary values injected into the query.
         mysql.query_db(query, data)
         # return redirect('/')
@@ -57,10 +59,14 @@ def login():
     user_query = "SELECT * FROM users WHERE email = :email"
     query_data = { 'email': email }
     user = mysql.query_db(user_query, query_data) # user will be returned in a list
-    if bcrypt.check_password_hash(user[0]['pw_hash'], password):
-        flash("You are logged in!", 'category7')
+    if len(user) != 0:
+        encrypted_password = md5.new(password + user[0]['salt']).hexdigest();
+        if user[0]['password'] == encrypted_password:
+            flash("You are logged in!", 'category7')
+        else:
+            flash('Login unsuccessful: invalid password!', 'category8')
     else:
-        flash('Login unsuccessful!', 'category8')
+        flash('Login unsuccessful: invalid email', 'category8')
     return redirect('/')
   # set flash error message and redirect to login page
 app.run(debug=True)
