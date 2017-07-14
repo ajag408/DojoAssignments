@@ -33,6 +33,7 @@ def register():
 
 
         password = request.form['password']
+        print password
         salt =  binascii.b2a_hex(os.urandom(15))
         hashed_pw = md5.new(password + salt).hexdigest()
 
