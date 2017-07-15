@@ -18,7 +18,7 @@
         <td>{{book['title']}}</td>
         <td>{{book['author']}}</td>
         <td>{{book['created_at']}}</td>
-        <td>delete</td>
+        <td><a href = "/render_delete/{{book['id']}}">delete</a></td>
       </tr>
     {% endfor %}
   </table><br><br>
