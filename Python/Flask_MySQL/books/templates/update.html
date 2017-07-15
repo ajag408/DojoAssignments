@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Books</title>
+  </head>
+  <body>
+    <h1>Update Book</h1>
+    <form action = "/update/{{book[0]['id']}}" method = 'POST'>
+      Title <input type = 'text' value = "{{book[0]['title']}}" name = 'title'>
+      Author <input type = 'text' value = "{{book[0]['author']}}" name = 'author'>
+      <input type = 'submit' value = 'Update Book'>
+  </body>
+</html>

@@ -36,7 +36,6 @@ def render_delete(id):
     data = {
             'id': id }
     book = mysql.query_db(query,data)
-    print book
     return render_template('delete.html', book = book)
 
 @app.route('/delete/<id>')
@@ -46,4 +45,22 @@ def delete(id):
     mysql.query_db(query, data)
     return redirect('/')
 
+@app.route('/render_update/<id>')
+def render_update(id):
+    query = "SELECT * FROM books WHERE id = :id"
+    data = {
+            'id': id }
+    book = mysql.query_db(query,data)
+    return render_template('update.html', book = book)
+
+@app.route('/update/<id>', methods = ['POST'])
+def update(id):
+    query = "UPDATE books SET title = :title, author = :author WHERE id = :id"
+    data = {
+             'title': request.form['title'],
+             'author':  request.form['author'],
+             'id': id
+           }
+    mysql.query_db(query, data)
+    return redirect('/')
 app.run(debug=True)
