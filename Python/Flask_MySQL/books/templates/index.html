@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My books</title>
+  </head>
+  <body>
+    <h1>My books</h1>
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Date Added</th>
+        <th>Action</th>
+      </tr>
+    {% for book in books %}
+      <tr>
+        <td>{{book['title']}}</td>
+        <td>{{book['author']}}</td>
+        <td>{{book['created_at']}}</td>
+        <td>delete</td>
+      </tr>
+    {% endfor %}
+  </table><br><br>
+  <form action = '/render_add'>
+    <input type = 'submit' value = 'Add a book'>
+  </form>
+  </body>
+</html>
