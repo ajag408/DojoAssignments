@@ -3,45 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>Wall</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='wall.css') }}">
   </head>
   <body>
-    <div class = 'fancy'>
-      <h2 class = "title">CodingDojo Wall<h2>
-        {%for user in this_user%}
-        <p class = 'welcome'>Welcome {{user['first_name']}}</p>
+    <h3>CodingDojo Wall</h3>
+    <p>Welcome {{user[0]['first_name']}}</p><br>
+    <a href = '/logout'>Log off</a><br><br>
 
-    </div>
     <form action = '/post_message' method = 'POST'>
-      Post a message<br><textarea rows='15' cols='100' name ="message"></textarea><br>
-      <input type = "submit" value="Post">
+      <p>Post a message</p>
+      <textarea rows="4" cols="50" name = 'message'></textarea><br><br>
+      <input type = 'submit' value = "Post a message">
     </form>
-    {% for message in message_array: %}
-       <p>{{ message['first_name'] }} {{message['last_name']}} - {{message['created_at']}}</p>
-       <p>{{message['message']}}</p>
-       <form action ="/post_comment" method = "POST">
-         Post a comment<br><textarea rows = '5' cols = '50' name = 'comment'></textarea><br>
-         <input type = "hidden" name = "messagenum" value="{{message['id']}}">
-         <input type ="submit" value = "Post">
-
-
-
-       </form>
-       {% for comment in comment_array: %}
-        <!-- {{comment['id']}} {{message['id']}} -->
-        {%if comment['id'] == message['id']%}
-        <div class = 'comments'>
-         <p>{{comment['first_name']}} {{comment['last_name']}} - {{comment['created_at']}}</p>
-         <p>{{comment['comment']}}</p><br><br><br>
-       </div>
-        {%endif%}
-       {%endfor%}
-
-
-      {%endfor%}
-
-      {%endfor%}
-
-
   </body>
 </html>
