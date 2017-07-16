@@ -13,6 +13,20 @@
       <p>Post a message</p>
       <textarea rows="4" cols="50" name = 'message'></textarea><br><br>
       <input type = 'submit' value = "Post a message">
-    </form>
+    </form><br><br>
+
+    {%for message in messages%}
+      <p><b>{{message['first_name']}} {{message['last_name']}} - {{message['created_at']}}</b></p>
+      <p>{{message['message']}}</p>
+      {%for comment in message['comments']%}
+        <p><b>{{comment['first_name']}} {{comment['last_name']}} - {{comment['created_at']}}</b></p>
+        <p>{{comment['comment']}}</p>
+      {%endfor%}
+      <form action = "/post_comment/{{message['id']}}" method = 'POST'>
+        <p>Post a comment</p>
+        <textarea rows = '2' cols = '25' name = 'comment'></textarea><br><br>
+        <input type = 'submit' value = 'Post a comment'>
+      </form><br><br>
+    {%endfor%}
   </body>
 </html>

@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, session
 from mysqlconnection import MySQLConnector
 import md5
 import os, binascii
+import datetime
 app = Flask(__name__)
 app.secret_key = 'KeepItSecretKeepItSafe'
 mysql = MySQLConnector(app,'wall')
@@ -69,9 +70,14 @@ def render_wall():
 
     user = mysql.query_db(query, data)
 
-    query2 = "SELECT * FROM messages"
+    query2 = "SELECT messages.id AS message_primary_id, messages.user_id AS message_user_id, messages.message AS message_content, messages.created_at AS message_created_at, usersA.id AS message_user, usersA.first_name AS message_user_fn, usersA.last_name AS message_user_ln, comments.comment AS comment_content, comments.created_at AS comment_created_at, usersB.first_name AS comment_user_fn, usersB.last_name AS comment_user_ln\
+              FROM messages JOIN users AS usersA ON usersA.id = messages.user_id LEFT JOIN comments ON messages.id = comments.message_id LEFT JOIN users AS usersB ON comments.user_id = usersB.id"
 
     messages = mysql.query_db(query2)
+    for message in messages:
+        print message
+
+
 
     return render_template('wall.html', user = user, messages = messages)
 
@@ -89,6 +95,21 @@ def post_message():
             'user_id': session['user_id'],
             'message': request.form['message'],
           }
+
+    mysql.query_db(query, data)
+
+    return redirect('/wall')
+
+@app.route('/post_comment/<message_id>', methods = ['POST'])
+def post_comment(message_id):
+    query = "INSERT INTO comments (message_id, user_id, comment, created_at, updated_at)\
+             VALUES (:message_id, :user_id, :comment, NOW(), NOW())"
+
+    data = {
+            'message_id': message_id,
+            'user_id': session['user.id'],
+            'comment': request.form['comment']
+    }
 
     mysql.query_db(query, data)
 
