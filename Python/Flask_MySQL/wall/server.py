@@ -77,10 +77,9 @@ def render_wall():
     messages = mysql.query_db(query2)
     for message in messages:
         if message['comment_count'] > 0:
-            message['comment_content_py'] = []
+            message['comments'] = []
             for count in range(0, message['comment_count']):
-                message['comment_content_py'].append(message['comment_content'].split(',')[count])
-            print message
+                message['comments'].append({'content': message['comment_content'].split(',')[count], 'created_at': message['comment_created_at'].split(',')[count], 'fn': message['comment_user_fn'].split(',')[count], 'ln': message['comment_user_ln'].split(',')[count]})
 
 
 
