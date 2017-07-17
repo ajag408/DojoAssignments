@@ -70,12 +70,18 @@ def render_wall():
 
     user = mysql.query_db(query, data)
 
-    query2 = "SELECT messages.id AS message_primary_id, messages.user_id AS message_user_id, messages.message AS message_content, messages.created_at AS message_created_at, usersA.id AS message_user, usersA.first_name AS message_user_fn, usersA.last_name AS message_user_ln, comments.comment AS comment_content, comments.created_at AS comment_created_at, usersB.first_name AS comment_user_fn, usersB.last_name AS comment_user_ln\
-              FROM messages JOIN users AS usersA ON usersA.id = messages.user_id LEFT JOIN comments ON messages.id = comments.message_id LEFT JOIN users AS usersB ON comments.user_id = usersB.id"
+    query2 = "SELECT messages.id AS message_primary_id, messages.user_id AS message_user_id, messages.message AS message_content, messages.created_at AS message_created_at, usersA.id AS message_user, usersA.first_name AS message_user_fn, usersA.last_name AS message_user_ln, COUNT(comments.comment) AS comment_count, GROUP_CONCAT(comments.comment) AS comment_content, GROUP_CONCAT(comments.created_at) AS comment_created_at, GROUP_CONCAT(usersB.first_name) AS comment_user_fn, GROUP_CONCAT(usersB.last_name) AS comment_user_ln\
+    FROM messages JOIN users AS usersA ON usersA.id = messages.user_id LEFT JOIN comments ON messages.id = comments.message_id LEFT JOIN users AS usersB ON comments.user_id = usersB.id GROUP BY messages.id"
+
 
     messages = mysql.query_db(query2)
     for message in messages:
-        print message
+        if message['comment_count'] > 0:
+            message['comment_content_py'] = []
+            for count in range(0, message['comment_count']):
+                message['comment_content_py'].append(message['comment_content'].split(',')[count])
+            print message
+
 
 
 
@@ -107,7 +113,7 @@ def post_comment(message_id):
 
     data = {
             'message_id': message_id,
-            'user_id': session['user.id'],
+            'user_id': session['user_id'],
             'comment': request.form['comment']
     }
 
