@@ -120,4 +120,12 @@ def post_comment(message_id):
 
     return redirect('/wall')
 
+@app.route('/remove_message/<message_id>')
+def remove_message(message_id):
+    query = "DELETE FROM messages WHERE id = :id"
+    data = {'id': message_id}
+    mysql.query_db(query, data)
+    return redirect('/wall')
+
+
 app.run(debug=True)

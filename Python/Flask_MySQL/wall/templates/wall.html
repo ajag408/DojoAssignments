@@ -16,7 +16,8 @@
     </form><br><br>
 
     {%for message in messages%}
-      <p><b>{{message['message_user_fn']}} {{message['message_user_ln']}} - {{message['message_created_at']}}</b></p>
+      <p><b>{{message['message_user_fn']}} {{message['message_user_ln']}} - {{message['message_created_at']}}</b>
+        {%if session['user_id'] == message['message_user']%}<a href = "/remove_message/{{message['message_primary_id']}}">delete</a>{%endif%}</p>
       <p>{{message['message_content']}}</p>
       {%for comment in message['comments']%}
         <p><b>{{comment['fn']}} {{comment['ln']}} - {{comment['created_at']}}</b></p>
