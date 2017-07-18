@@ -76,13 +76,15 @@ def render_wall():
 
     messages = mysql.query_db(query2)
     for message in messages:
+        message['recent'] = False
+        timesince = datetime.datetime.now() - message['message_created_at']
+        minutessince = int(timesince.total_seconds() / 60)
+        if minutessince < 30:
+            message['recent'] = True
         if message['comment_count'] > 0:
             message['comments'] = []
             for count in range(0, message['comment_count']):
                 message['comments'].append({'content': message['comment_content'].split(',')[count], 'created_at': message['comment_created_at'].split(',')[count], 'fn': message['comment_user_fn'].split(',')[count], 'ln': message['comment_user_ln'].split(',')[count]})
-
-
-
 
     return render_template('wall.html', user = user, messages = messages)
 
