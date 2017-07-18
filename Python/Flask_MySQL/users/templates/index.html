@@ -20,9 +20,10 @@
         <td>{{user['full_name']}}</td>
         <td>{{user['email']}}</td>
         <td>{{user['created_at']}}</td>
-        <td>show edit delete</td>
+        <td><a href = "/users/{{user['id']}}">show</a> <a href = "/users/{{user['id']}}/edit">edit</a> <a href = "/users/{{user['id']}}/destroy">delete</a></td>
       </tr>
       {%endfor%}
     </table>
+    <a href = '/users/new'>Add a new user</a>
   </body>
 </html>
