@@ -38,6 +38,13 @@
         {%endif%}
       {%endwith%}<br>
       Email: <input type = 'text' name = 'email'><br><br>
+      {% with messages = get_flashed_messages(category_filter=["birthday"]) %}
+        {% if messages %}
+          {%for message in messages%}
+            {{message}}
+          {%endfor%}
+        {%endif%}
+      {%endwith%}<br>
       Date of Birth: <input type = 'date' name = 'birthday'><br><br>
       {% with messages = get_flashed_messages(category_filter=["password"]) %}
         {% if messages %}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Projects</title>
+  </head>
+  <body>
+    <a href = '/'>logout</a>
+    <h1>Current Projects:</h1>
+    <table>
+      <tr>
+        <th>Project Name</th>
+        <th>Date Due</th>
+        <th>Action</th>
+      </tr>
+      {%for project in current_projects%}
+        <tr>
+          <th>project['name']</th>
+          <th>project['deadline']</th>
+          <th>details | delete task | complete task</th>
+        </tr>
+      {%endfor%}
+    </table><br>
+
+  </body>
+</html>
