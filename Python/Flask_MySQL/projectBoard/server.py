@@ -52,13 +52,14 @@ def register():
     else:
         email2 = True
 
-    print request.form['birthday']
     if request.form['birthday'] != '':
         if datetime.datetime.now() < datetime.datetime.strptime(request.form['birthday'], '%Y-%m-%d'):
             birthday = False
             flash('dob must be from the past', 'birthday')
+        else:
+            birthday = True
     else:
-        birthday = True
+        birthday = False
 
     if len(request.form['password']) < 8:
           password = False
@@ -101,8 +102,7 @@ def login():
     if len(user) != 0:
         encrypted_password = md5.new(password + user[0]['salt']).hexdigest();
         if user[0]['password'] == encrypted_password:
-            session['user_id'] = user[0]['id']
-            return redirect('/wall')
+            return redirect('/dashboard')
         else:
             return redirect('/')
     else:
@@ -117,6 +117,10 @@ def render_dashboard():
     completed_projects = mysql.query_db(query2)
 
     return render_template('dashboard.html', current_projects = current_projects, completed_projects = completed_projects)
+
+@app.route('/add_project')
+def render_add_project():
+    return render_template('add_project.html')
 
 
 app.run(debug=True)
