@@ -112,9 +112,14 @@ def login():
 def render_dashboard():
     query1 = "SELECT * FROM projects WHERE status = 'incomplete'"
     current_projects = mysql.query_db(query1)
+    for project in current_projects:
+        project['deadline'] = project['deadline'].strftime('%m/%d/%Y')
 
     query2 = "SELECT * FROM projects WHERE status = 'complete'"
     completed_projects = mysql.query_db(query2)
+    for project in completed_projects:
+        project['deadline'] = project['deadline'].strftime('%m/%d/%Y')
+        project['dateCompleted'] = project['dateCompleted'].strftime('%m/%d/%Y')
 
     return render_template('dashboard.html', current_projects = current_projects, completed_projects = completed_projects)
 
@@ -122,5 +127,67 @@ def render_dashboard():
 def render_add_project():
     return render_template('add_project.html')
 
+@app.route('/add_project', methods = ['POST'])
+def add_project():
+    if len(request.form['project_name']) < 1:
+        project_name = False
+    else:
+        project_name = True
+
+    if request.form['deadline'] != '':
+        if datetime.datetime.now() > datetime.datetime.strptime(request.form['deadline'], '%Y-%m-%d'):
+            deadline = False
+        else:
+            deadline = True
+    else:
+        deadline = False
+
+    if project_name is True and deadline is True:
+        query = "INSERT INTO projects (name, deadline, description, status, created_at, updated_at)\
+                 VALUES (:name, :deadline, :description, :status, NOW(), NOW())"
+
+        data = {
+                'name': request.form['project_name'],
+                'deadline': request.form['deadline'],
+                'description': request.form['description'],
+                'status': 'incomplete'
+        }
+
+        mysql.query_db(query, data)
+
+        return redirect('/dashboard')
+
+    else:
+        return redirect('/add_project')
+
+@app.route('/show/<id>')
+def show(id):
+    query = "SELECT * FROM projects WHERE id = :id"
+    data = {'id': id}
+    project = mysql.query_db(query, data)
+    if project[0]['description'] == '':
+        project[0]['description'] = 'N/A'
+    project[0]['deadline'] = project[0]['deadline'].strftime('%m/%d/%Y')
+    if project[0]['status'] == 'incomplete':
+        project[0]['dateCompleted'] = 'N/A'
+    project = project[0]
+    return render_template('show.html', project = project)
+
+@app.route('/delete/<id>')
+def delete(id):
+    query = "DELETE FROM projects WHERE id = :id"
+    data = {'id': id}
+    mysql.query_db(query, data)
+    return redirect('/dashboard')
+
+@app.route('/complete/<id>')
+def complete(id):
+    query = "UPDATE projects SET status = :status, dateCompleted = NOW() WHERE id = :id"
+    data = {
+             'status': 'complete',
+             'id': id
+           }
+    mysql.query_db(query, data)
+    return redirect('/dashboard')
 
 app.run(debug=True)

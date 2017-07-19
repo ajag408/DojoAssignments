@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Projects</title>
+  </head>
+  <body>
+    <h1>Project Details</h1><br>
+    <p>Name: {{project['name']}}</p>
+    <p>Description: {{project['description']}}</p>
+    <p>Date due: {{project['deadline']}}</p>
+    <p>Status: {{project['status']}}</p>
+    <p>Date Completed: {{project['dateCompleted']}}</p><br><br><br>
+
+    <form action = '/dashboard'>
+      <input type = 'submit' value = 'Back'>
+    </form>
+  </body>
+</html>

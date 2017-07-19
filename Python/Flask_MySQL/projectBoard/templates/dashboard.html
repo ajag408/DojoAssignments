@@ -15,14 +15,32 @@
       </tr>
       {%for project in current_projects%}
         <tr>
-          <th>project['name']</th>
-          <th>project['deadline']</th>
-          <th>details | delete task | complete task</th>
+          <td>{{project['name']}}</td>
+          <td>{{project['deadline']}}</td>
+          <td> <a href = "/show/{{project['id']}}">details</a> | <a href = "/delete/{{project['id']}}">delete task</a> | <a href = "/complete/{{project['id']}}">complete task</a> </td>
         </tr>
       {%endfor%}
     </table><br><br>
     <form action = '/add_project'>
       <input type = 'submit' value = 'Add Project'>
-    </form>
+    </form><br><br>
+
+    <h1>Completed Projects:</h1>
+    <table>
+      <tr>
+        <th>Project Name</th>
+        <th>Date Due</th>
+        <th>Date Completed</th>
+        <th>Action</th>
+      </tr>
+      {%for project in completed_projects%}
+        <tr>
+          <td>{{project['name']}}</td>
+          <td>{{project['deadline']}}</td>
+          <td>{{project['dateCompleted']}}</td>
+          <td> <a href = "/show/{{project['id']}}">details</a> </td>
+        </tr>
+      {%endfor%}
+    </table>
   </body>
 </html>
