@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Quotes</title>
+  </head>
+  <body>
+    <h1>Quotes from {{book['title']}}</h1><br><br>
+    {%for quote in quotes%}
+      <p>{{quote['quote']}}</p><br>
+    {%endfor%}
+    <form action = '/'>
+      <input type = 'submit' value = 'Back to Books'>
+    </form>
+  </body>
+</html>
