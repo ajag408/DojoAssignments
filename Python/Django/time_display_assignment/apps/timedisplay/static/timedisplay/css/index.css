@@ -1,0 +1,28 @@
+.header{
+  height: 30px;
+  width: 200px;
+  border: 2px solid black;
+  margin: 0 auto;
+}
+
+.header p{
+  margin: 0 auto;
+  padding-left: 10px;
+}
+
+.time{
+  height: 100px;
+  width: 400px;
+  border: 2px solid black;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 20px;
+}
+
+.time p{
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 100px;
+}
