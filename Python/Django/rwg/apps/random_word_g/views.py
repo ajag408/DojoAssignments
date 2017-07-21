@@ -17,4 +17,10 @@ def randomstr(request):
 
         return redirect('/')
     else:
-        return reidrect('/')
+        return redirect('/')
+
+def reset(request):
+    if 'count' in request.session:
+        del request.session['count']
+
+    return redirect('/')

@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index),
-    url(r'^rand_word$', views.randomstr)
+    url(r'^rand_word$', views.randomstr),
+    url(r'^random_word/reset$', views.reset)
 ]
