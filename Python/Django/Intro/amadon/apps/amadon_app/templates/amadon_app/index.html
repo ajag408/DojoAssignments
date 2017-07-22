@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Amadon</title>
+  </head>
+  <body>
+    <h1>Amadon Store!</h1>
+    <table>
+      <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+      <tr>
+        <td>Dojo Tshirt</td>
+        <td>$19.99</td>
+        <td><form action = '/buy/tshirt' method = 'POST'>
+              {% csrf_token %}
+              <select name="quantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <input type = 'submit' value = 'Buy'>
+            </form></td>
+      </tr>
+      <tr>
+        <td>Dojo Sweater</td>
+        <td>$29.99</td>
+        <td><form action = '/buy/sweater' method = 'POST'>
+              {% csrf_token %}
+              <select name="quantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <input type = 'submit' value = 'Buy'>
+            </form></td>
+      </tr>
+      <tr>
+        <td>Dojo Cup</td>
+        <td>$4.99</td>
+        <td><form action = '/buy/cup' method = 'POST'>
+              {% csrf_token %}
+              <select name="quantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <input type = 'submit' value = 'Buy'>
+            </form></td>
+      </tr>
+      <tr>
+        <td>Algorithm Book</td>
+        <td>$49.99</td>
+        <td><form action = '/buy/book' method = 'POST'>
+              {% csrf_token %}
+              <select name="quantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <input type = 'submit' value = 'Buy'>
+            </form></td>
+      </tr>
+    </table>
+  </body>
+</html>
