@@ -1,3 +1,44 @@
 .left{
-  
+  width: 450px;
+  height: 600px;
+  border-right: 2px solid black;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.right{
+  width: 450px;
+  height: 500px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.redBig{
+  color: red;
+  font-size: 24pt;
+}
+
+.redSmall{
+  color: red;
+  font-size: 12pt;
+}
+
+.blueBig{
+  color: blue;
+  font-size: 24pt;
+}
+
+.blueSmall{
+  color: blue;
+  font-size: 12pt;
+}
+
+.greenBig{
+  color: green;
+  font-size: 24pt;
+}
+
+.greenSmall{
+  color: green;
+  font-size: 12pt;
 }

@@ -3,11 +3,42 @@
   <head>
     <meta charset="utf-8">
     <title>Session Words</title>
-  </head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'session_words_app/css/index.css' %}">
   <body>
-    <div 'left'>
+    <div class = 'left'>
+      <h1>Add a new word</h1><br>
+      <form action = '/new_word' method = 'POST'>
+        {% csrf_token %}
+        <input type = 'text' name = 'word'><br><br>
+        <p>Choose color</p>
+        <input type="radio" name="color" value = 'red'> Red<br>
+        <input type="radio" name="color" value = 'green'> Green<br>
+        <input type="radio" name="color" value="blue"> Blue<br><br>
+        <input type="checkbox" name="bigFont"> show in BIG fonts!<br><br>
+        <input type = 'submit' value = 'Add to Session'>
+      </form>
     </div>
-    <div 'right'>
+    <div class = 'right'>
+      <form action = '/clear'>
+        {% csrf_token %}
+        <input type = 'submit' value = 'Clear Session'>
+      </form><br>
+      {%for word in request.session.word_list%}
+        {%if word.color == 'red' and word.font == 'big'%}
+          <p><span class = 'redBig'>{{word.word}}</span> - {{word.added_on}}</p>
+        {%elif word.color == 'red' and word.font == 'small'%}
+          <p><span class = 'redSmall'>{{word.word}}</span> - {{word.added_on}}</p>
+        {%elif word.color == 'blue' and word.font == 'big'%}
+          <p><span class = 'blueBig'>{{word.word}}</span> - {{word.added_on}}</p>
+        {%elif word.color == 'blue' and word.font == 'small'%}
+          <p><span class = 'blueSmall'>{{word.word}}</span> - {{word.added_on}}</p>
+        {%elif word.color == 'green' and word.font == 'big'%}
+          <p><span class = 'greenBig'>{{word.word}}</span> - {{word.added_on}}</p>
+        {%elif word.color == 'green' and word.font == 'small'%}
+          <p><span class = 'greenSmall'>{{word.word}}</span> - {{word.added_on}}</p>
+        {%endif%}
+      {%endfor%}
     </div>
   </body>
 </html>
