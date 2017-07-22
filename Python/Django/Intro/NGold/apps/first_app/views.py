@@ -10,24 +10,24 @@ def index(request):
 
     return render(request, "first_app/index.html")
 
-def process_money(request):
+def process_money(request, word):
 
     ts = time.time()
     st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 
-    if request.POST['building'] == 'farm':
+    if word == 'farm':
         temp_earn = random.randrange(10, 21)
         request.session['earning']+=temp_earn
         request.session['activity'] += "Earned " +str(temp_earn)+ " golds from the farm! ("+ st + ")\n"
-    elif request.POST['building'] == 'cave':
+    elif word == 'cave':
         temp_earn = random.randrange(5, 11)
         request.session['earning']+=temp_earn
         request.session['activity'] += "Earned " +str(temp_earn)+ " golds from the cave! ("+ st +")\n"
-    elif request.POST['building'] == 'house':
+    elif word == 'house':
         temp_earn = random.randrange(2, 6)
         request.session['earning']+=temp_earn
         request.session['activity'] += "Earned " +str(temp_earn)+ " golds from the house! ("+st+")\n"
-    elif request.POST['building'] == 'casino':
+    elif word == 'casino':
         temp_earn = random.randrange(-50, 51)
         request.session['earning']+=temp_earn
         if temp_earn<0:
