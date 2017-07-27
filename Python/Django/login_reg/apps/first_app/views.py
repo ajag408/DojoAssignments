@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import User, UserManager
+from django.contrib import messages
 # Create your views here.
 def home(request):
     return render(request, 'first_app/home.html')
@@ -7,18 +8,14 @@ def home(request):
 def validate_register(request):
     check1 = User.objects.check_first_name(request.POST['first_name'])
     if check1 is False:
-        error1 = "First name: required; no fewer than 2 characters; letters only"
-        context = {
-            'error1': error1
-        }
-        return render(request, 'first_app/home.html', context)
+        messages.error(request,"First name: required; no fewer than 2 characters; letters only")
+        return render(request, 'first_app/home.html')
+
     check2 = User.objects.check_last_name(request.POST['last_name'])
     if check2 is False:
-        error2 = "Last name: required; no fewer than 2 characters; letters only"
-        context = {
-            'error2': error2
-        }
-        return render(request, 'first_app/home.html', context)
+        messages.error(request,"Last name: required; no fewer than 2 characters; letters only")
+        return render(request, 'first_app/home.html')
+
     check3 = User.objects.check_email(request.POST['email'])
     if check3 is False:
         error3 = "Email: Required; Valid Format"
