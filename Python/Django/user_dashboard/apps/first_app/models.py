@@ -95,13 +95,13 @@ class User(models.Model):
 
 
 class Message(models.Model):
-    postman_id = models.ForeignKey(User)
-    wall_id = models.ForeignKey(User, related_name = 'wall_posts')
+    message_user_id = models.ForeignKey(User)
+    user_profile_id = models.ForeignKey(User, related_name = 'user_profile_messages')
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
 class Comment(models.Model):
     message_id = models.ForeignKey(Message, related_name = 'message_comments')
-    commenter_id = models.ForeignKey(User)
+    comment_user_id = models.ForeignKey(User)
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)

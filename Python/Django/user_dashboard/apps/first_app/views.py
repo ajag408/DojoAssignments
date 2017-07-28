@@ -159,27 +159,13 @@ def edit_description(request):
 def render_user_page(request,user_id):
     context={
         'user_profile': User.objects.get(id=user_id),
-        'messages': Message.objects.all(),
-        'comments': Comment.objects.all()
     }
     return render(request, 'first_app/user_page.html', context)
 
-def post_message(request, user_profile_):
-    Message.objects.create(postman_id = User.objects.get(id = this_user_id ), wall_id = User.objects.get(id = user_wall_id), message = request.POST['message'])
-    context = {
-        'user_wall': User.objects.get(id=user_wall_id),
-        'this_user': User.objects.get(id=this_user_id),
-        'messages': Message.objects.all(),
-        'comments': Comment.objects.all()
-    }
-    return render(request, 'first_app/user_page.html', context)
+def post_message(request, user_profile_id):
+    Message.objects.create(message_user_id = User.objects.get(id = request.session['user']), user_profile_id = User.objects.get(id = user_profile_id), message = request.POST['message'])
+    return redirect('/render_user_page/' + str(user_profile_id))
 
-def post_comment(request, message_id, user_wall_id, this_user_id):
-    Comment.objects.create(message_id = Message.objects.get(id = message_id), commenter_id = User.objects.get(id = this_user_id), comment= request.POST['comment'])
-    context={
-        'user_wall': User.objects.get(id = user_wall_id),
-        'this_user': User.objects.get(id=this_user_id),
-        'messages': Message.objects.all(),
-        'comments': Comment.objects.all()
-    }
-    return render(request, 'first_app/user_page.html', context)
+def post_comment(request, message_id, user_profile_id):
+    Comment.objects.create(message_id = Message.objects.get(id = message_id), comment_user_id = User.objects.get(id = request.session['user']), comment= request.POST['comment'])
+    return redirect('/render_user_page' + str(user_profile_id))

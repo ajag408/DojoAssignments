@@ -17,8 +17,8 @@ urlpatterns = [
     url(r'^render_dashboard$', views.render_dashboard),
     url(r'^render_add_new$', views.render_add_new),
     url(r'^add_new$', views.add_new),
-    url(r'^render_edit_user/(?P<user_id>\d+)/', views.render_edit_user),
+    url(r'^render_edit_user/(?P<user_id>\d+)$', views.render_edit_user),
     url(r'^render_user_page/(?P<user_id>\d+)$', views.render_user_page),
-    url(r'^post_message/(?P<user_profile_id>\d+))$', views.post_message),
-    url(r'^post_comment/(?P<message_id>\d+)/(?P<user_wall_id>\d+)/(?P<this_user_id>\d+)$', views.post_comment)
+    url(r'^post_message/(?P<user_profile_id>\d+)$', views.post_message),
+    url(r'^post_comment/(?P<message_id>\d+)/(?P<user_profile_id>\d+)$', views.post_comment)
 ]

@@ -21,24 +21,20 @@
     <form action = '/post_message/{{user_profile.id}}' method='POST'>
       {%csrf_token%}
       <p><b>Leave a message for {{user_profile.first_name}}!:</b></p>
-      <textarea name="message" rows="10" cols="30"></textarea><br>
+      <textarea name="message" rows="10" cols="100"></textarea><br>
+      <input type = 'submit' value = 'Post'>
     </form>
 
-    {%for message in messages%}
-      {%if message.wall_id.id == user_wall.id%}
-          <p>{{message.postman_id.first_name}} {{message.postman_id.last_name}} wrote    {{message.created_at}}<p>
+    {%for message in user_profile.user_profile_messages.all%}
+          <p>{{message.message_user_id.first_name}} {{message.message_user_id.last_name}} wrote    {{message.created_at}}<p>
           <p>{{message.message}}</p>
-          {%for comment in comments%}
-            {%if comment.message_id.id == message.id%}
-              <p>{{comment.commenter_id.first_name}} {{comment.commenter_id.last_name}} wrote     {{comment.created_at}}</p>
-              <p>{{comment.comment}}</p>
-            {%endif%}
-          {%endfor%}
-          <form action = '/post_comment/{{message.id}}/{{user_wall.id}}/{{this_user.id}}' method='POST'>
+          <p><b>Comments</b></p>
+          <form action = '/post_comment/{{message.id}}/{{user_profile.id}}' method='POST'>
             {%csrf_token%}
-            Edit Description:  <textarea name="comment" rows="7" cols="20"></textarea><br>
+            <textarea name="comment" rows="7" cols="20" value = 'Post message'></textarea><br>
+            <input type = 'submit' value = 'Post'>
           </form>
-      {%endif%}
+
     {%endfor%}
   </body>
 </html>
