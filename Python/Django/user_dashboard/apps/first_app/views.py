@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import User, UserManager, Admin
+from models import *
 import bcrypt
 # Create your views here.
 def home(request):
@@ -27,13 +27,19 @@ def validate_register(request):
             'error2': error2
         }
         return render(request, 'first_app/register.html', context)
-    check3 = User.objects.check_email(request.POST['email'])
+    check3 = User.objects.check_email_1(request.POST['email'])
     if check3 is False:
         error3 = "Email: Required; Valid Format"
         context = {
             'error3': error3
         }
         return render(request, 'first_app/register.html', context)
+
+    check6 = User.objects.check_email_2(request.POST['email'])
+    if check6 is False:
+        error6 = 'email is already taken'
+        return render(request, 'first_app/register.html')
+
     check4 = User.objects.check_password_1(request.POST['password'])
     if check4 is False:
         error4 = "Password: Required; No fewer than 8 characters in length"
@@ -57,21 +63,9 @@ def validate_register(request):
         }
         return render(request, 'first_app/register.html', context)
     if register is True:
-        first_one=Admin.objects.filter(user_id__email = request.POST['email'])
-        if first_one.exists():
-            context = {
-                'this_user': User.objects.get(email = request.POST['email']),
-                'users': User.objects.all(),
-                'admins': Admin.objects.all()
-            }
-            return render(request, 'first_app/admin_dashboard.html', context)
-        else:
-            context = {
-                'this_user': User.objects.get(email = request.POST['email']),
-                'users': User.objects.all(),
-                'admins': Admin.objects.all()
-            }
-            return render(request, 'first_app/user_dashboard.html', context)
+        this_user = User.objects.get(email = request.POST['email'])
+        request.session['user'] = this_user.id
+        return render(request, 'first_app/user_dashboard.html')
 
 def login(request):
     login = User.objects.login(request.POST['email'],request.POST['password'])
@@ -99,24 +93,20 @@ def login(request):
         return render(request, 'first_app/signin.html', context)
 
 def logout(request):
+    if 'user' in request.session:
+        del request.session['user']
     return render(request, 'first_app/home.html')
 
-def render_dashboard(request,id):
-    admins = Admin.objects.all()
-    for admin in admins:
-        if admin.user_id.id == int(id):
-            context = {
-                'this_user': User.objects.get(id = id),
-                'users': User.objects.all(),
-                'admins': Admin.objects.all()
-            }
-            return render(request, 'first_app/admin_dashboard.html', context)
+def render_dashboard(request):
+    this_user = User.objects.get(id = request.session['user'])
     context = {
-        'this_user': User.objects.get(id = id),
-        'users': User.objects.all(),
-        'admins': Admin.objects.all()
+        'this_user': this_user,
+        'users': User.objects.all()
     }
-    return render(request, 'first_app/user_dashboard.html', context)
+    if this_user.user_level == 'admin'
+        return render(request, 'first_app/admin_dashboard.html', context)
+    else:
+        return render(request, 'first_app/user_dashboard.html', context)
 
 def render_add_new(request,id):
     context = {

@@ -19,11 +19,19 @@ class UserManager(models.Manager):
         else:
             return True
 
-    def check_email(self, email):
+    def check_email_1(self, email):
         if not EMAIL_REGEX.match(email):
             return False
         else:
             return True
+
+    def check_email_2(self,email):
+        users = User.objects.all()
+        for user in users:
+            if user['email'] == email:
+                return False
+
+        return True
 
     def check_password_1(self,password):
         if len(password)<8:
@@ -50,7 +58,9 @@ class UserManager(models.Manager):
 
             new_user = User.objects.create(first_name = first_name, last_name = last_name, email = email, pw_hash = pw_hash)
             if new_user.id == 1:
-                Admin.objects.create(user_id = User.objects.get(id=new_user.id))
+                new_user.user_level = 'admin'
+            else:
+                new_user.user_level = 'normal'
             return True
 
     def login(self, email, password):
@@ -76,11 +86,11 @@ class User(models.Model):
     pw_hash = models.CharField(max_length =150)
     created_at = models.DateTimeField(auto_now_add = True)
     description = models.TextField()
+    user_level = models.CharField(max_length = 7)
     objects = UserManager()
+    def __repr__(self):
+        return "<User object: {} {} {} {}>".format(self.first_name, self.last_name, self.email, self.user_level)
 
-class Admin(models.Model):
-    user_id = models.ForeignKey(User, related_name = 'user_level')
-    created_at = models.DateTimeField(auto_now_add = True)
 
 class Message(models.Model):
     postman_id = models.ForeignKey(User)

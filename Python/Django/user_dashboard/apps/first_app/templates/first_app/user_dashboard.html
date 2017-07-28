@@ -7,7 +7,7 @@
   <body>
     <a href = '/render_edit_profile/{{this_user.id}}'> Profile </a>
 
-    <form action = '/logout' method = 'POST'>
+    <form action = '/logout'>
       {%csrf_token%}
       <input type = "submit" value="Log off">
     </form><br><br>
@@ -28,13 +28,7 @@
         <td><a href='/render_user_page/{{user.id}}/{{this_user.id}}'>{{user.first_name}} {{user.last_name}}</a></td>
         <td>{{user.email}}</td>
         <td>{{user.created_at}}</td>
-        {%for admin in admins%}
-          {%if admin.user_id.id == user.id%}
-            <td>admin</td>
-          {%else%}
-            <td>normal</td>
-          {%endif%}
-        {%endfor%}
+        <td>{{user.user_level}}</td>
       </tr>
       {%endfor%}
   </body>
