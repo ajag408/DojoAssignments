@@ -5,14 +5,14 @@
     <title>Admin Dashboard</title>
   </head>
   <body>
-    <a href = '/render_edit_profile/{{this_user.id}}'> Profile </a>
+    <a href = '/render_edit_profile'> Profile </a>
 
     <form action = '/logout' method = 'POST'>
       {%csrf_token%}
       <input type = "submit" value="Log off">
     </form><br><br>
 
-    <form action = '/render_add_new/{{this_user.id}}' method = 'POST'>
+    <form action = '/render_add_new'>
       {%csrf_token%}
       <input type = "submit" value="Add new">
     </form><br><br>
@@ -30,17 +30,11 @@
       {%for user in users%}
       <tr>
         <td>{{user.id}}</td>
-        <td><a href='/render_user_page/{{user.id}}/{{this_user.id}}'>{{user.first_name}} {{user.last_name}}</a></td>
+        <td><a href='/render_user_page/{{user.id}}'>{{user.first_name}} {{user.last_name}}</a></td>
         <td>{{user.email}}</td>
         <td>{{user.created_at}}</td>
-        {%for admin in admins%}
-          {%if admin.user_id.id == user.id%}
-            <td>admin</td>
-          {%else%}
-            <td>normal</td>
-          {%endif%}
-        {%endfor%}
-        <td><a href = '/render_edit_user/{{user.id}}/{{this_user.id}}'>edit</a></td>
+        <td>{{user.user_level}}</td>
+        <td><a href = '/render_edit_user/{{user.id}}'>edit</a></td>
       </tr>
       {%endfor%}
     </table>

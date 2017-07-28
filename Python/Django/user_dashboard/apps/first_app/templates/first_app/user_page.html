@@ -5,22 +5,23 @@
     <title>User Info</title>
   </head>
   <body>
-    <a href = '/render_dashboard/{{this_user.id}}'>Dashboard </a><br>
-    <a href = '/render_edit_profile/{{this_user.id}}'> Profile </a><br>
-    <form action = '/logout' method = 'POST'>
+    <a href = '/render_dashboard'>Dashboard </a><br>
+    <a href = '/render_edit_profile'> Profile </a><br>
+    <form action = '/logout'>
       {%csrf_token%}
       <input type = "submit" value="Log off">
     </form><br><br>
 
-    <h1>{{user.first_name}} {{user.last_name}}</h1><br>
-    <p>Registered at: {{user.created_at}}</p>
-    <p>User ID: #{{user.id}}</p>
-    <p>Email address: {{user.email}}</p>
-    <p>Description: {{user.description}}</p><br>
+    <h1>{{user_profile.first_name}} {{user_profile.last_name}}</h1><br>
+    <p>Registered at: {{user_profile.created_at}}</p>
+    <p>User ID: #{{user_profile.id}}</p>
+    <p>Email address: {{user_profile.email}}</p>
+    <p>Description: {{user_profile.description}}</p><br>
 
-    <form action = '/post_message/{{user_wall.id}}/{{this_user.id}}' method='POST'>
+    <form action = '/post_message/{{user_profile.id}}' method='POST'>
       {%csrf_token%}
-    Edit Description:  <textarea name="message" rows="10" cols="30"></textarea><br>
+      <p><b>Leave a message for {{user_profile.first_name}}!:</b></p>
+      <textarea name="message" rows="10" cols="30"></textarea><br>
     </form>
 
     {%for message in messages%}

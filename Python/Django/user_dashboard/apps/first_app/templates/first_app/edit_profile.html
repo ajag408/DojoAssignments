@@ -5,16 +5,16 @@
     <title>Edit Profile</title>
   </head>
   <body>
-    <a href = '/render_dashboard/{{this_user.id}}'>Dashboard </a>
+    <a href = '/render_dashboard'>Dashboard </a>
 
-    <form action = '/logout' method = 'POST'>
+    <form action = '/logout'>
       {%csrf_token%}
       <input type = "submit" value="Log off">
     </form><br><br>
 
     <h1>Edit Profile</h1>
 
-    <form action='/edit_info/{{this_user.id}}' method='POST'>
+    <form action='/edit_info' method='POST'>
       {%csrf_token%}
       First Name:<input type="text" name='first_name' value='{{this_user.first_name}}'><br><br>
       Last Name:<input type="text" name="last_name" value='{{this_user.last_name}}'><br><br>
@@ -22,14 +22,14 @@
       <input type="submit" value="Save">
     </form><br>
 
-    <form action='/change_pw/{{this_user.id}}' method='POST'>
+    <form action='/change_pw' method='POST'>
       {%csrf_token%}
       Password:<input type="password" name="password"><br><br>
       Confirm Password:<input type="password" name="pconf"><br><br>
       <input type="submit" value="Update Password">
     </form>
 
-    <form action = '/edit_description/{{this_user.id}}' method='POST'>
+    <form action = '/edit_description' method='POST'>
     Edit Description:  <textarea name="description" rows="10" cols="30"></textarea><br>
     </form>
 

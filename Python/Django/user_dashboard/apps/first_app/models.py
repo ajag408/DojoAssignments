@@ -59,8 +59,10 @@ class UserManager(models.Manager):
             new_user = User.objects.create(first_name = first_name, last_name = last_name, email = email, pw_hash = pw_hash)
             if new_user.id == 1:
                 new_user.user_level = 'admin'
+                new_user.save()
             else:
                 new_user.user_level = 'normal'
+                new_user.save()
             return True
 
     def login(self, email, password):
