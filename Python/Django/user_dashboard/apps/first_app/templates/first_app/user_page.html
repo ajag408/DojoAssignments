@@ -29,6 +29,10 @@
           <p>{{message.message_user_id.first_name}} {{message.message_user_id.last_name}} wrote    {{message.created_at}}<p>
           <p>{{message.message}}</p>
           <p><b>Comments</b></p>
+          {%for comment in message.message_comments.all%}
+            <p>{{comment.comment_user_id.first_name}} {{comment.comment_user_id.last_name}} wrote   {{comment.created_at}}</p>
+            <p>{{comment.comment}}</p>
+          {%endfor%}
           <form action = '/post_comment/{{message.id}}/{{user_profile.id}}' method='POST'>
             {%csrf_token%}
             <textarea name="comment" rows="7" cols="20" value = 'Post message'></textarea><br>

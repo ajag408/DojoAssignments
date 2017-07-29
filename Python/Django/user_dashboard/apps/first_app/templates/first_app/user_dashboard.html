@@ -5,7 +5,7 @@
     <title>User Dashboard</title>
   </head>
   <body>
-    <a href = '/render_edit_profile/{{this_user.id}}'> Profile </a>
+    <a href = '/render_edit_profile'> Profile </a>
 
     <form action = '/logout'>
       {%csrf_token%}
@@ -25,7 +25,7 @@
       {%for user in users%}
       <tr>
         <td>{{user.id}}</td>
-        <td><a href='/render_user_page/{{user.id}}/{{this_user.id}}'>{{user.first_name}} {{user.last_name}}</a></td>
+        <td><a href='/render_user_page/{{user.id}}'>{{user.first_name}} {{user.last_name}}</a></td>
         <td>{{user.email}}</td>
         <td>{{user.created_at}}</td>
         <td>{{user.user_level}}</td>
