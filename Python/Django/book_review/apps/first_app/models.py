@@ -19,11 +19,19 @@ class UserManager(models.Manager):
         else:
             return True
 
-    def check_email(self, email):
+    def check_email_1(self, email):
         if not EMAIL_REGEX.match(email):
             return False
         else:
             return True
+            
+    def check_email_2(self,email):
+        users = User.objects.all()
+        for user in users:
+            if user['email'] == email:
+                return False
+
+        return True
 
     def check_password_1(self,password):
         if len(password)<8:

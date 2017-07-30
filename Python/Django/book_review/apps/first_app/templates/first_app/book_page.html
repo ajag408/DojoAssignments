@@ -5,12 +5,12 @@
     <title>Book Page</title>
   </head>
   <body>
-    <form action = '/logout' method = 'POST'>
+    <form action = '/logout'>
       {%csrf_token%}
       <input type = "submit" value="Log out">
     </form><br><br>
 
-    <a href = '/review_home/{{user.id}}' method = 'POST'>Home</a><br><br>
+    <a href = '/review_home'>Home</a><br><br>
 
     <h2>{{book.title}}</h2>
     <h3>{{book.author}}</h3>
@@ -18,7 +18,7 @@
     <h2>Reviews:</h2><br>
       {%for review in reviews%}
         <p>{{review.rating}}<p><br>
-        <p><a href = '/render_user_page/{{review.user_id.id}}/{{user.id}}'>{{review.user_id.first_name}}</a> says: {{review.content}}<p><br>
+        <p><a href = '/render_user_page/{{review.user_id.id}}'>{{review.user_id.first_name}}</a> says: {{review.content}}<p><br>
         <p>Posted on {{review.created_at}}<p><br>
       {%endfor%}
 

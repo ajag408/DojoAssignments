@@ -5,34 +5,34 @@
     <title>Success Page</title>
   </head>
   <body>
-    <form action = '/logout' method = 'POST'>
+    <form action = '/logout'>
       {%csrf_token%}
       <input type = "submit" value="Log out">
     </form><br><br>
       <h3>Welcome {{user.first_name}}!</h3>
-      <a href = 'new_two/{{user.id}}'>Add Book and Review</a><br><br>
+      <a href = 'new_two'>Add Book and Review</a><br><br>
 
     Recent Book Reviews:<br><br>
-    <h3><a href='/render_book_page/{{review1.book_id.id}}/{{user.id}}'>{{review1.book_id.title}}</a></h3>
+    <h3><a href='/render_book_page/{{review1.book_id.id}}'>{{review1.book_id.title}}</a></h3>
     <p>Rating: {{review1.rating}}</p><br>
-    <p><a href = '/render_user_page/{{review1.user_id.id}}/{{user.id}}'>{{review1.user_id.first_name}}</a> says: {{review1.content}}<p><br>
+    <p><a href = '/render_user_page/{{review1.user_id.id}}'>{{review1.user_id.first_name}}</a> says: {{review1.content}}<p><br>
     <p>{{review1.created_at}}<p><br><br>
 
-    <h3><a href='/render_book_page/{{review2.book_id.id}}/{{user.id}}'>{{review2.book_id.title}}</a></h3>
+    <h3><a href='/render_book_page/{{review2.book_id.id}}'>{{review2.book_id.title}}</a></h3>
     <p>Rating: {{review2.rating}}</p><br>
-    <p><a href = '/render_user_page/{{review2.user_id.id}}/{{user.id}}'>{{review2.user_id.first_name}}</a> says: {{review2.content}}<p><br>
+    <p><a href = '/render_user_page/{{review2.user_id.id}}'>{{review2.user_id.first_name}}</a> says: {{review2.content}}<p><br>
     <p>{{review2.created_at}}<p><br><br>
 
-    <h3><a href='/render_book_page/{{review3.book_id.id}}/{{user.id}}'>{{review3.book_id.title}}</a></h3>
+    <h3><a href='/render_book_page/{{review3.book_id.id}}'>{{review3.book_id.title}}</a></h3>
     <p>Rating: {{review3.rating}}</p><br>
-    <p><a href = '/render_user_page/{{review3.user_id.id}}/{{user.id}}'>{{review3.user_id.first_name}}</a> says: {{review3.content}}<p><br>
+    <p><a href = '/render_user_page/{{review3.user_id.id}}'>{{review3.user_id.first_name}}</a> says: {{review3.content}}<p><br>
     <p>{{review3.created_at}}<p><br><br>
 
 
     Other Book Reviews:<br><br>
       {%for other_review in other_reviews%}
         {%for review in other_review%}
-        <p><a href='/render_book_page/{{review.book_id.id}}/{{user.id}}'>{{review.book_id.title}}</a></p>
+        <p><a href='/render_book_page/{{review.book_id.id}}'>{{review.book_id.title}}</a></p>
         {%endfor%}
       {%endfor%}
 

@@ -5,13 +5,13 @@
     <title>User Page</title>
   </head>
   <body>
-    <form action = '/logout' method = 'POST'>
+    <form action = '/logout'>
       {%csrf_token%}
       <input type = "submit" value="Log out">
     </form><br><br>
-  
 
-    <a href = '/review_home/{{user.id}}' method = 'POST'>Home</a><br><br>
+
+    <a href = '/review_home'>Home</a><br><br>
 
     <h2>User Alias: {{rendered_user.first_name}}</h2>
     <h3>Name: {{rendered_user.first_name}} {{rendered_user.last_name}}</h3>
