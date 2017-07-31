@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>AJAX demo</title>
+    <script
+      src="http://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+    <link rel = 'stylesheet' href = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+    <script>
+      $(document).ready(function(){
+        $('#button_json').click(function(){
+          console.log('button_json is clicked')
+          $.ajax({
+            url: '/all.json',
+            success: function(serverResponse){
+              console.log('success, serverResponse:', serverResponse)
+              $('#placeholder1').html(JSON.stringify(serverResponse))
+            }
+          })
+        });
+
+        $('#button_html').click(function(){
+          console.log('button_html is clicked')
+          $.ajax({
+            url: '/all.html',
+            success: function(serverResponse){
+              console.log('success, serverResponse:', serverResponse)
+              $('#placeholder1').html(serverResponse)
+            }
+          })
+        });
+
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Demo 1</h1>
+    <button class = 'btn btn-primary' id = 'button_json'>Fetch HttpResponse from user_login/all.json</button>
+    <button class = 'btn btn-primary' id = 'button_html'>Fetch HttpResponse from user_login/all.html</button>
+
+    <div id = 'placeholder1'>Placeholder for AJAX content</div>
+  </body>
+</html>
