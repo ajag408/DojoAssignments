@@ -13,3 +13,13 @@ def all_json(request):
 def all_html(request):
     users = User.objects.all()
     return render(request, 'orm_app/all.html', {'users': users})
+
+def find(request):
+    users = User.objects.filter(first_name__startswith=request.POST['first_name_starts_with'])
+    return render(request, 'orm_app/all.html', {'users': users})
+
+def create(request):
+    User.objects.create(first_name=request.POST['first_name'], last_name = request.POST['last_name'], email_address = request.POST['email'], age = 0)
+    users = User.objects.all()
+    print users
+    return render(request, 'orm_app/all.html', {'users': users})

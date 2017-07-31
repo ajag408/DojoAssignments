@@ -32,6 +32,35 @@
           })
         });
 
+        $('#ajax_first_name').keyup(function(){
+          console.log('came here')
+          $.ajax({
+            url: '/user_login/find',
+            method: 'post',
+            data: $(this).parent().serialize(),
+            success: function(serverResponse){
+              console.log('success', serverResponse)
+              $('#placeholder2').html(serverResponse)
+            }
+          })
+        });
+
+        $('#create_user_ajax_form').submit(function(e){
+          e.preventDefault()
+          console.log('came here')
+          $.ajax({
+            url: '/user_login/create',
+            method: 'post',
+            data: $(this).serialize(),
+            success: function(serverResponse){
+              console.log('success', serverResponse)
+              $('#placeholder3').html(serverResponse)
+            }
+          })
+
+        });
+
+
       });
     </script>
   </head>
@@ -41,5 +70,25 @@
     <button class = 'btn btn-primary' id = 'button_html'>Fetch HttpResponse from user_login/all.html</button>
 
     <div id = 'placeholder1'>Placeholder for AJAX content</div>
+
+    <h1>Demo 2</h1>
+    <form action = '/user_login/find' method = 'POST'>
+      {% csrf_token %}
+      Find all users whose first name starts with
+      <input type = 'text' name = 'first_name_starts_with' id = 'ajax_first_name'>
+    </form>
+
+    <div id = 'placeholder2'>Placeholder2</div>
+
+    <h1>Demo 3</h1>
+    <form action = '/user_login/create' method = 'POST' class = 'ajax_form' id = 'create_user_ajax_form'>
+      {% csrf_token %}
+      First name: <input type = 'text' name = 'first_name'>
+      Last name: <input type = 'text' name = 'last_name'>
+      Email: <input type = 'text' name = 'email'>
+      <input type = 'submit' value = 'submit'>
+    </form>
+
+    <div id = 'placeholder3'>Placeholder3</div>
   </body>
 </html>
