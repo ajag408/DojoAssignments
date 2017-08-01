@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ajax Posts</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'ajax_post/css/index.css' %}">
+    <script
+      src="http://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+    <script>
+    $(document).ready(function(){
+      $('form').submit(function(e){
+        e.preventDefault()
+        $.ajax({
+          url: '/post_it',
+          method: 'post',
+          data: $(this).serialize(),
+          success: function(serverResponse){
+            $('#noteboard').append("<div class = 'notecard'>"+serverResponse+"</div>")
+          }
+        });
+      });
+    });
+    </script>
+  </head>
+  <body>
+    <h1>My Posts</h1>
+    <div id = 'noteboard'>
+      {%for note in notes%}
+        <div class = 'notecard'><p>{{note.note}}</p></div>
+      {%endfor%}
+    </div>
+    <form action = '/post_it' method = 'POST'>
+      {%csrf_token%}
+      <p>Add a note:</p>
+
+      <textarea name="note" rows="7" cols="20"></textarea><br>
+      <input type = 'submit' value = 'Post It'>
+    </form>
+  </body>
+</html>
