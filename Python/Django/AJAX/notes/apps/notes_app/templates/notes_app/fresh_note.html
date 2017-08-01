@@ -1,0 +1,11 @@
+{%for note in notes%}
+  <p><b>{{note.title}}</b></p>
+  <form action = 'add_description/{{note.id}}' method = 'POST'>
+    {% csrf_token %}
+      <textarea name="description" rows="7" cols="20" id = 'description' placeholder = '{{note.description}}'></textarea>
+  </form><br>
+  <form action = 'delete/{{note.id}}' id = 'delete'>
+    {% csrf_token %}
+    <input type = 'submit' value = 'delete'>
+  </form><br><br>
+{%endfor%}

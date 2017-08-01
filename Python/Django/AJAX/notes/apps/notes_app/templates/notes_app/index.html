@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script
+      src="http://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function(){
+        $('#add_note').submit(function(e){
+          e.preventDefault()
+          $.ajax({
+            url: '/add_note',
+            method: 'post',
+            data: $(this).serialize(),
+            success: function(serverResponse){
+              $('.noteboard').html(serverResponse)
+            }
+          });
+        });
+
+        $(document).on('keyup', '#description', function(){
+          $.ajax({
+            url: $(this).parent().attr('action'),
+            method: 'post',
+            data: $(this).parent().serialize(),
+          });
+        });
+
+        $(document).on('submit', '#delete', function(e){
+          e.preventDefault()
+          $.ajax({
+            url: $(this).attr('action'),
+            method: 'post',
+            data: $(this).serialize(),
+            success: function(serverResponse){
+              $('.noteboard').html(serverResponse)
+            }
+          });
+        });
+
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Notes</h1>
+    <div class = 'noteboard'>
+      {%for note in notes%}
+        <p><b>{{note.title}}</b></p>
+        <form action = 'add_description/{{note.id}}' method = 'POST'>
+          {% csrf_token %}
+            <textarea name="description" rows="7" cols="20" id = 'description' placeholder = '{{note.description}}'></textarea>
+        </form><br>
+        <form action = 'delete/{{note.id}}' id = 'delete'>
+          {% csrf_token %}
+          <input type = 'submit' value = 'delete'>
+        </form><br><br>
+      {%endfor%}
+    </div>
+    <form action = '/add_note' method = 'POST' id = 'add_note'>
+      {% csrf_token %}
+      <input type = 'text' name = 'title' placeholder = 'Insert title here...'><br>
+      <input type = 'submit' value = 'Add Note'>
+    </form>
+  </body>
+</html>
