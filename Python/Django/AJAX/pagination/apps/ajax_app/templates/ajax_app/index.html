@@ -3,9 +3,41 @@
   <head>
     <meta charset="utf-8">
     <title>Leads AJAX example</title>
+    <script
+      src="http://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function(){
+        $(document).on('keyup', '#new_lead', function(){
+          $.ajax({
+            url: '/new_lead',
+            method: 'post',
+            data: $('#new_lead_form').serialize(),
+            success: function(serverResponse){
+              console.log(serverResponse)
+              $('table').append(serverResponse)
+            }
+          });
+        });
+
+        $(document).on('keyup', '#edit_lead', function(){
+          $.ajax({
+            url: '/edit_lead',
+            method: 'post',
+            data: $('#edit_lead_form').serialize(),
+            success: function(serverResponse){
+              console.log(serverResponse)
+            }
+          });
+        });
+
+      });
+    </script>
   </head>
   <body>
     <form action = '/filter' method = 'POST'>
+      {% csrf_token %}
       Name:  <input type = 'text' name = 'first_name'>
       From: <input type = 'date' name = 'from'>
       To: <input type = 'date' name = 'to'>
@@ -19,12 +51,28 @@
         <th>registered_datetime</th>
         <th>email</th>
       </tr>
+    {%for lead in leads%}
       <tr>
-        <form action = '/new_lead' method = 'POST'>
+        <form action = '/edit_lead' method = 'POST' id = 'edit_lead_form'>
+          {% csrf_token %}
+          <td>{{lead.id}}<input type = 'hidden' name = 'id' value = '{{lead.id}}'></td>
+          <td><input type = 'text' name = 'first_name' value = '{{lead.first_name}}' id = 'edit_lead'></td>
+          <td><input type = 'text' name = 'last_name' value = '{{lead.last_name}}' id = 'edit_lead'></td>
+          <td>{{lead.registered_datetime}}</td>
+          <td><input type = 'text' name = 'email' value = '{{lead.email}}' id = 'edit_lead'></td>
+        </form>
+      </tr>
+    {%endfor%}
+      <tr>
+        <form action = '/new_lead' method = 'POST' id = 'new_lead_form'>
+          {% csrf_token %}
           <td></td>
-          <td><input type = 'text' name = 'first_name'></td>
-          <td><input type = 'text' name = 'last_name'></td>
+          <td><input type = 'text' name = 'first_name' id = 'new_lead'></td>
+          <td><input type = 'text' name = 'last_name' id = 'new_lead'></td>
           <td></td>
-          <td><input type = 'text' name = 'email'></td>
+          <td><input type = 'text' name = 'email' id = 'new_lead'></td>
+        </form>
+      </tr>
+    </table>
   </body>
 </html>
