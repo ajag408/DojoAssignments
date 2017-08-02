@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Leads AJAX example</title>
+  </head>
+  <body>
+    <form action = '/filter' method = 'POST'>
+      Name:  <input type = 'text' name = 'first_name'>
+      From: <input type = 'date' name = 'from'>
+      To: <input type = 'date' name = 'to'>
+    </form><br><br>
+
+    <table>
+      <tr>
+        <th>leads_id</th>
+        <th>first name</th>
+        <th>last name</th>
+        <th>registered_datetime</th>
+        <th>email</th>
+      </tr>
+      <tr>
+        <form action = '/new_lead' method = 'POST'>
+          <td></td>
+          <td><input type = 'text' name = 'first_name'></td>
+          <td><input type = 'text' name = 'last_name'></td>
+          <td></td>
+          <td><input type = 'text' name = 'email'></td>
+  </body>
+</html>
