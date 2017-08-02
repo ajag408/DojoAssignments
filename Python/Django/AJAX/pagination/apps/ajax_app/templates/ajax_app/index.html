@@ -15,8 +15,12 @@
             method: 'post',
             data: $('#new_lead_form').serialize(),
             success: function(serverResponse){
-              console.log(serverResponse)
-              $('table').append(serverResponse)
+              if(serverResponse.length >= 20){
+                $('.new_lead_fn').val('')
+                $('.new_lead_ln').val('')
+                $('.new_lead_e').val('')
+                $('table').append(serverResponse)
+              }
             }
           });
         });
@@ -67,10 +71,10 @@
         <form action = '/new_lead' method = 'POST' id = 'new_lead_form'>
           {% csrf_token %}
           <td></td>
-          <td><input type = 'text' name = 'first_name' id = 'new_lead'></td>
-          <td><input type = 'text' name = 'last_name' id = 'new_lead'></td>
+          <td><input type = 'text' name = 'first_name' id = 'new_lead' class = 'new_lead_fn'></td>
+          <td><input type = 'text' name = 'last_name' id = 'new_lead' class = 'new_lead_ln'></td>
           <td></td>
-          <td><input type = 'text' name = 'email' id = 'new_lead'></td>
+          <td><input type = 'text' name = 'email' id = 'new_lead' class = 'new_lead_e'></td>
         </form>
       </tr>
     </table>
