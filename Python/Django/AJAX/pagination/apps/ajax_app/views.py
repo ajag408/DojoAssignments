@@ -20,5 +20,7 @@ def edit_lead(request):
     this_lead.first_name = request.POST['first_name']
     this_lead.last_name = request.POST['last_name']
     this_lead.email = request.POST['email']
+    print this_lead.email
     this_lead.save()
+    print this_lead.email
     return HttpResponse('lead saved')
