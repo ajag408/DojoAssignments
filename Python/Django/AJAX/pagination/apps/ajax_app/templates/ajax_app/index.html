@@ -12,6 +12,17 @@
       $(document).ready(function(){
         var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
         $(document).on('keyup', '#new_lead', function(){
+          function csrfSafeMethod(method) {
+              // these HTTP methods do not require CSRF protection
+              return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+          }
+          $.ajaxSetup({
+              beforeSend: function(xhr, settings) {
+                  if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                      xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                  }
+              }
+          });
           $.ajax({
             url: '/new_lead',
             method: 'post',
@@ -28,7 +39,6 @@
         });
 
         $(document).on('keyup', '#edit_lead', function(){
-          console.log($(this));
           function csrfSafeMethod(method) {
               // these HTTP methods do not require CSRF protection
               return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
@@ -50,48 +60,60 @@
           });
         });
 
+        $('#filter').keyup(function(){
+
+          $.ajax({
+            url: '/filter',
+            method: 'post',
+            data: $(this).parent().serialize(),
+            success: function(serverResponse){
+              $('table').html('')
+              $('table').html('<thead><th>leads_id</th><th>first name</th><th>last name</th><th>registered_datetime</th><th>email</th></thead>'+serverResponse)
+            }
+          })
+        });
+
       });
     </script>
   </head>
   <body>
     <form action = '/filter' method = 'POST'>
       {% csrf_token %}
-      Name:  <input type = 'text' name = 'first_name'>
-      From: <input type = 'date' name = 'from'>
-      To: <input type = 'date' name = 'to'>
+      Name:  <input type = 'text' name = 'first_name' id = 'filter'>
+      From: <input type = 'date' name = 'from' id = 'filter'>
+      To: <input type = 'date' name = 'to' id = 'filter'>
     </form><br><br>
 
     <table>
-      <tr>
+      <thead>
         <th>leads_id</th>
         <th>first name</th>
         <th>last name</th>
         <th>registered_datetime</th>
         <th>email</th>
-      </tr>
+      </thead>
     {%for lead in leads%}
-      <tr>
-        <form action = '/edit_lead/{{lead.id}}' method = 'POST' id = 'edit_lead_form{{lead.id}}'>
+    <form action = '/edit_lead/{{lead.id}}' method = 'POST' id = 'edit_lead_form{{lead.id}}'>
+        <tr>
           {% csrf_token %}
           <td>{{lead.id}}</td>
           <td><input type = 'text' name = 'first_name' value = '{{lead.first_name}}' id = 'edit_lead' class = '{{lead.id}}'></td>
           <td><input type = 'text' name = 'last_name' value = '{{lead.last_name}}' id = 'edit_lead' class = '{{lead.id}}'></td>
           <td>{{lead.registered_datetime}}</td>
           <td><input type = 'text' name = 'email' value = '{{lead.email}}' id = 'edit_lead' class = '{{lead.id}}'></td>
-        </form>
-      </tr>
-
+        </tr>
+      </form>
     {%endfor%}
-      <tr>
-        <form action = '/new_lead' method = 'POST' id = 'new_lead_form'>
+      <form action = '/new_lead' method = 'POST' id = 'new_lead_form'>
+        <tr>
           {% csrf_token %}
           <td></td>
           <td><input type = 'text' name = 'first_name' id = 'new_lead' class = 'new_lead_fn'></td>
           <td><input type = 'text' name = 'last_name' id = 'new_lead' class = 'new_lead_ln'></td>
           <td></td>
           <td><input type = 'text' name = 'email' id = 'new_lead' class = 'new_lead_e'></td>
-        </form>
-      </tr>
+        </tr>
+      </form>
     </table>
   </body>
 </html>

@@ -28,3 +28,7 @@ def edit_lead(request, lead_id):
     this_lead.save()
     print this_lead.email
     return HttpResponse('lead saved')
+
+def filter(request):
+    leads = Lead.objects.filter(first_name__startswith=request.POST['first_name'])
+    return render(request, 'ajax_app/all.html', {'leads': leads})
