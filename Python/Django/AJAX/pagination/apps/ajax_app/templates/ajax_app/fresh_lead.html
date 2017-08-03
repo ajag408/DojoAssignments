@@ -1,8 +1,8 @@
 {%if lead%}
   <tr>
-    <form action = '/edit_lead' method = 'POST' id = 'edit_lead_form'>
+    <form action = '/edit_lead/{{lead.id}}' method = 'POST' id = 'edit_lead_form'>
       {% csrf_token %}
-      <td>{{lead.id}}<input type = 'hidden' name = 'id' value = '{{lead.id}}'></td>
+      <td>{{lead.id}}</td>
       <td><input type = 'text' name = 'first_name' value = '{{lead.first_name}}' id = 'edit_lead'></td>
       <td><input type = 'text' name = 'last_name' value = '{{lead.last_name}}' id = 'edit_lead'></td>
       <td>{{lead.registered_datetime}}</td>

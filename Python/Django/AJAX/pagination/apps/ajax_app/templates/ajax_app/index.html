@@ -26,8 +26,9 @@
         });
 
         $(document).on('keyup', '#edit_lead', function(){
+          console.log($('#edit_lead_form'))
           $.ajax({
-            url: '/edit_lead',
+            url: $(this).prop('form')['action'],
             method: 'post',
             data: $('#edit_lead_form').serialize(),
             success: function(serverResponse){
@@ -57,15 +58,16 @@
       </tr>
     {%for lead in leads%}
       <tr>
-        <form action = '/edit_lead' method = 'POST' id = 'edit_lead_form'>
+        <form action = '/edit_lead/{{lead.id}}' method = 'POST' id = 'edit_lead_form'>
           {% csrf_token %}
-          <td>{{lead.id}}<input type = 'hidden' name = 'id' value = '{{lead.id}}'></td>
-          <td><input type = 'text' name = 'first_name' value = '{{lead.first_name}}' id = 'edit_lead'></td>
-          <td><input type = 'text' name = 'last_name' value = '{{lead.last_name}}' id = 'edit_lead'></td>
+          <td>{{lead.id}}</td>
+          <td><input type = 'text' name = 'first_name' value = '{{lead.first_name}}' id = 'edit_lead' class = '{{lead.id}}'></td>
+          <td><input type = 'text' name = 'last_name' value = '{{lead.last_name}}' id = 'edit_lead' class = '{{lead.id}}'></td>
           <td>{{lead.registered_datetime}}</td>
-          <td><input type = 'text' name = 'email' value = '{{lead.email}}' id = 'edit_lead'></td>
+          <td><input type = 'text' name = 'email' value = '{{lead.email}}' id = 'edit_lead' class = '{{lead.id}}'></td>
         </form>
       </tr>
+
     {%endfor%}
       <tr>
         <form action = '/new_lead' method = 'POST' id = 'new_lead_form'>

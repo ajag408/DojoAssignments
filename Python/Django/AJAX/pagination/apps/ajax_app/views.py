@@ -15,8 +15,8 @@ def add_lead(request):
     else:
         return render(request, 'ajax_app/fresh_lead.html')
 
-def edit_lead(request):
-    this_lead = Lead.objects.get(id = request.POST['id'])
+def edit_lead(request, lead_id):
+    this_lead = Lead.objects.get(id = lead_id)
     this_lead.first_name = request.POST['first_name']
     this_lead.last_name = request.POST['last_name']
     this_lead.email = request.POST['email']
