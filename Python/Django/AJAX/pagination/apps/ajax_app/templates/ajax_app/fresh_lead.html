@@ -1,12 +1,12 @@
 {%if lead%}
   <form action = '/edit_lead/{{lead.id}}' method = 'POST' id = 'edit_lead_form{{lead.id}}'>
-    <tr>
-      {{ csrf_input }}
-      <td>{{lead.id}}</td>
-      <td><input type = 'text' name = 'first_name' value = '{{lead.first_name}}' id = 'edit_lead' class = '{{lead.id}}'></td>
-      <td><input type = 'text' name = 'last_name' value = '{{lead.last_name}}' id = 'edit_lead' class = '{{lead.id}}'></td>
-      <td>{{lead.registered_datetime}}</td>
-      <td><input type = 'text' name = 'email' value = '{{lead.email}}' id = 'edit_lead' class = '{{lead.id}}'></td>
-    </tr>
+    <div class = 'divTableRow'>
+      {% csrf_token %}
+      <div class = 'divTableCell'>{{lead.id}}</div>
+      <div class = 'divTableCell'><input type = 'text' name = 'first_name' value = '{{lead.first_name}}' id = 'edit_lead' class = '{{lead.id}}'></div>
+      <div class = 'divTableCell'><input type = 'text' name = 'last_name' value = '{{lead.last_name}}' id = 'edit_lead' class = '{{lead.id}}'></div>
+      <div class = 'divTableCell'>{{lead.registered_datetime}}</div>
+      <div class = 'divTableCell'><input type = 'text' name = 'email' value = '{{lead.email}}' id = 'edit_lead' class = '{{lead.id}}'></div>
+    </div>
   </form>
 {%endif%}

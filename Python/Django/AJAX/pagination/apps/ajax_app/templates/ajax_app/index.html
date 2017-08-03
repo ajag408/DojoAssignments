@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Leads AJAX example</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'ajax_app/css/index.css' %}">
     <script
       src="http://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -12,17 +14,17 @@
       $(document).ready(function(){
         var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
         $(document).on('keyup', '#new_lead', function(){
-          function csrfSafeMethod(method) {
-              // these HTTP methods do not require CSRF protection
-              return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-          }
-          $.ajaxSetup({
-              beforeSend: function(xhr, settings) {
-                  if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                      xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                  }
-              }
-          });
+          // function csrfSafeMethod(method) {
+          //     // these HTTP methods do not require CSRF protection
+          //     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+          // }
+          // $.ajaxSetup({
+          //     beforeSend: function(xhr, settings) {
+          //         if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+          //             xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          //         }
+          //     }
+          // });
           $.ajax({
             url: '/new_lead',
             method: 'post',
@@ -32,24 +34,13 @@
                 $('.new_lead_fn').val('')
                 $('.new_lead_ln').val('')
                 $('.new_lead_e').val('')
-                $('table').after(serverResponse)
+                $('.divTableBody').append(serverResponse)
               }
             }
           });
         });
 
         $(document).on('keyup', '#edit_lead', function(){
-          function csrfSafeMethod(method) {
-              // these HTTP methods do not require CSRF protection
-              return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-          }
-          $.ajaxSetup({
-              beforeSend: function(xhr, settings) {
-                  if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                      xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                  }
-              }
-          });
           $.ajax({
             url: '/edit_lead/'+$(this).prop('className'),
             method: 'post',
@@ -67,8 +58,8 @@
             method: 'post',
             data: $(this).parent().serialize(),
             success: function(serverResponse){
-              $('table').html('')
-              $('table').html('<thead><th>leads_id</th><th>first name</th><th>last name</th><th>registered_datetime</th><th>email</th></thead>'+serverResponse)
+              $('.divTable').html('')
+              $('.divTable').html(serverResponse)
             }
           })
         });
@@ -84,7 +75,7 @@
       To: <input type = 'date' name = 'to' id = 'filter'>
     </form><br><br>
 
-    <p>leads_idfirst namelast nameregistered_datetimeemail</p>
+    <p>leads_id    first name   last name   registered_datetime email</p>
     <div class="divTable">
       <div class="divTableHeading"></div>
       <div class="divTableBody">
