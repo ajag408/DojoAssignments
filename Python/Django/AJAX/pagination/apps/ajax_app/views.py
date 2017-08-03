@@ -1,10 +1,13 @@
+from django.views.decorators.csrf import ensure_csrf_cookie
 from django.shortcuts import render, HttpResponse
 from django.contrib import messages
 from models import *
 # Create your views here.
+@ensure_csrf_cookie
 def index(request):
     leads = Lead.objects.all()
     return render(request, 'ajax_app/index.html', {'leads': leads})
+
 
 def add_lead(request):
     complete = Lead.objects.isValid(request.POST)
@@ -14,6 +17,7 @@ def add_lead(request):
         return render(request, 'ajax_app/fresh_lead.html', {'lead': lead})
     else:
         return render(request, 'ajax_app/fresh_lead.html')
+
 
 def edit_lead(request, lead_id):
     this_lead = Lead.objects.get(id = lead_id)

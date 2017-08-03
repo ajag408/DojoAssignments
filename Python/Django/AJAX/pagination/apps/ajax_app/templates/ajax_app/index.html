@@ -8,7 +8,9 @@
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous"></script>
     <script>
+
       $(document).ready(function(){
+        var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
         $(document).on('keyup', '#new_lead', function(){
           $.ajax({
             url: '/new_lead',
@@ -19,18 +21,29 @@
                 $('.new_lead_fn').val('')
                 $('.new_lead_ln').val('')
                 $('.new_lead_e').val('')
-                $('table').append(serverResponse)
+                $('table').after(serverResponse)
               }
             }
           });
         });
 
         $(document).on('keyup', '#edit_lead', function(){
-          console.log($('#edit_lead_form'))
+          console.log($(this));
+          function csrfSafeMethod(method) {
+              // these HTTP methods do not require CSRF protection
+              return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+          }
+          $.ajaxSetup({
+              beforeSend: function(xhr, settings) {
+                  if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                      xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                  }
+              }
+          });
           $.ajax({
-            url: $(this).prop('form')['action'],
+            url: '/edit_lead/'+$(this).prop('className'),
             method: 'post',
-            data: $('#edit_lead_form').serialize(),
+            data: $('#edit_lead_form'+$(this).prop('className')).serialize(),
             success: function(serverResponse){
               console.log(serverResponse)
             }
@@ -58,7 +71,7 @@
       </tr>
     {%for lead in leads%}
       <tr>
-        <form action = '/edit_lead/{{lead.id}}' method = 'POST' id = 'edit_lead_form'>
+        <form action = '/edit_lead/{{lead.id}}' method = 'POST' id = 'edit_lead_form{{lead.id}}'>
           {% csrf_token %}
           <td>{{lead.id}}</td>
           <td><input type = 'text' name = 'first_name' value = '{{lead.first_name}}' id = 'edit_lead' class = '{{lead.id}}'></td>
