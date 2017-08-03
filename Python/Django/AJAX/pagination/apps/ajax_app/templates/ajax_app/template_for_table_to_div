@@ -1,84 +1,97 @@
-<table>
-  <thead>
-    <th>leads_id</th>
-    <th>first name</th>
-    <th>last name</th>
-    <th>registered_datetime</th>
-    <th>email</th>
-  </thead>
+
+//main table formatted for conversion
+      <table>
+        <thead>
+          <th>leads_id</th>
+          <th>first name</th>
+          <th>last name</th>
+          <th>registered_datetime</th>
+          <th>email</th>
+        </thead>
 
 
-    <tr>
+          <tr>
 
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-
-
-
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-
-</table>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
 
 
-<table>
-  <thead>
-    <th>leads_id</th>
-    <th>first name</th>
-    <th>last name</th>
-    <th>registered_datetime</th>
-    <th>email</th>
-  </thead>
-{%for lead in leads%}
-<form action = '/edit_lead/{{lead.id}}' method = 'POST' id = 'edit_lead_form{{lead.id}}'>
-    <tr>
-      {% csrf_token %}
-      <td>{{lead.id}}</td>
-      <td><input type = 'text' name = 'first_name' value = '{{lead.first_name}}' id = 'edit_lead' class = '{{lead.id}}'></td>
-      <td><input type = 'text' name = 'last_name' value = '{{lead.last_name}}' id = 'edit_lead' class = '{{lead.id}}'></td>
-      <td>{{lead.registered_datetime}}</td>
-      <td><input type = 'text' name = 'email' value = '{{lead.email}}' id = 'edit_lead' class = '{{lead.id}}'></td>
-    </tr>
-  </form>
-{%endfor%}
-  <form action = '/new_lead' method = 'POST' id = 'new_lead_form'>
-    <tr>
-      {% csrf_token %}
-      <td></td>
-      <td><input type = 'text' name = 'first_name' id = 'new_lead' class = 'new_lead_fn'></td>
-      <td><input type = 'text' name = 'last_name' id = 'new_lead' class = 'new_lead_ln'></td>
-      <td></td>
-      <td><input type = 'text' name = 'email' id = 'new_lead' class = 'new_lead_e'></td>
-    </tr>
-  </form>
-</table>
 
-<p>leads_idfirst namelast nameregistered_datetimeemail</p>
-<div class="divTable">
-<div class="divTableHeading"></div>
-<div class="divTableBody">
-<div class="divTableRow">
-<div class="divTableCell">&nbsp;</div>
-<div class="divTableCell">&nbsp;</div>
-<div class="divTableCell">&nbsp;</div>
-<div class="divTableCell">&nbsp;</div>
-<div class="divTableCell">&nbsp;</div>
-</div>
-<div class="divTableRow">
-<div class="divTableCell">&nbsp;</div>
-<div class="divTableCell">&nbsp;</div>
-<div class="divTableCell">&nbsp;</div>
-<div class="divTableCell">&nbsp;</div>
-<div class="divTableCell">&nbsp;</div>
-</div>
-</div>
-</div>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+
+      </table>
+
+
+//main table raw
+    <table>
+      <thead>
+        <th>leads_id</th>
+        <th>first name</th>
+        <th>last name</th>
+        <th>registered_datetime</th>
+        <th>email</th>
+      </thead>
+    {%for lead in leads%}
+    <form action = '/edit_lead/{{lead.id}}' method = 'POST' id = 'edit_lead_form{{lead.id}}'>
+        <tr>
+          {% csrf_token %}
+          <td>{{lead.id}}</td>
+          <td><input type = 'text' name = 'first_name' value = '{{lead.first_name}}' id = 'edit_lead' class = '{{lead.id}}'></td>
+          <td><input type = 'text' name = 'last_name' value = '{{lead.last_name}}' id = 'edit_lead' class = '{{lead.id}}'></td>
+          <td>{{lead.registered_datetime}}</td>
+          <td><input type = 'text' name = 'email' value = '{{lead.email}}' id = 'edit_lead' class = '{{lead.id}}'></td>
+        </tr>
+      </form>
+    {%endfor%}
+      <form action = '/new_lead' method = 'POST' id = 'new_lead_form'>
+        <tr>
+          {% csrf_token %}
+          <td></td>
+          <td><input type = 'text' name = 'first_name' id = 'new_lead' class = 'new_lead_fn'></td>
+          <td><input type = 'text' name = 'last_name' id = 'new_lead' class = 'new_lead_ln'></td>
+          <td></td>
+          <td><input type = 'text' name = 'email' id = 'new_lead' class = 'new_lead_e'></td>
+        </tr>
+      </form>
+    </table>
+
+
+//main w/o tables
+    <p>leads_idfirst namelast nameregistered_datetimeemail</p>
+    <div class="divTable">
+      <div class="divTableHeading"></div>
+      <div class="divTableBody">
+      {%for lead in leads%}
+        <form action = '/edit_lead/{{lead.id}}' method = 'POST' id = 'edit_lead_form{{lead.id}}'>
+          <div class="divTableRow">
+            {% csrf_token %}
+            <div class="divTableCell">{{lead.id}}</div>
+            <div class="divTableCell"><input type = 'text' name = 'first_name' value = '{{lead.first_name}}' id = 'edit_lead' class = '{{lead.id}}'></div>
+            <div class="divTableCell"><input type = 'text' name = 'last_name' value = '{{lead.last_name}}' id = 'edit_lead' class = '{{lead.id}}'></div>
+            <div class="divTableCell">{{lead.registered_datetime}}</div>
+            <div class="divTableCell"><input type = 'text' name = 'email' value = '{{lead.email}}' id = 'edit_lead' class = '{{lead.id}}'></div>
+          </div>
+        </form>
+      {%endfor%}
+        <form action = '/new_lead' method = 'POST' id = 'new_lead_form'>
+          <div class="divTableRow">
+            {% csrf_token %}
+            <div class="divTableCell">&nbsp;</div>
+            <div class="divTableCell"><input type = 'text' name = 'first_name' id = 'new_lead' class = 'new_lead_fn'></div>
+            <div class="divTableCell"><input type = 'text' name = 'last_name' id = 'new_lead' class = 'new_lead_ln'></div>
+            <div class="divTableCell">&nbsp;</div>
+            <div class="divTableCell"><input type = 'text' name = 'email' id = 'new_lead' class = 'new_lead_e'></div>
+          </div>
+        </form>
+      </div>
+    </div>
