@@ -28,5 +28,7 @@ def edit_lead(request, lead_id):
     return HttpResponse('lead saved')
 
 def filter(request):
+    # three cases -- 1) text input only 2) both to and from date inputs 3) both 1 and 2
+    print request.POST
     leads = Lead.objects.filter(first_name__startswith=request.POST['first_name'])
     return render(request, 'ajax_app/all.html', {'leads': leads})

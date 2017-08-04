@@ -51,8 +51,8 @@
           });
         });
 
-        $('#filter').keyup(function(){
-
+        $('#filter1, #filter2, #filter3').on('input', function(){
+          console.log('detected')
           $.ajax({
             url: '/filter',
             method: 'post',
@@ -70,9 +70,9 @@
   <body>
     <form action = '/filter' method = 'POST'>
       {% csrf_token %}
-      Name:  <input type = 'text' name = 'first_name' id = 'filter'>
-      From: <input type = 'date' name = 'from' id = 'filter'>
-      To: <input type = 'date' name = 'to' id = 'filter'>
+      Name:  <input type = 'text' name = 'first_name' id = 'filter1'>
+      From: <input type = 'date' name = 'from' id = 'filter2'>
+      To: <input type = 'date' name = 'to' id = 'filter3'>
     </form><br><br>
 
     <p>leads_id    first name   last name   registered_datetime email</p>
