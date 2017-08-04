@@ -2,6 +2,8 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from django.shortcuts import render, HttpResponse
 from django.contrib import messages
 from models import *
+from datetime import datetime
+import pytz
 # Create your views here.
 @ensure_csrf_cookie
 def index(request):
@@ -28,7 +30,13 @@ def edit_lead(request, lead_id):
     return HttpResponse('lead saved')
 
 def filter(request):
-    # three cases -- 1) text input only 2) both to and from date inputs 3) both 1 and 2
-    print request.POST
-    leads = Lead.objects.filter(first_name__startswith=request.POST['first_name'])
+    dateFrom = request.POST['from']
+    dateFrom = datetime.strptime(dateFrom, '%Y-%m-%d')
+    dateFrom = pytz.utc.localize(dateFrom)
+
+    dateTo = request.POST['to']
+    dateTo = datetime.strptime(dateTo, '%Y-%m-%d')
+    dateTo = pytz.utc.localize(dateTo)
+
+    leads = Lead.objects.filter(first_name__startswith=request.POST['first_name'], registered_datetime__gt = dateFrom, registered_datetime__lt = dateTo)
     return render(request, 'ajax_app/all.html', {'leads': leads})

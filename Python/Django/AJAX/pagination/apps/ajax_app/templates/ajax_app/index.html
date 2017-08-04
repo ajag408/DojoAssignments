@@ -71,8 +71,8 @@
     <form action = '/filter' method = 'POST'>
       {% csrf_token %}
       Name:  <input type = 'text' name = 'first_name' id = 'filter1'>
-      From: <input type = 'date' name = 'from' id = 'filter2'>
-      To: <input type = 'date' name = 'to' id = 'filter3'>
+      From: <input type = 'date' name = 'from' value = '2017-08-01' id = 'filter2'>
+      To: <input type = 'date' name = 'to' value = '2027-08-01' id = 'filter3'>
     </form><br><br>
 
     <p>leads_id    first name   last name   registered_datetime email</p>
