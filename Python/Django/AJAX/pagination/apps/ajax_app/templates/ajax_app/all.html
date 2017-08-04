@@ -5,7 +5,7 @@
   <form action = '/edit_lead/{{lead.id}}' method = 'POST' id = 'edit_lead_form{{lead.id}}'>
     <div class="divTableRow">
       {% csrf_token %}
-      <div class="divTableCell">{{lead.id}}</div>
+      <div class="divTableCell">{{lead.id}}<input type = 'hidden' name = 'page' value = '{{lead.page}}'></div>
       <div class="divTableCell"><input type = 'text' name = 'first_name' value = '{{lead.first_name}}' id = 'edit_lead' class = '{{lead.id}}'></div>
       <div class="divTableCell"><input type = 'text' name = 'last_name' value = '{{lead.last_name}}' id = 'edit_lead' class = '{{lead.id}}'></div>
       <div class="divTableCell">{{lead.registered_datetime}}</div>
@@ -16,7 +16,7 @@
   <form action = '/new_lead' method = 'POST' id = 'new_lead_form'>
     <div class="divTableRow">
       {% csrf_token %}
-      <div class="divTableCell">&nbsp;</div>
+      <div class="divTableCell">&nbsp;<input type = 'hidden' name = 'page' value = '{{lead.page}}'></div>
       <div class="divTableCell"><input type = 'text' name = 'first_name' id = 'new_lead' class = 'new_lead_fn'></div>
       <div class="divTableCell"><input type = 'text' name = 'last_name' id = 'new_lead' class = 'new_lead_ln'></div>
       <div class="divTableCell">&nbsp;</div>

@@ -7,14 +7,21 @@ import pytz
 # Create your views here.
 @ensure_csrf_cookie
 def index(request):
-    leads = Lead.objects.all()
+    leads = Lead.objects.filter(page = 1)
     return render(request, 'ajax_app/index.html', {'leads': leads})
 
+def index2(request):
+    leads = Lead.objects.filter(page =2)
+    return render(request, 'ajax_app/index2.html', {'leads':leads})
+
+def index3(request):
+    leads = Lead.objects.filter(page=3)
+    return render(request, 'ajax_app/index3.html', {'leads': leads})
 
 def add_lead(request):
     complete = Lead.objects.isValid(request.POST)
     if complete is True:
-        Lead.objects.create(first_name = request.POST['first_name'], last_name = request.POST['last_name'], email = request.POST['email'])
+        Lead.objects.create(first_name = request.POST['first_name'], last_name = request.POST['last_name'], email = request.POST['email'], page = int(request.POST['page']))
         lead = Lead.objects.last()
         return render(request, 'ajax_app/fresh_lead.html', {'lead': lead})
     else:
@@ -29,7 +36,7 @@ def edit_lead(request, lead_id):
     this_lead.save()
     return HttpResponse('lead saved')
 
-def filter(request):
+def filter(request, page):
     dateFrom = request.POST['from']
     dateFrom = datetime.strptime(dateFrom, '%Y-%m-%d')
     dateFrom = pytz.utc.localize(dateFrom)
@@ -38,5 +45,5 @@ def filter(request):
     dateTo = datetime.strptime(dateTo, '%Y-%m-%d')
     dateTo = pytz.utc.localize(dateTo)
 
-    leads = Lead.objects.filter(first_name__startswith=request.POST['first_name'], registered_datetime__gt = dateFrom, registered_datetime__lt = dateTo)
+    leads = Lead.objects.filter(page = page, first_name__startswith=request.POST['first_name'], registered_datetime__gt = dateFrom, registered_datetime__lt = dateTo)
     return render(request, 'ajax_app/all.html', {'leads': leads})

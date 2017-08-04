@@ -30,6 +30,7 @@
             method: 'post',
             data: $('#new_lead_form').serialize(),
             success: function(serverResponse){
+              console.log(serverResponse)
               if(serverResponse.length >= 20){
                 $('.new_lead_fn').val('')
                 $('.new_lead_ln').val('')
@@ -51,30 +52,44 @@
           });
         });
 
-        $('#filter1, #filter2, #filter3').on('input', function(){
-          console.log('detected')
-          $.ajax({
-            url: '/filter',
-            method: 'post',
-            data: $(this).parent().serialize(),
-            success: function(serverResponse){
-              $('.divTable').html('')
-              $('.divTable').html(serverResponse)
+        $(document).on('input', ['#filter1', '#filter2', '#filter3'], function(){
+            var this_url = $(this).prop('activeElement')['id']
+            console.log($(this))
+            if(this_url == 'filter1'||this_url == 'filter2'||this_url == 'filter3'){
+              $.ajax({
+                url: '/' + this_url,
+                method: 'post',
+                data: $('#filterForm').serialize(),
+                success: function(serverResponse){
+                  $('.divTable').html('')
+                  $('.divTable').html(serverResponse)
+                }
+              })
             }
-          })
         });
+
+        $(document).on('click', 'a', function(e){
+          e.preventDefault()
+          console.log($(this).prop('href'))
+          $.ajax({
+            url: $(this).prop('href'),
+            success: function(serverResponse){
+              $('body').html(serverResponse)
+            }
+          });
+        })
 
       });
     </script>
   </head>
   <body>
-    <form action = '/filter' method = 'POST'>
+    <form action = '/filter1' method = 'POST' id = 'filterForm'>
       {% csrf_token %}
-      Name:  <input type = 'text' name = 'first_name' id = 'filter1'>
-      From: <input type = 'date' name = 'from' value = '2017-08-01' id = 'filter2'>
-      To: <input type = 'date' name = 'to' value = '2027-08-01' id = 'filter3'>
+      Name:  <input type = 'text' name = 'first_name' id = 'filter1' class = 'filter'>
+      From: <input type = 'date' name = 'from' value = '2017-08-01' id = 'filter2' class = 'filter'>
+      To: <input type = 'date' name = 'to' value = '2027-08-01' id = 'filter3' class = 'filter'>
     </form><br><br>
-
+    <p> <a href = '/'> 1 </a> |<a href = '/index2'> 2 </a>| <a href = '/index3'> 3 </a> </p>
     <p>leads_id    first name   last name   registered_datetime email</p>
     <div class="divTable">
       <div class="divTableHeading"></div>
@@ -83,7 +98,7 @@
         <form action = '/edit_lead/{{lead.id}}' method = 'POST' id = 'edit_lead_form{{lead.id}}'>
           <div class="divTableRow">
             {% csrf_token %}
-            <div class="divTableCell">{{lead.id}}</div>
+            <div class="divTableCell">{{lead.id}}<input type = 'hidden' name = 'page' value = '1'></div>
             <div class="divTableCell"><input type = 'text' name = 'first_name' value = '{{lead.first_name}}' id = 'edit_lead' class = '{{lead.id}}'></div>
             <div class="divTableCell"><input type = 'text' name = 'last_name' value = '{{lead.last_name}}' id = 'edit_lead' class = '{{lead.id}}'></div>
             <div class="divTableCell">{{lead.registered_datetime}}</div>
@@ -94,7 +109,7 @@
         <form action = '/new_lead' method = 'POST' id = 'new_lead_form'>
           <div class="divTableRow">
             {% csrf_token %}
-            <div class="divTableCell">&nbsp;</div>
+            <div class="divTableCell">&nbsp;<input type = 'hidden' name = 'page' value = '1'></div>
             <div class="divTableCell"><input type = 'text' name = 'first_name' id = 'new_lead' class = 'new_lead_fn'></div>
             <div class="divTableCell"><input type = 'text' name = 'last_name' id = 'new_lead' class = 'new_lead_ln'></div>
             <div class="divTableCell">&nbsp;</div>
