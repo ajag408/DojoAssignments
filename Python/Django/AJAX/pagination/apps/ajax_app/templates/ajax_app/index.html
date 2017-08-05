@@ -53,11 +53,10 @@
         });
 
         $(document).on('input', ['#filter1', '#filter2', '#filter3'], function(){
-            var this_url = $(this).prop('activeElement')['id']
-            console.log($(this))
-            if(this_url == 'filter1'||this_url == 'filter2'||this_url == 'filter3'){
+            this_key = $(this).prop('activeElement')['id']
+            if(this_key == 'filter1'||this_key == 'filter2'||this_key == 'filter3'){
               $.ajax({
-                url: '/' + this_url,
+                url: $(this).prop('activeElement')['form']['action'],
                 method: 'post',
                 data: $('#filterForm').serialize(),
                 success: function(serverResponse){
@@ -83,7 +82,7 @@
     </script>
   </head>
   <body>
-    <form action = '/filter1' method = 'POST' id = 'filterForm'>
+    <form action = '/filter1' method = 'POST' id = 'filterForm' class = '1'>
       {% csrf_token %}
       Name:  <input type = 'text' name = 'first_name' id = 'filter1' class = 'filter'>
       From: <input type = 'date' name = 'from' value = '2017-08-01' id = 'filter2' class = 'filter'>
