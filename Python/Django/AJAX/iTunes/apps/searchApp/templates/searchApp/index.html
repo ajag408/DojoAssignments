@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>iTunes Video Search</title>
+    <script
+      src="http://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+    {% load static%}
+    <script>
+      // Once more, formatting this in a slight more clear format (if longer vertically)
+      $(document).ready(
+        function( ) {
+            $('form').submit(
+              function( ) {
+                    // load up any gif you want, this will be shown while user is waiting for response
+                    var spinning_gif_src = "{% static 'searchApp/img/source.gif' %}"
+                    $('#results').html('<img src = ' + spinning_gif_src + '>')
+                    $.post(
+                        $(this).attr('action'),
+                        $(this).serialize( ),
+                        function(res) {
+                            // pay careful attention to the response object
+                            console.log('the response object:');
+                            console.log(res);
+                            var html_string = "";
+                            if (res.results.length !== 0) {
+                                html_string = "<video controls src='" + res.results[0].previewUrl + "'></video>";
+                            }
+                            else {
+                                html_string = "Not Found";
+                            }
+                            console.log('the html string:');
+                            console.log(html_string);
+                            $('#results').html(html_string)
+                        },
+                        'json');
+                    // don't forget this 'false' -- without it, the 'submit' cycle will continue, and the page will refresh
+                    return false;
+                }
+            );
+          }
+      );
+    </script>
+  </head>
+  <body>
+    <h1>Enter Artist's Name:</h1>
+    <form action="/get_movie" method="post">
+        {% csrf_token %}
+        <label for="user_input">Enter Artists's Name:</label>
+        <input id="user_input" name="user_input" type="search">
+        <input type="submit" value="search">
+    </form>
+    <div id="results"></div>
+  </body>
+</html>
