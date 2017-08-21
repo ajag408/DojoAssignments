@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Find all tweets!</title>
+    <script
+      src="http://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(
+        function( ) {
+          $('form').submit(
+            function( ) {
+                  // load up any gif you want, this will be shown while user is waiting for response
+
+                  $.post(
+                      $(this).attr('action'),
+                      $(this).serialize( ),
+                      function(res) {
+                          // pay careful attention to the response object
+                          console.log('the response object:');
+                          console.log(res);
+                      },
+                      'json');
+                  // don't forget this 'false' -- without it, the 'submit' cycle will continue, and the page will refresh
+                  return false;
+              }
+          );
+        }
+    );
+    </script>
+  </head>
+  <body>
+    <form action = '/find_tweets' method = 'POST' id = 'user_name'>
+      {% csrf_token %}
+      Enter user name: <input type = 'text' name = 'name'>
+      <input type = 'submit' value = 'Search'>
+    </form>
+  </body>
+</html>
