@@ -8,27 +8,20 @@
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous"></script>
     <script>
-      $(document).ready(
-        function( ) {
-          $('form').submit(
-            function( ) {
-                  // load up any gif you want, this will be shown while user is waiting for response
+      $(document).ready(function(){
 
-                  $.post(
-                      $(this).attr('action'),
-                      $(this).serialize( ),
-                      function(res) {
-                          // pay careful attention to the response object
-                          console.log('the response object:');
-                          console.log(res);
-                      },
-                      'json');
-                  // don't forget this 'false' -- without it, the 'submit' cycle will continue, and the page will refresh
-                  return false;
+          $('form').submit(function(e){
+            e.preventDefault()
+            $.ajax({
+              url: '/find_tweets',
+              method: 'post',
+              data: $(this).serialize(),
+              success: function(serverResponse){
+                console.log('will change html')
               }
-          );
-        }
-    );
+            });
+          });
+        });
     </script>
   </head>
   <body>
