@@ -1,0 +1,7 @@
+{%if tweets%}
+  {%for tweet in tweets%}
+    <p>{{tweet.text}}</p><br><br>
+  {%endfor%}
+{%else%}
+  <p>No tweets found...</p>
+{%endif%}

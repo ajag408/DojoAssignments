@@ -24,7 +24,6 @@ def tweets(request):
     print request.POST['name']
     try:
         tweets = api.user_timeline(request.POST['name'])
-        print type(tweets)
     except tweepy.TweepError:
-        pass
-    return redirect('/')
+        tweets = None
+    return render(request, 'twitter/tweets.html', {'tweets': tweets})
