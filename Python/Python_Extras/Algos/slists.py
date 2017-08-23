@@ -73,10 +73,14 @@ class SList(object):
         while runner.next != None:
             storeArr.append(runner.next)
             runner = runner.next
+        for node in storeArr:
+            node.next = None
         self.head = storeArr[len(storeArr)-1]
-        self.head.next = storeArr[len(storeArr)-2]
-        runner = self.head
-        for idxInc in range(2, len(storeArr)+1):
+        runner = storeArr[len(storeArr)-2]
+        self.head.next = runner
+        for idxInc in range(3, len(storeArr)+1):
+            runner.next = storeArr[len(storeArr) - idxInc]
+            runner = runner.next
 
 
 list = SList()
@@ -85,5 +89,5 @@ list.head.next = SLNode('Jon')
 list.head.next.next = SLNode('Steve')
 
 
-list.RemoveNode('Steve')
+
 list.PrintAllVals()
