@@ -83,6 +83,8 @@ class User(models.Model):
     birthday = models.DateTimeField(default=datetime.datetime.now())
     pw_hash = models.CharField(max_length =150)
     created_at = models.DateTimeField(auto_now_add = True)
+    def __repr__(self):
+        return "<User object: {} {} {}>".format(self.first_name, self.last_name, self.email)
 
 
     objects = UserManager()

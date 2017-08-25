@@ -6,7 +6,7 @@
   </head>
   <body>
     <h2> Add a new course </h2>
-    <form action="/courses" method="post">
+    <form action="/courses/courses" method="post">
       {% csrf_token %}
       Name:  <input type="text" name="name"><br><br>
       Description:  <textarea name="description" rows="8" cols="80"></textarea><br><br>

@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-
+from ..first_app.models import User
 # Create your models here.
 class CourseManager(models.Manager):
     def validator(self, postData):
@@ -15,6 +15,7 @@ class CourseManager(models.Manager):
 class Course(models.Model):
     name = models.CharField(max_length=100)
     created_at = models.DateField(auto_now_add=True)
+    users = models.ManyToManyField(User)
     objects = CourseManager()
     def __repr__(self):
         return "<Course object: {}>".format(self.name)
