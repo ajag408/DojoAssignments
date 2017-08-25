@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Success Page</title>
+  </head>
+  <body>
+    <form action = '/logout' method = 'POST'>
+      {%csrf_token%}
+      <input type = "submit" value="Log out">
+    </form><br><br>
+
+
+      <h1>Success! Welcome {{user.first_name}}!</h1>
+
+      <h3>{{message}}</h3>
+  </body>
+</html>
