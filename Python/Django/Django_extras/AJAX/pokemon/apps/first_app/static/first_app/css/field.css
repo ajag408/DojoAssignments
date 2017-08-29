@@ -1,0 +1,21 @@
+.icons{
+  width: 60%;
+  display:inline-block;
+  vertical-align:top;
+}
+
+.pokedex{
+  width:300px;
+  display:inline-block;
+}
+
+.pokedex_block{
+  height:600px;
+  width: 200px;
+  margin-bottom:100px;
+  border-style:solid;
+  border-width:thick;
+  border-color:red;
+  position:relative;
+
+}

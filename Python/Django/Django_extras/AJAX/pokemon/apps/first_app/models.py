@@ -86,3 +86,6 @@ class User(models.Model):
 
 
     objects = UserManager()
+
+# class Pokemon(models.Model):
+#     name = models.

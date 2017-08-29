@@ -5,7 +5,7 @@
     <title>Success Page</title>
   </head>
   <body>
-    <form action = '/logout' method = 'POST'>
+    <form action = '/login_reg/logout' method = 'POST'>
       {%csrf_token%}
       <input type = "submit" value="Log out">
     </form><br><br>
@@ -13,8 +13,6 @@
 
       <h1>Success! Welcome {{user.first_name}}!</h1>
 
-      <h3>{{message}}</h3>
-
-      <a href = ''>Start session</a>
+      <a href = '/login_reg/pokemon'>Start session</a>
   </body>
 </html>
