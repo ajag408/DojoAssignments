@@ -15,34 +15,35 @@
 
         $(document).on('click','img', function(){
 
-          $('.pokedex').removeClass('pokedex_block').addClass('pokedex_block');
-          $('.pokedex').append("<div class = 'pokedex_block'></div>");
+          // $('.pokedex').removeClass('pokedex_block').addClass('pokedex_block');
+          // $('.pokedex').append("<div class = 'pokedex_block'></div>");
           var selector = $(this).attr('id');
-          $.get('http://pokeapi.co/api/v1/pokemon/'+selector+'/', function(res) {
-              console.log(res);
 
-              var html_pokename = "<h1>" + res.name + "</h1>";
-
-              var html_poketypelist="";
-              html_poketypelist+="<h4>Types</h4>";
-              html_poketypelist += "<ul>";
-              for(var x=0;x<res.types.length;x++){
-                html_poketypelist+="<li>"+res.types[x].name+"</li>";
-              }
-              html_poketypelist+="</ul>";
-
-              html_pokeheight="";
-              html_pokeheight+="<h4>Height</h4>";
-              html_pokeheight+="<p>"+res.height+"</p>";
-
-              html_pokeweight="";
-              html_pokeweight+="<h4>Weight</h4>";
-              html_pokeweight+="<p>"+res.weight+"</p>";
-
-              $('.pokedex_block').html(html_pokename+"<img src='http://www.pokeapi.co/media/img/"+selector+".png'>" + html_poketypelist+html_pokeheight+html_pokeweight);
-
-
-          }, "json");
+          // $.get('http://pokeapi.co/api/v1/pokemon/'+selector+'/', function(res) {
+          //     console.log(res);
+          //
+          //     var html_pokename = "<h1>" + res.name + "</h1>";
+          //
+          //     var html_poketypelist="";
+          //     html_poketypelist+="<h4>Types</h4>";
+          //     html_poketypelist += "<ul>";
+          //     for(var x=0;x<res.types.length;x++){
+          //       html_poketypelist+="<li>"+res.types[x].name+"</li>";
+          //     }
+          //     html_poketypelist+="</ul>";
+          //
+          //     html_pokeheight="";
+          //     html_pokeheight+="<h4>Height</h4>";
+          //     html_pokeheight+="<p>"+res.height+"</p>";
+          //
+          //     html_pokeweight="";
+          //     html_pokeweight+="<h4>Weight</h4>";
+          //     html_pokeweight+="<p>"+res.weight+"</p>";
+          //
+          //     $('.pokedex_block').html(html_pokename+"<img src='http://www.pokeapi.co/media/img/"+selector+".png'>" + html_poketypelist+html_pokeheight+html_pokeweight);
+          //
+          //
+          // }, "json");
         });
 
       });

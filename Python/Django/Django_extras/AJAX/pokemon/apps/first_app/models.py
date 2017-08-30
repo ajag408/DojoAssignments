@@ -76,6 +76,12 @@ class UserManager(models.Manager):
         if email_check and password_check:
             return True
 
+
+class Pokemon(models.Model):
+    pokeID = models.IntegerField()
+    def __repr__(self):
+        return "<PokeID: {}>".format(self.pokeID)
+
 class User(models.Model):
     first_name = models.CharField(max_length = 50)
     last_name = models.CharField(max_length = 50)
@@ -83,9 +89,6 @@ class User(models.Model):
     birthday = models.DateTimeField(default=datetime.datetime.now())
     pw_hash = models.CharField(max_length =150)
     created_at = models.DateTimeField(auto_now_add = True)
-
+    pokemon = models.ManyToManyField(Pokemon)
 
     objects = UserManager()
-
-# class Pokemon(models.Model):
-#     name = models.
