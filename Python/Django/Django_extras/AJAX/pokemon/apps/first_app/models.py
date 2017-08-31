@@ -79,6 +79,7 @@ class UserManager(models.Manager):
 
 class Pokemon(models.Model):
     pokeID = models.IntegerField()
+    sprite = models.FileField(upload_to = 'static/first_app/img')
     def __repr__(self):
         return "<PokeID: {}>".format(self.pokeID)
 

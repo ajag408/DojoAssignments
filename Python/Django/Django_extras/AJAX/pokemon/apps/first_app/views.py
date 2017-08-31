@@ -4,6 +4,8 @@ from django.contrib import messages
 import requests
 # Create your views here.
 def home(request):
+    r = requests.get('http:/www.pokeapi.co/media/img/1.png')
+    print type(r)
     return render(request, 'first_app/home.html')
 
 def validate_register(request):

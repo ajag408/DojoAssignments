@@ -4,7 +4,7 @@ from django import forms
 
 # Create your views here.
 def handle_uploaded_file(f):
-    with open('./apps/fileUpload_app/upload', 'wb+') as destination:
+    with open('./apps/fileUpload_app/uploads', 'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
 
