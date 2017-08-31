@@ -8,17 +8,31 @@
     <script type="text/javascript" src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
     <script type="text/javascript">
       $(document).ready(function(){
-        for(var i = 1; i<=151; i++){
-          $(".icons").append("<img id="+i+" src='http://www.pokeapi.co/media/img/"+i+".png'>");
-
-        }
+        $.ajax({
+          url:'http://www.pokeapi.co/media/img/1.png',
+          method: 'get',
+          success: function(serverResponse){
+            console.log(serverResponse)
+          }
+        })
+        // for(var i = 1; i<=151; i++){
+        //   $(".icons").append("<img id="+i+" src='http://www.pokeapi.co/media/img/"+i+".png'>");
+        //
+        // }
 
         $(document).on('click','img', function(){
 
           // $('.pokedex').removeClass('pokedex_block').addClass('pokedex_block');
           // $('.pokedex').append("<div class = 'pokedex_block'></div>");
-          var selector = $(this).attr('id');
 
+          $.ajax({
+            url:'/login_reg/collect',
+            method: 'post',
+            data: $(this).attr('id'),
+            success: function(serverResponse){
+              console.log('hello')
+            }
+          });
           // $.get('http://pokeapi.co/api/v1/pokemon/'+selector+'/', function(res) {
           //     console.log(res);
           //

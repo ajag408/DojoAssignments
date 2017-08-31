@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from .models import User, UserManager
 from django.contrib import messages
+import requests
 # Create your views here.
 def home(request):
     return render(request, 'first_app/home.html')
@@ -72,3 +73,7 @@ def logout(request):
 
 def render_field(request):
     return render(request, 'first_app/field.html')
+
+def collect(request):
+    print request.POST
+    return HttpResponse('safe')
