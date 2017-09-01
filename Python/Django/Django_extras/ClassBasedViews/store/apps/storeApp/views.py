@@ -20,3 +20,29 @@ class Products(View):
             manufacturer = Manufacturer.objects.get(name = request.POST['manufacturer'])
             Product.objects.create(manufacturer = manufacturer, name = request.POST['name'], price = int(request.POST['price']), description = request.POST['description'])
         return redirect('/products')
+
+class Edit(View):
+    def get(self, request, id):
+        context = {
+            'product': Product.objects.get(id = id),
+            'manufacturers': Manufacturer.objects.all()
+        }
+        return render(request, 'storeApp/product.html', context)
+    def post(self, request, id):
+        isValid = Product.objects.isValid(request.POST)
+        print isValid
+        if isValid is True:
+            print 'valid'
+            product = Product.objects.get(id = id)
+            manufacturer = Manufacturer.objects.get(name=request.POST['manufacturer'])
+            product.manufacturer = manufacturer
+            product.name = request.POST['name']
+            product.price = int(request.POST['price'])
+            product.description = request.POST['description']
+            product.save()
+        return redirect('/products/' + id)
+
+def delete(request, id):
+    p = Product.objects.get(id=id)
+    p.delete()
+    return redirect('/products')

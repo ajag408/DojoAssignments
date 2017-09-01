@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{product.name}}</title>
+  </head>
+  <body>
+    <a href = '/products'>Go to Product Listing</a>
+    <h1>{{product.name}}</h1>
+    <form action = '/products/{{product.id}}' method = 'post'>
+        {% csrf_token %}
+        <p>Manufacturer/Brand:
+          <select name = 'manufacturer'>
+            <option selected = 'selected' value = '{{product.manufacturer.name}}'>{{product.manufacturer.name}}</option>
+            {%for brand in manufacturers%}
+            <option value = '{{brand.name}}'>{{brand.name}}</option>
+            {%endfor%}
+          </select></p>
+        <p>Product Name: <input type = 'text' name = 'name' value = '{{product.name}}'></p>
+        <p>Price ($): <input type = 'text' name = 'price' value = '{{product.price}}'></p>
+        <p>Description: <textarea name = 'description' value = '{{product.description}}'></textarea></p>
+          <input type = 'submit' value = 'Update'>
+      </form>
+      <button><a href = '/delete/{{product.id}}'>Delete</a></button>
+  </body>
+</html>

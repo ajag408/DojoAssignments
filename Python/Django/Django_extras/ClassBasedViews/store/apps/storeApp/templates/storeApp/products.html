@@ -22,7 +22,7 @@
         <td><a href = '/products/{{product.id}}'>{{product.name}}</a></td>
         <td>{{product.price}}</td>
         <td>{{product.created_at}}</td>
-        <td><a href = '/products/{{product.id}}'>Edit</a> Delete</td>
+        <td><a href = '/products/{{product.id}}'>Edit</a> <a href = '/delete/{{product.id}}'>Delete</a></td>
       </tr>
     {%endfor%}
   </table><br><br>
@@ -39,5 +39,6 @@
     <p>Price ($): <input type = 'text' name = 'price'></p>
     <p>Description: <textarea name = 'description'></textarea></p>
       <input type = 'submit' value = 'Add'>
+    </form>
   </body>
 </html>
