@@ -29,8 +29,9 @@ def index_partial():
 
 @app.route('/quotes/create', methods=['POST'])
 def create():
-    quote = request.form
-    query = "INSERT INTO quotes(author, quote) VALUES('{}','{}')".format(quote['author'], quote['quote'])
+    query = "INSERT INTO quotes(author, quote) VALUES('{}','{}')".format(request.form['author'], request.form['quote'])
     mysql.query_db(query)
-    return redirect('/quotes')
+    return_query = "SELECT * FROM quotes"
+    quotes = mysql.query_db(return_query)
+    return render_template('partials/quotes.html', quotes=quotes)
 app.run(debug=True)
