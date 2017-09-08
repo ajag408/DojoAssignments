@@ -10,6 +10,9 @@
       {% csrf_token %}
         <input type='file' name='file'>
         <input type='submit' value='Upload'>
-    </form>
+    </form><br><br>
+    {%if request.session.faces %}
+      <p>Found {{request.session.faces}} faces!</p>
+    {%endif%}
   </body>
 </html>
