@@ -3,16 +3,27 @@
   <head>
     <meta charset="utf-8">
     <title>Face Detection</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'face_detection_app/css/index.css' %}">
   </head>
   <body>
-    <h1>Upload png File:</h1>
-    <form action = '/upload' method='POST' enctype='multipart/form-data'>
-      {% csrf_token %}
-        <input type='file' name='file'>
-        <input type='submit' value='Upload'>
-    </form><br><br>
-    {%if request.session.faces %}
-      <p>Found {{request.session.faces}} faces!</p>
-    {%endif%}
+    <div class = 'content'>
+      <h1>Welcome to the face detection app!</h1>
+      <h2>Upload png File:</h2>
+      <form action = '/upload' method='POST' enctype='multipart/form-data'>
+        {% csrf_token %}
+          <input type='file' name='file'><br>
+          <input type='submit' value='Upload'>
+      </form><br><br>
+      {% if messages %}
+          {% for message in messages %}
+            {% if message.tags %}
+              <img src = '{{message}}' alt = 'photo'>
+            {% else %}
+              <p>{{ message }}</p>
+            {% endif %}
+          {% endfor %}
+      {% endif %}
+    </div>
   </body>
 </html>
