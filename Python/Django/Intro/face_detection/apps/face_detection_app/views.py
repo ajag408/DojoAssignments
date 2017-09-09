@@ -41,5 +41,5 @@ def upload(request):
 
         print("Found {0} faces!".format(len(faces)))
         messages.info(request, 'static/face_detection_app/img/upload.png')
-        # messages.info(request, 'Found ' + str(len(faces)) + ' faces!')
+        messages.info(request, 'Found ' + str(len(faces)) + ' faces!')
     return redirect('/')
