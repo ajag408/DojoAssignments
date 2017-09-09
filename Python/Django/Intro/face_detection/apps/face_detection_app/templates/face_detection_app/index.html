@@ -17,11 +17,9 @@
       </form><br><br>
       {% if messages %}
           {% for message in messages %}
-            {% if message.tags %}
-              <img src = '{{message}}' alt = 'photo'>
-            {% else %}
-              <p>{{ message }}</p>
-            {% endif %}
+            {{message}}
+            {% load static %}
+            <img src = '{{message}}' alt = 'photo'>
           {% endfor %}
       {% endif %}
     </div>
