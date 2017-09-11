@@ -17,9 +17,7 @@
       </form><br><br>
       {% if messages %}
           {% for message in messages %}
-            <div class = 'photo'>
-              <img src = '{{message}}' alt = 'photo'>
-            </div>
+              <p>{{message}}</p>
           {% endfor %}
       {% endif %}
     </div>
