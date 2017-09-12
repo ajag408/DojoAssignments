@@ -28,7 +28,7 @@ class UserManager(models.Manager):
     def check_email_2(self,email):
         users = User.objects.all()
         for user in users:
-            if user['email'] == email:
+            if user.email == email:
                 return False
 
         return True
