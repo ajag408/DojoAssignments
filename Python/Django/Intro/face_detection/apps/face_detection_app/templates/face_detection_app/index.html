@@ -9,14 +9,14 @@
   </head>
   <body>
     <div class = 'row'>
-      <img class = 'col-xs-2' src="{% static 'face_detection_app/img/drake.png' %}" alt="drake"/>
-      <img class = 'col-xs-2 col-xs-offset-8' src="{% static 'face_detection_app/img/abba.png' %}" alt="abba"/>
+      <img class = 'img-responsive col-xs-2' src="{% static 'face_detection_app/img/drake.png' %}" alt="drake"/>
+      <img class = 'img-responsive col-xs-2 col-xs-offset-8' src="{% static 'face_detection_app/img/abba.png' %}" alt="abba"/>
       <h1 class = 'text-center'>Welcome to the face detection app!</h1>
       <h2 class = 'text-center'>Upload png File:</h2>
 
     </div>
     <div class = 'row'>
-      <img class = 'col-xs-2' src="{% static 'face_detection_app/img/putin.png' %}" alt="putin"/>
+      <img class = 'img-responsive col-xs-2' src="{% static 'face_detection_app/img/putin.png' %}" alt="putin"/>
       <form class = 'form-group col-xs-4 col-xs-offset-2 text-center' action = '/upload' method='POST' enctype='multipart/form-data'>
         {% csrf_token %}
           <input class = 'form-control' type='file' name='file'><br>
@@ -24,7 +24,7 @@
       </form><br><br>
     </div>
     <div class = 'row'>
-      <img class = 'col-xs-2' src="{% static 'face_detection_app/img/kanye.png' %}" alt="kanye"/>
+      <img class = 'img-responsive col-xs-2' src="{% static 'face_detection_app/img/kanye.png' %}" alt="kanye"/>
 
       {% if messages %}
           {% for message in messages %}
