@@ -1,0 +1,39 @@
+Common soft skills:  
+
+-Strong verbal and written communication skills, a team-player able to take initiative, as well as follow a plan and work collaboratively in a multidisciplinary team.
+
+-Ability to use development tools with the analytical and problem solving skills necessary to troubleshoot and provide user support
+
+-Strong sense of responsibility and resolving issues proactively
+
+-Reliability, dependability, and strong motivation to respond to requests quickly
+
+-Manage multiple requests, assess priorities, and achieve solutions under deadlines
+
+-Solid technical aptitude and understanding, including technical agility
+
+-ability to work effectively under pressure and to meet deadlines under sometimes stressful conditions
+
+-Course work focused on application design and development
+
+-Excellent grasp of fundamental computer science concepts
+
+-Experience writing and shipping customer-facing code.
+
+-Proficiency in front and back end technologies such as HTML, CSS, Javascript, jQuery, SQL
+
+-Familiarity with database concepts.
+
+-Experience working with REST APIs.
+
+-Proficient Python programming languages.
+
+-Experience in AngularJS.
+
+-High standards for code quality, maintainability, and performance.
+
+-You must be self-managed and committed to working in a fast-paced environment. 
+
+-Hands-on experience
+
+- Professional and positive communication skills.
