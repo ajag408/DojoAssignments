@@ -1,0 +1,12 @@
+User Dashboard
+
+An application allowing users to log-in/register, manage other users, post messages and comments on each other's walls, and edit their personal information.  Includes full-fledged login/registration functionality including back-end validations.  Utilizes knowledge of MTV architecture and password encryption.
+
+
+1942
+
+A game designed entirely using HTML, CSS, and JavaScript.  Features include the ability to move the hero, collision detection, and an explosion sound when a bullet hits the target.  Built starting with an open-source project template on GitHub.
+
+Pac-Man
+
+A simple rendition of the popular game Pac-Man, with Pac-Woman making an appearance.  Highlights include the face of pac-man/pac-woman changing direction based on which way they are moving, a psedo-randomly moving ghost, and cherries worth 50 points. Click below to play. Move Pac-Man using the arrow keys and Pac-Woman using e-f-c-s.
