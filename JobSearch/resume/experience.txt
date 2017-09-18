@@ -1,0 +1,3 @@
+Etkin Lab
+
+Tested and debugged complex source code (brain-wave artifact rejection algorithm in MATLAB for a top Stanford psychiatry lab.  Introduced to the Python language and the Unix shell. Provided timely assistance in human research experiments targeting new treatments for mental disorders in veterans.
