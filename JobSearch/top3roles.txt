@@ -1,0 +1,25 @@
+1) Python Developer
+
+2) Junior Web Developer
+
+3) Full-Stack Developer
+
+
+List of all roles:
+
+	-Python Developer
+	-web developer/Junior web developer
+	-Full-Stack Developer
+	-front-end developer
+	-Software Developer
+	-Frameworks Specialist
+	-JavaScript developer
+	-Front-End Designer
+	-Interaction Designer 
+	-Mobile Developer
+	-Junior Software Engineer
+
+
+List of 41 tech job titles:
+
+https://skillcrush.com/2015/03/05/41-tech-job-titles/
