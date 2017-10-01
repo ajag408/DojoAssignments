@@ -1,0 +1,3 @@
+Summary:
+
+Freshly trained full-stack web developer with a solid comprehension of three full stacks (Python/Django, iOS, MEAN). Proficient in front-end development (HTML, CSS, JavaScript, jQuery, Responsive Web Design). Looking for challenging and meaningful opportunities.
