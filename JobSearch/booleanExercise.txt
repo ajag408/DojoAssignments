@@ -1,1 +1,0 @@
-flour AND sugar AND milk AND eggs AND (butter OR shortening OR “vegetable oil”) AND salt NOT “cake mix”

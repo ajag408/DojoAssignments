@@ -1,0 +1,15 @@
+Web Developer
+
+(html or html5) and (css3 or css) and javascript and (“Web Developer” or “Web Design” or xml or jquery or ajax)
+
+
+
+
+(“developer” or engineer or engineering or architect or architecture or “programmer” or “programming”)
+
+
+
+
+Junior Level
+
+(junior OR "recent* graduate" OR immersive OR student OR intern OR "1 year" OR 1+" NOT senior) 
