@@ -8,45 +8,45 @@
 
 .top{
   background-color: gray;
-  height: 15%;
+  height: 10rem;
 }
 
 .middle{
   background-color:gray;
-  height: 65%;
+  height: 10rem;
 }
 
 .bottom{
   background-color:yellow;
-  height: 15%;
+  height: 10rem;
 }
 
 @media only screen and (max-width: 480px){
   /* div{
      margin-bottom: -10px;
   } */
-  .device{
+  .device:after{
     content: "Phone: Width less than or equal to 480px";
   }
-  title{
+  .title:after{
     content: "Phone";
   }
 }
 
 @media only screen and (min-width: 481px){
-  .device{
+  .device:after{
     content: "Tablet: Width between 481px and 1023px";
   }
-  title{
+  .title:after{
     content: "Tablet";
   }
 }
 
 @media only screen and (min-width: 1024px){
-  .device{
+  .device:after{
     content: "Desktop: Width greater than or equal to 1024px";
   }
-  title{
+  .title:after{
     content: "Desktop";
   }
 }
