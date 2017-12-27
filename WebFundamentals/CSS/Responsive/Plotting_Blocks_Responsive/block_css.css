@@ -3,8 +3,10 @@
  padding: 0px;
 }
 #wrapper{
+ /* height: 550px;
+ width: 950px; */
  height: 550px;
- width: 950px;
+ width: 100%;
  background-color: silver;
  margin: 0px auto;
  padding: 10px;
@@ -14,14 +16,14 @@
  background-color: green;
  margin: 10px;
 }
-#navigation{
+/* #navigation{
  height: 250px;
  width: 200px;
  background-color: blue;
  display: inline-block;
  margin:5px;
  vertical-align: top;
-}
+} */
 #main_content{
  height: 350px;
  width: 705px;
@@ -31,6 +33,7 @@
  margin:0px;
  vertical-align: top;
 }
+
 .subcontents{
  height: 210px;
  width: 210px;
@@ -43,4 +46,23 @@
  width: 600px;
  background-color: purple;
  margin: 10px;
+}
+
+@media only screen and (max-width: 480px){
+
+}
+
+@media only screen and (min-width: 481px){
+
+}
+
+@media only screen and (min-width: 1024px){
+  #navigation{
+   height: 250px;
+   width: 200px;
+   background-color: blue;
+   display: inline-block;
+   margin:5px;
+   vertical-align: top;
+  }
 }
