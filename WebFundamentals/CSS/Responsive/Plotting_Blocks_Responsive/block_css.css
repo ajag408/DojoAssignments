@@ -5,7 +5,6 @@
 #wrapper{
  /* height: 550px;
  width: 950px; */
- height: 550px;
  width: 100%;
  background-color: silver;
  margin: 0px auto;
@@ -26,7 +25,7 @@
 } */
 #main_content{
  height: 350px;
- width: 705px;
+ /* width: 705px; */
  background-color: red;
  padding:10px;
  display: inline-block;
@@ -49,14 +48,26 @@
 }
 
 @media only screen and (max-width: 480px){
-
+  #wrapper{
+    height: 730px;
+  }
+  #main_content{
+    width: 100%;
+    margin: 10px;
+  }
 }
 
 @media only screen and (min-width: 481px){
-
+  #wrapper{
+    height: 750px;
+  }
 }
 
 @media only screen and (min-width: 1024px){
+  #wrapper{
+    height: 550px;
+  }
+
   #navigation{
    height: 250px;
    width: 200px;
