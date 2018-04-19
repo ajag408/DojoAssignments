@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+  </head>
+  <body>
+    <button id="someButton">Button</button><br><br>
+    <h1 id="displayName">My name is: </h1>
+    <script type="text/javascript">
+      // Link our variable "button" to a DOM element
+      var button = document.getElementById("someButton");
+
+      var nameplate = document.getElementById("displayName");
+      // add a DOM eventListener to that variable.
+      button.addEventListener("click", whatToDoOnClick);
+      // here we define the whatToDoOnClick function
+      function whatToDoOnClick() {
+        $.get("https://api.github.com/users/ajag408", displayName)
+        // Notice that displayName is a function that takes in 1 parameter (this is the data that comes back from the API)
+        function displayName(data) {
+          nameplate.innerHTML = "My name is: " + data['name'];
+        }
+      }
+    </script>
+  </body>
+</html>

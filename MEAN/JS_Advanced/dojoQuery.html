@@ -1,0 +1,48 @@
+<head>
+  <script>
+
+    // function $Dojo(classID){
+    //   function domMod(classID){
+    //     var libary = {};
+    //     library.name = name;
+    //     library.name.elements = {};
+    //     library.click = function(cc){
+    //
+    //     }
+    //   }
+    // }
+
+    // console.log(document.getElementById(someButton))
+  </script>
+</head>
+<body>
+  <button id="someButton">Button</button><br><br>
+  <h1 id="displayName">My name is: </h1>
+  <script>
+      // thisEl = document.getElementById("someButton");
+      // thisEl.addEventListener("click", function() { console.log("The button was clicked!") })
+
+    (function(){
+        function $Dojo(classID){
+          thisEl = document.getElementById(classID);
+
+          thisEl.click = function(callback){
+            thisEl.addEventListener("click", callback)
+          }
+
+          thisEl.hover = function(callback){
+            thisEl.addEventListener("mouseover", callback)
+            thisEl.addEventListener("mouseout", function(){ console.log("You just hovered out")})
+          }
+
+          return thisEl
+        }
+        window.$Dojo = $Dojo
+        return $Dojo
+    }());
+
+    $Dojo("someButton").click(function() { console.log("The button was clicked!") });
+
+  </script>
+</body>
+</html>
