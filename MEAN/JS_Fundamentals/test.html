@@ -2,9 +2,20 @@
   <body>
 
     <script>
-    (function() {
-       console.log( "I'm an immediate function!" );
-    }());
+    function personConstructor(name, age) {
+        this.name = name;
+        this.age = age;
+        this.greet = function() {
+            console.log("Hello my name is " + this.name + " and I am " + this.age + " years old!");
+        }
+    }
+    var emily = new personConstructor("Emily", 22);
+    // using this & new, we can now refer to the 'name' attribute of our instance!
+    emily.greet = function() {
+        console.log("My name is " + this.name + " and I'm the coolest ever!");
+      }
+
+    emily.greet();
    </script>
   </body>
 </html>
