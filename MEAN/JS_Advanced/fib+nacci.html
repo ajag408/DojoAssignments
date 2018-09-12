@@ -1,0 +1,32 @@
+<html>
+  <body>
+
+    <script>
+    function fib() {
+      var prev1 = 0
+      var prev2 = 1
+      var sum = null
+      function nacci() {
+        // do something to those variables here
+        if(sum == null){
+          console.log(1)
+          sum = 0;
+        }else{
+          sum = prev1 + prev2;
+          console.log(sum);
+          prev1 = prev2;
+          prev2 = sum
+        }
+      }
+      return nacci
+    }
+    var fibCounter = fib();
+    fibCounter() // should console.log "1"
+    fibCounter() // should console.log "1"
+    fibCounter() // should console.log "2"
+    fibCounter() // should console.log "3"
+    fibCounter() // should console.log "5"
+    fibCounter() // should console.log "8"
+   </script>
+  </body>
+</html>

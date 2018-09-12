@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <script>
+      function magic_multiply(x, y){
+          if(x == 0 && y == 0){
+            return 'All inputs 0'
+          }
+          if(Array.isArray(x)){
+            for(var i = 0; i<x.length; i++){
+              x[i] = x[i] * y;
+            }
+            return x;
+          }
+          if(typeof y === 'string'){
+            return 'Error: Can not multiply by string'
+          }
+          if(typeof x === 'string'){
+            ogString = x
+            for(i = 1; i < y; i++){
+              x = x + ogString;
+            }
+            return x;
+          }
+          x = x*y;
+          return x;
+      }
+
+      //Test 1
+        // let test1 = magic_multiply(5, 2);
+        // console.log(test1);
+
+      //Test 2
+        // let test2 = magic_multiply(0, 0);
+        // console.log(test2);
+
+      //Test 3
+        // let test3 = magic_multiply([1, 2, 3], 2);
+        // console.log(test3);
+
+      //Test 4
+        // let test4 = magic_multiply(7, "three");
+        // console.log(test4);
+
+      //Test 5
+        let test5 = magic_multiply("Brendo", 4);
+        console.log(test5);
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

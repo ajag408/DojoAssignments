@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <script>
+    class Ninja {
+        constructor(name) {
+            this.name = name;
+            this.speed = 3;
+            this.strength = 3;
+            this.health = 100;
+        }
+
+        sayName() {
+          console.log(`This ninja's name is ${ this.name }`);
+        }
+
+        showStats() {
+          console.log(`His strength is ${ this.strength }, his speed is ${ this.speed }, and his health is ${ this.health }`);
+        }
+        // simple method in the parent class
+        drinkSake(){
+            this.health = this.health + 10;
+        }
+    }
+
+    class Sensei extends Ninja {
+        constructor(name) {
+            super(name);
+            this.health = 200;
+            this.speed = 10;
+            this.strength = 10;
+            this.wisdom = 10;
+        }
+        // simple function in the child class
+        speakWisdom() {
+            // by using super, we can call the parent method
+            super.drinkSake();
+            console.log("Don't drink");
+        }
+    }
+    // example output
+    const superSensei = new Sensei("Master Splinter");
+    superSensei.speakWisdom();
+    superSensei.showStats();
+
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
