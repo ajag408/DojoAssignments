@@ -8,5 +8,8 @@ public class BasicJavaTest {
       // basic.printOdd255();
 
       // basic.printSum255();
+
+      // Object[] myArr = {1,3,5,7,9,13};
+      // basic.iterateArr(myArr);
     }
 }
