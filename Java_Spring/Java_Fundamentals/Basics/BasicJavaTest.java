@@ -11,5 +11,8 @@ public class BasicJavaTest {
 
       // Object[] myArr = {1,3,5,7,9,13};
       // basic.iterateArr(myArr);
+
+      // int[] myArr = {1,3,0,-3,-5,-7};
+      // basic.findMax(myArr);
     }
 }
