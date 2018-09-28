@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 public class BasicJavaTest {
     public static void main(String[] args) {
       BasicJava basic = new BasicJava();
@@ -14,5 +15,11 @@ public class BasicJavaTest {
 
       // int[] myArr = {1,3,0,-3,-5,-7};
       // basic.findMax(myArr);
+
+      // int[] myArr = {3,9,100};
+      // basic.getAve(myArr);
+
+      ArrayList<Integer> y = basic.arrOdd255();
+      System.out.println(y);
     }
 }

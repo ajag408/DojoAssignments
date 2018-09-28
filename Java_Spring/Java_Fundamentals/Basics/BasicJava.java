@@ -52,5 +52,21 @@ public class BasicJava{
       System.out.println(max);
     }
 
+    public void getAve(int[] arr){
+      int sum = 0;
+      for (int i = 0; i<arr.length; i++){
+        sum = sum + arr[i];
+      }
+      int ave = sum/arr.length;
+      System.out.println(ave);
+    }
 
-  }
+    public ArrayList<Integer> arrOdd255(){
+      ArrayList<Integer> y = new ArrayList<Integer>();
+      for (int i = 1; i<=255; i=i+2){
+        y.add(i);
+      }
+      return y;
+    }
+
+}
