@@ -69,4 +69,22 @@ public class BasicJava{
       return y;
     }
 
+    public void greaterThanY(int[] arr, int y){
+      int count = 0;
+      for (int i = 0; i<arr.length; i++){
+        if(arr[i]>y){
+          count++;
+        }
+      }
+      System.out.println(count);
+    }
+
+    public ArrayList<Integer> squareArr(int[] arr){
+      ArrayList<Integer> squareArr = new ArrayList<Integer>();
+      for (int i = 0; i<arr.length; i++){
+         squareArr.add(arr[i] * arr[i]);
+      }
+      return squareArr;
+    }
+
 }

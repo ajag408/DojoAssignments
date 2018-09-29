@@ -19,7 +19,14 @@ public class BasicJavaTest {
       // int[] myArr = {3,9,100};
       // basic.getAve(myArr);
 
-      ArrayList<Integer> y = basic.arrOdd255();
-      System.out.println(y);
+      // ArrayList<Integer> y = basic.arrOdd255();
+      // System.out.println(y);
+
+      // int[] myArr = {1,3,5,7};
+      // basic.greaterThanY(myArr,3);
+
+      int[] myArr = {1,5,10,-2};
+      ArrayList<Integer> returnSquareArr = basic.squareArr(myArr);
+      System.out.println(returnSquareArr);
     }
 }
