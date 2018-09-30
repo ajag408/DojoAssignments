@@ -25,8 +25,12 @@ public class BasicJavaTest {
       // int[] myArr = {1,3,5,7};
       // basic.greaterThanY(myArr,3);
 
+      // int[] myArr = {1,5,10,-2};
+      // ArrayList<Integer> returnSquareArr = basic.squareArr(myArr);
+      // System.out.println(returnSquareArr);
+
       int[] myArr = {1,5,10,-2};
-      ArrayList<Integer> returnSquareArr = basic.squareArr(myArr);
-      System.out.println(returnSquareArr);
+      ArrayList<Integer> posArr = basic.posArr(myArr);
+      System.out.println(posArr);
     }
 }

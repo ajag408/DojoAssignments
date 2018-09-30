@@ -87,4 +87,14 @@ public class BasicJava{
       return squareArr;
     }
 
+    public ArrayList<Integer> posArr(int[] arr){
+      ArrayList<Integer> posArr = new ArrayList<Integer>();
+      for (int i = 0; i<arr.length; i++){
+         if(arr[i]<0){
+           arr[i] = 0;
+         }
+         posArr.add(arr[i]);
+      }
+      return posArr;
+    }
 }
