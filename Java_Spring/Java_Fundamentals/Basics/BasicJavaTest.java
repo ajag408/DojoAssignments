@@ -29,8 +29,16 @@ public class BasicJavaTest {
       // ArrayList<Integer> returnSquareArr = basic.squareArr(myArr);
       // System.out.println(returnSquareArr);
 
-      int[] myArr = {1,5,10,-2};
-      ArrayList<Integer> posArr = basic.posArr(myArr);
-      System.out.println(posArr);
+      // int[] myArr = {1,5,10,-2};
+      // ArrayList<Integer> posArr = basic.posArr(myArr);
+      // System.out.println(posArr);
+
+      // int[] myArr = {0};
+      // ArrayList<Integer> tripleThreat = basic.minMaxAve(myArr);
+      // System.out.println(tripleThreat);
+
+      int[] myArr = {1, 5, 10, 7, -2};
+      ArrayList<Integer> shifted = basic.shiftFront(myArr);
+      System.out.println(shifted);
     }
 }

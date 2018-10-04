@@ -97,4 +97,36 @@ public class BasicJava{
       }
       return posArr;
     }
+
+    public ArrayList<Integer> minMaxAve(int[] arr){
+      int max = arr[0];
+      int min = arr[0];
+      int sum = 0;
+      for (int i = 1; i<arr.length; i++){
+        if(arr[i]>max){
+          max = arr[i];
+        }
+        if(arr[i]<min){
+          min = arr[i];
+        }
+        sum = sum + arr[i];
+      }
+      int ave = sum/arr.length;
+      ArrayList<Integer> minMaxAve = new ArrayList<Integer>();
+      minMaxAve.add(max);
+      minMaxAve.add(min);
+      minMaxAve.add(ave);
+      return minMaxAve;
+    }
+
+    public ArrayList<Integer> shiftFront(int[] arr){
+      ArrayList<Integer> shifted = new ArrayList<Integer>();
+      for (int i = 0; i<arr.length-1; i++){
+        shifted.add(arr[i+1]);
+      }
+      shifted.add(0);
+      return shifted;
+    }
+
+
 }
