@@ -31,4 +31,18 @@ public class PuzzleJava{
       return tenPlus;
     }
 
+    public ArrayList<String> puzzleTwo(ArrayList<String> arr){
+      Collections.shuffle(arr);
+      ArrayList<String> gtFive = new ArrayList<String>();
+      for(int i = 0; i<arr.size(); i++){
+        System.out.println(arr.get(i));
+        if(arr.get(i).length() > 5){
+          gtFive.add(arr.get(i));
+        }
+      }
+      return gtFive;
+
+    }
+
+
 }
