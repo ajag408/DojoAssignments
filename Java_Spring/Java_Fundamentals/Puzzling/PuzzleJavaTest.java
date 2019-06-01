@@ -12,9 +12,11 @@ public class PuzzleJavaTest {
       // ArrayList<Integer> tenPlus = puzzling.puzzleOne(myArr);
       // System.out.println(tenPlus);
 
-      ArrayList<String> myArr = new ArrayList<String>();
-      Collections.addAll(myArr, "Nancy", "Jinichi", "Fujibayashi", "Momochi", "Ishikawa");
-      ArrayList<String> names = puzzling.puzzleTwo(myArr);
-      System.out.println(names);
+      // ArrayList<String> myArr = new ArrayList<String>();
+      // Collections.addAll(myArr, "Nancy", "Jinichi", "Fujibayashi", "Momochi", "Ishikawa");
+      // ArrayList<String> names = puzzling.puzzleTwo(myArr);
+      // System.out.println(names);
+
+      
     }
 }
