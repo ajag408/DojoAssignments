@@ -62,4 +62,90 @@ public class DLL {
     	}
     	return store;
     }
+    
+    public boolean contains(int value) {
+    	Node current = this.head;
+    	while(current!=null) {
+    		if(current.value == value) {
+    			return true;
+    		}
+    		current = current.next;
+    	}
+    	return false;
+    }
+    
+    public int size() {
+    	Node current = this.head;
+    	int count = 0;
+    	while(current!=null) {
+    		count++;
+    		current = current.next;
+    	}
+    	return count;
+    }
+    
+    public void insertAt(Node newNode, int index) {
+    	Node current = this.head;
+    	int count = 0;
+    	if(index>this.size()) {
+    		System.out.println("List not that large");
+    	} else if (index == this.size()){
+    		this.push(newNode);
+    	} else if (index == 0) {
+    		newNode.next = this.head;
+    		this.head.previous = newNode;
+    		this.head = newNode;
+    	} else {
+    		while(count<index-1) {
+    			current = current.next;
+    			count++;
+    		}
+    		newNode.next = current.next;
+    		current.next = newNode;
+    		newNode.previous = newNode.next.previous;
+    		newNode.next.previous = newNode;
+    	}
+    	
+    }
+    
+    public void removeAt(int index) {
+    	int count = 0;
+    	if(index>this.size()) {
+    		System.out.println("Not valid index");
+    	} else if (index == this.size()) {
+    		this.tail = this.tail.previous;
+    		this.tail.next.previous = null;
+    		this.tail.next = null;
+    	} else if (index == 0) {
+    		this.head = this.head.next;
+    		this.head.previous.next = null;
+    		this.head.previous = null;
+    	} else {
+    		Node current = this.head;
+    		while(count<index) {
+    			current = current.next;
+    			count++;
+    		}
+    		current.previous.next = current.next;
+    		current.next.previous = current.previous;
+    		current.previous = null;
+    		current.next = null;
+    	}
+    }
+    
+    public boolean isPalindrome() {
+    	Node front = this.head;
+    	Node back = this.tail;
+    	for(int i = 0; i<Math.floor(this.size()/2); i++){
+    		if(front.value != back.value) {
+    			return false;
+    		}
+    		front = front.next;
+    		back = back.previous;
+    	}
+    	return true;
+    }
+    
+    
+    
 }
