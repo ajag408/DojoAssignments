@@ -1,5 +1,5 @@
 package com.codingdojo.tries;
-
+import java.util.Set;
 public class Trie {
     public Node root;
     
@@ -55,6 +55,27 @@ public class Trie {
     	} else {
     		return false;
     	}
-
+    }
+    
+//	Node currentNode = this.root;
+//	Set<Character> keys = this.root.children.keySet();
+//	for(Character key:keys) {
+//		Node child = currentNode.children.get(key);
+//		System.out.println(key);
+//	}
+    
+    public void printAllKeys() {
+    	recPrint(this.root);
+    }
+    
+    public void recPrint(Node current){
+    	if(current == null) {
+    		return;
+    	}
+    	Set<Character> keys = current.children.keySet();
+    	for(Character key:keys) {
+    		recPrint(current.children.get(key));
+    		System.out.println(key);
+    	}
     }
 }

@@ -14,10 +14,12 @@ public class TrieTest {
 //        System.out.println(trie.isPrefixValid("ca"));
 //        System.out.println(trie.isPrefixValid("ty"));
         
-        System.out.println(trie.isWordValid("car"));
-        System.out.println(trie.isWordValid("tr"));
-        System.out.println(trie.isWordValid("boy"));
-        System.out.println(trie.isWordValid("cat"));
+//        System.out.println(trie.isWordValid("car"));
+//        System.out.println(trie.isWordValid("tr"));
+//        System.out.println(trie.isWordValid("boy"));
+//        System.out.println(trie.isWordValid("cat"));
+        
+        trie.printAllKeys();
 	}
 
 }
