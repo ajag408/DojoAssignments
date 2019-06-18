@@ -19,7 +19,7 @@
     <h1>Checkerboard: <%= width %>w X <%= height %>h</h1>
     
     <div class = 'board'>
-    	<div class = 'col'></div>
+<!--     	<div class = 'col'></div>
     	    	<div class = 'col'></div>
     	    	    	<div class = 'col'></div>
     	    	    	    	<div class = 'col'></div>
@@ -28,7 +28,18 @@
     	    	    	    	    	    	    	<div class = 'col'></div>
     	    	    	    	    	    	    	    	<div class = 'col'></div>
     	    	    	    	    	    	    	    	    	<div class = 'col'></div>
-    	    	    	    	    	    	    	    	    	    	<div class = 'col'></div>
+    	    	    	    	    	    	    	    	    	    	<div class = 'col'></div> -->
+    <%
+    String color = "red";
+    int w = Integer.parseInt(width);
+    int h = Integer.parseInt(height);
+    %> 
+    <%for(int x = 0; x<w; x++){ %>
+    	<% if(x%2 == 1){%>
+    	<% color = "blue"; %>
+    	<% }else{ %>
+    	<% color = "red";} %>
+    	
     </div>
 </body>
 </html>
