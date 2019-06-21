@@ -34,21 +34,22 @@ public class Numbers extends HttpServlet {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String low = request.getParameter("low");
 		String high = request.getParameter("high");
+		HttpSession session = request.getSession();
 		if(low != null && high != null) {
-			HttpSession session = request.getSession();
+			
 			String range = "set";
 			session.setAttribute("range", range);
 			session.setAttribute("low", low);
 			session.setAttribute("high", high);
-			request.setAttribute("range", range);
-			request.setAttribute("low", low);
-			request.setAttribute("high", high);
+
 			Random r = new Random();
 			int min = Integer.parseInt(low);
 			int max = Integer.parseInt(high);
 			int number = r.nextInt((max-min)+1)+min;
 			System.out.println(number);
 			session.setAttribute("number", number);
+		} else {
+			session.setAttribute("range", null);
 		}
         RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/Interface.jsp");
         view.forward(request, response);
@@ -75,8 +76,6 @@ public class Numbers extends HttpServlet {
 		}
 //		System.out.println(message);
 		request.setAttribute("message", message);
-		request.setAttribute("low", session.getAttribute("low"));
-		request.setAttribute("high", session.getAttribute("high"));
         RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/Interface.jsp");
         view.forward(request, response);
 		

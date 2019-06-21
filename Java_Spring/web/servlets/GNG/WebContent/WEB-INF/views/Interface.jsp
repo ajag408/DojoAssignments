@@ -12,25 +12,26 @@
 
     <c:choose>
      <c:when test="${range == null }">
-     	<p>Please select a range by entering a low and a high in the url in the format "?low="yourPick"&high="yourPick"</p> 
+     	<p>Please select a range by entering a low and a high in the url in the format "?low=yourPick&high=yourPick"</p> 
      </c:when>
      <c:otherwise>
   		<p>I am thinking of a number between <c:out value="${low}"/>  and <c:out value="${high}"/> </p>
 		<p>Take a guess!</p>
-	
 		<c:out value="${message}"/>   
-        <c:when test="${message == 'Correct'}">
-     		<h2><c:out value="${number}"/> was the number!</h2>
-			<form action="/GNG/Numbers" method="GET">
-    	 	<button>Play again!</button>
-			</form>
-	 	</c:when>
-	 	<c:otherwise>
-	    	<form action="/GNG/Numbers" method="POST">
-    	  	<input type="text" name="number">
-    	  	<button>Submit</button>
-	    	</form>
-	  	</c:otherwise>
+		<c:choose>
+        	<c:when test="${message == 'Correct'}">
+     			<h2><c:out value="${number}"/> was the number!</h2>
+				<form action="/GNG/Numbers" method="GET">
+    	 		<button>Play again!</button>
+				</form>
+	 		</c:when>
+	 		<c:otherwise>
+	    		<form action="/GNG/Numbers" method="POST">
+    	  		<input type="text" name="number">
+    	  		<button>Submit</button>
+	    		</form>
+	  		</c:otherwise>
+	  	</c:choose>
 	  </c:otherwise>
 	</c:choose>
 </body>
