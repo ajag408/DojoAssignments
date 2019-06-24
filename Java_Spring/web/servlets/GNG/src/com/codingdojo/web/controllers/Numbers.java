@@ -36,12 +36,12 @@ public class Numbers extends HttpServlet {
 		String high = request.getParameter("high");
 		HttpSession session = request.getSession();
 		if(low != null && high != null) {
-			
 			String range = "set";
 			session.setAttribute("range", range);
 			session.setAttribute("low", low);
 			session.setAttribute("high", high);
-
+			session.setAttribute("tries", 5);
+			session.setAttribute("playing", "yes");
 			Random r = new Random();
 			int min = Integer.parseInt(low);
 			int max = Integer.parseInt(high);
@@ -65,17 +65,26 @@ public class Numbers extends HttpServlet {
 		int guess = Integer.parseInt(request.getParameter("number"));
 //		System.out.println("the guess is: " + guess);
 		int number = (int) session.getAttribute("number");
+		int tries = (int) session.getAttribute("tries");
 		String message = null;
-		if(guess<number) {
+		if(guess == number) {
+			message = "Correct";
+			session.setAttribute("playing", "no");
+		} else if(tries<=1) {
+			message = "You have lost";
+			session.setAttribute("playing", "no");
+//			request.setAttribute("number", number);
+		} else if(guess<number) {
+			tries = tries-1;
+//			sessoin.setAttribute("tries", tries)
 			message = "Too low";
 		} else if (guess>number) {
+			tries = tries-1;
 			message = "Too high";
-		} else if(guess == number) {
-			message = "Correct";
-			request.setAttribute("number", number);
 		}
-//		System.out.println(message);
+
 		request.setAttribute("message", message);
+		session.setAttribute("tries", tries);
         RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/Interface.jsp");
         view.forward(request, response);
 		

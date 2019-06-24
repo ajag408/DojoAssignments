@@ -19,13 +19,14 @@
 		<p>Take a guess!</p>
 		<c:out value="${message}"/>   
 		<c:choose>
-        	<c:when test="${message == 'Correct'}">
+        	<c:when test="${playing == 'no'}">
      			<h2><c:out value="${number}"/> was the number!</h2>
 				<form action="/GNG/Numbers" method="GET">
     	 		<button>Play again!</button>
 				</form>
 	 		</c:when>
 	 		<c:otherwise>
+	 			<p><b><i>You have <c:out value="${tries}"/> guesses left!</i></b></p>
 	    		<form action="/GNG/Numbers" method="POST">
     	  		<input type="text" name="number">
     	  		<button>Submit</button>
