@@ -16,5 +16,11 @@ public class Team {
 		playerList.add(player);
 	}
 	
+	public void deletePlayer(int id) {
+		playerList.remove(id);
+	}
 	
+	public int getPlayerCount() {
+		return playerList.size();
+	}
 }
