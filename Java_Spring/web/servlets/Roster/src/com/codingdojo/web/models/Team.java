@@ -4,12 +4,14 @@ import java.util.ArrayList;
 public class Team {
 	private String name;
 	ArrayList<Player> playerList = new ArrayList<Player>();
+	private int id;
 	
 	public Team() {
 	}
 	
-	public Team(String name) {
+	public Team(String name, int id) {
 		this.name = name;
+		this.id = id;
 	}
 	
 	public void addPlayer(Player player) {
