@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Home
+ * Servlet implementation class NewTeam
  */
-@WebServlet("/Home")
-public class Home extends HttpServlet {
+@WebServlet("/NewTeam")
+public class NewTeam extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Home() {
+    public NewTeam() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,8 +30,7 @@ public class Home extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/showRoster.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/newTeam.jsp");
         view.forward(request, response);
 	}
 
@@ -40,7 +39,9 @@ public class Home extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+//		doGet(request, response);
+		
+		
 	}
 
 }
