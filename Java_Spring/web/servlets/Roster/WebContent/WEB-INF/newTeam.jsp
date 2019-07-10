@@ -11,7 +11,7 @@
 	<p>Create a new Team</p>
 	
 	<br>
-	<p>Team name:<form action="/Roster/NewTeam" method="POST">
+	<p>Team name:<form action="/Roster/teams" method="POST">
     	  		<input type="text" name="teamName">
     	  		<button>Create</button>
 	    		</form>
