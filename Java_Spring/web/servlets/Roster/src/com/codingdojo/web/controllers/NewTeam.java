@@ -34,8 +34,21 @@ public class NewTeam extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/newTeam.jsp");
-        view.forward(request, response);
+		HttpSession session = request.getSession();
+		if(request.getParameter("id") != null) {
+			int id = Integer.parseInt(request.getParameter("id"));
+			if(request.getParameter("delete") != null) {
+				Roster roster = (Roster) session.getAttribute("roster");
+				roster.deleteTeam(id);
+				session.setAttribute("roster", roster);
+				response.sendRedirect("/Roster/Home");
+			} else {
+				System.out.println("team view");
+			}
+		} else {
+	        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/newTeam.jsp");
+	        view.forward(request, response);
+		}
 	}
 
 	/**
@@ -50,7 +63,7 @@ public class NewTeam extends HttpServlet {
 		Team team = new Team(teamName, id);
 		Roster roster = (Roster) session.getAttribute("roster");
 		roster.addTeam(team);
-		id++;
+		id = id + 1;
 		session.setAttribute("roster", roster);
 		session.setAttribute("teamID", id);
 		response.sendRedirect("/Roster/Home");

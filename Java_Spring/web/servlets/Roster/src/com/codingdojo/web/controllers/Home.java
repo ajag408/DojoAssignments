@@ -34,8 +34,8 @@ public class Home extends HttpServlet {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
         HttpSession session = request.getSession();
-        System.out.println("hello");
-        System.out.println(session.getAttribute("roster"));
+//        System.out.println("hello");
+//        System.out.println(session.getAttribute("roster"));
         if(session.getAttribute("roster") == null) {
         	Roster roster = new Roster();
         	int teamCount = 0;
