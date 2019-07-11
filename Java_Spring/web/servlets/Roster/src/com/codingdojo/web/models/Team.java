@@ -18,6 +18,10 @@ public class Team {
 		return name;
 	}
 	
+	public int getID() {
+		return id;
+	}
+	
 	public void addPlayer(Player player) {
 		playerList.add(player);
 	}

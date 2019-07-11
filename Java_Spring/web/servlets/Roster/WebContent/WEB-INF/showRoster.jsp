@@ -47,7 +47,7 @@ tr:nth-child(even) {
        			 <c:out value="${team.getPlayerCount()}"/>
        		</td>
        		<td>
-       			<a>Details</a> <a>Delete</a>
+       			<a>Details</a> <a href = "/Roster/teams?id=${team.getID()}&delete=true">Delete</a>
        		</td>
         </tr>
       </c:forEach>
