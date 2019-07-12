@@ -28,4 +28,8 @@ public class Player {
 		return age;
 	}
 	
+	public int getID() {
+		return this.id;
+	}
+	
 }

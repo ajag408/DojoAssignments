@@ -22,32 +22,34 @@ tr:nth-child(even) {
 }
 </style>
 <meta charset="UTF-8">
-<title>Roster</title>
+<title>Team</title>
 </head>
 <body>
-	<p>Prototype Roster</p>
-	<a href = '/Roster/teams'>New Team</a>
-	
+	<p>
+        <c:out value="${team.getName()}"/>
+	</p>
+	<a href = "/Roster/players?id=${team.getID()}">New <c:out value="${team.getName()}"/></a>
 	<br>
-	<br>
-	<br>
-	
 	<table>
   		<tr>
-    		<th>Team</th>
-    		<th>Players</th> 
-    		<th>Action</th>
+    		<th>First Name</th>
+    		<th>Last Name</th> 
+    		<th>Age</th>
+    		<th>Actions</th>
   		</tr>
-  	  <c:forEach var="team" items="${roster.teamList}">
+  	  <c:forEach var="player" items="${team.playerList}">
   	    <tr>
   	    	<td>
-       			 <c:out value="${team.getName()}"/>
+       			 <c:out value="${player.getFirstName()}"/>
        		</td>
        		<td>
-       			 <c:out value="${team.getPlayerCount()}"/>
+       			 <c:out value="${player.getLastName()}"/>
        		</td>
        		<td>
-       			<a href = "/Roster/teams?id=${team.getID()}">Details</a> <a href = "/Roster/teams?id=${team.getID()}&delete=true">Delete</a>
+       			 <c:out value="${player.getAge()}"/>
+       		</td>
+       		<td>
+       			<a href = "/Roster/players?id=${player.getID()}&delete=true">Delete</a>
        		</td>
         </tr>
       </c:forEach>
