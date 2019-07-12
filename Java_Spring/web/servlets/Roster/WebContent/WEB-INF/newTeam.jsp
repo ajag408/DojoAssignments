@@ -11,6 +11,7 @@
 	<p>Create a new Team</p>
 	
 	<br>
+	<i><c:out value="${error}"/></i>
 	<p>Team name:<form action="/Roster/teams" method="POST">
     	  		<input type="text" name="teamName">
     	  		<button>Create</button>

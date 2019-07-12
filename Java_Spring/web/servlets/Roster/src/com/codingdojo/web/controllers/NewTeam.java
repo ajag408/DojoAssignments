@@ -49,6 +49,7 @@ public class NewTeam extends HttpServlet {
 		        view.forward(request, response);
 			}
 		} else {
+			session.setAttribute("error", null);
 	        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/newTeam.jsp");
 	        view.forward(request, response);
 		}
@@ -62,14 +63,20 @@ public class NewTeam extends HttpServlet {
 //		doGet(request, response);
 		HttpSession session = request.getSession();
 		String teamName = request.getParameter("teamName");
-		int id = (int) session.getAttribute("teamID");
-		Team team = new Team(teamName, id);
-		Roster roster = (Roster) session.getAttribute("roster");
-		roster.addTeam(team);
-		id = id + 1;
-		session.setAttribute("roster", roster);
-		session.setAttribute("teamID", id);
-		response.sendRedirect("/Roster/Home");
+		if(teamName.length() <= 2) {
+			session.setAttribute("error", "Please enter a name with more than two chars");
+	        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/newTeam.jsp");
+	        view.forward(request, response);
+		} else {
+			int id = (int) session.getAttribute("teamID");
+			Team team = new Team(teamName, id);
+			Roster roster = (Roster) session.getAttribute("roster");
+			roster.addTeam(team);
+			id = id + 1;
+			session.setAttribute("roster", roster);
+			session.setAttribute("teamID", id);
+			response.sendRedirect("/Roster/Home");
+		}
 	}
 
 }

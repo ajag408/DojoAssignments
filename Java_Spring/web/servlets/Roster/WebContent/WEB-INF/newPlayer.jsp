@@ -9,6 +9,9 @@
 </head>
 <body>
 	<p>Add a player to team <c:out value="${team.getName()}"/></p>
+	<i><c:out value="${error1}"/></i>
+	<i><c:out value="${error2}"/></i>
+	<i><c:out value="${error3}"/></i>
 	<form action="/Roster/players" method="POST">
     	First Name: <input type="text" name="firstName">
     	Last Name: <input type="text" name="lastName">

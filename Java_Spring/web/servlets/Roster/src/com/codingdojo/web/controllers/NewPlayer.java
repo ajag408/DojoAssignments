@@ -35,8 +35,9 @@ public class NewPlayer extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession session = request.getSession();
 		if(request.getParameter("delete") != null) {
-			HttpSession session = request.getSession();
+
 			int id = Integer.parseInt(request.getParameter("id"));
 			Team thisTeam = (Team) session.getAttribute("team");
 			thisTeam.deletePlayer(id);
@@ -44,6 +45,9 @@ public class NewPlayer extends HttpServlet {
 			session.setAttribute("team", thisTeam);
 			response.sendRedirect("/Roster/teams?id=" + urlID);
 		} else {
+			session.setAttribute("error1", null);
+			session.setAttribute("error2", null);
+			session.setAttribute("error3", null);
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/newPlayer.jsp");
 			view.forward(request, response);
 		}
@@ -60,12 +64,27 @@ public class NewPlayer extends HttpServlet {
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		int age = Integer.parseInt(request.getParameter("age"));
+		if(firstName.length()<=2 || lastName.length()<=2 || age<18) {
+			if(firstName.length() <= 2) {
+				session.setAttribute("error1", "Please enter a first name with more than two chars");
+			}
+			if(lastName.length()<=2) {
+				session.setAttribute("error2", "Please enter a last name with more than two chars");
+			}			
+			if(age<18) {
+				session.setAttribute("error3", "Player has to be 18 or older");
+			}
+	        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/newPlayer.jsp");
+	        view.forward(request, response);
+		} else {
+
 		int id = thisTeam.getCurrentPlayerID();
 		Player player = new Player(firstName, lastName, age, id);
 		thisTeam.addPlayer(player);
 		String urlID = Integer.toString(thisTeam.getID());
 		session.setAttribute("team", thisTeam);
 		response.sendRedirect("/Roster/teams?id=" + urlID);
+		}
 	}
 
 }
