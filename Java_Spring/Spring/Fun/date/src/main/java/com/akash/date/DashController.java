@@ -27,7 +27,12 @@ public class DashController {
          return "date.jsp";
     }
     @RequestMapping("/time")
-    public String time() { 
-            return "Python/Django was awesome!";
+    public String time(Model model) { 
+   	 	LocalDateTime myDateObj = LocalDateTime.now();
+   	 	DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("h:m a");
+   	 	String time = myDateObj.format(timeFormatter);
+//   	 	System.out.println(time);
+   	 	model.addAttribute("time", time);
+        return "time.jsp";
     }
 }

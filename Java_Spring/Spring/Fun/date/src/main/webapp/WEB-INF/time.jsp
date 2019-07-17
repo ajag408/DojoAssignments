@@ -4,11 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="css/time-style.css">
+<script type="text/javascript" src="js/time.js"></script>
 <meta charset="UTF-8">
-<title>Time Dashboard</title>
+<title>Time</title>
 </head>
 <body>
-	<a href = "/date">Date Template</a>
-	<a href = "/time">Time Template</a>
+<h1><c:out value="${time}"/></h1>
 </body>
 </html>

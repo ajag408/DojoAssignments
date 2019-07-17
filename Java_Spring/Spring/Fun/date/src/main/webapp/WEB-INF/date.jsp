@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="css/date-style.css">
+<script type="text/javascript" src="js/date.js"></script>
 <meta charset="UTF-8">
 <title>Date</title>
 </head>
