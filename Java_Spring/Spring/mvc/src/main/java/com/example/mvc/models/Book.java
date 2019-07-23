@@ -23,7 +23,7 @@ public class Book {
     private String description;
     @Size(min = 3, max = 40)
     private String language;
-    @Min(100)
+    @Min(1)
     private Integer numberOfPages;
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
@@ -38,9 +38,52 @@ public class Book {
         this.language = lang;
         this.numberOfPages = pages;
     }
+    	
     
-    // other getters and setters removed for brevity
-    @PrePersist
+ 
+    public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getLanguage() {
+		return language;
+	}
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+	public Integer getNumberOfPages() {
+		return numberOfPages;
+	}
+	public void setNumberOfPages(Integer numberOfPages) {
+		this.numberOfPages = numberOfPages;
+	}
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+	@PrePersist
     protected void onCreate(){
         this.createdAt = new Date();
     }
