@@ -34,7 +34,11 @@ public class BookService {
         }
     }
     
-    public Book updateBook(Long id, String title, String desc, String lang, int numOfPages) {
+    
+    public void deleteBook(Long id) {
+    	bookRepository.deleteById(id);
+    }
+	public Book updateBook(Long id, String title, String desc, String lang, Integer numOfPages) {
     	Book book = this.findBook(id);
     	if(book != null) {
     		book.setTitle(title);
@@ -45,9 +49,5 @@ public class BookService {
     	} else {
     		return null;
     	}
-    }
-    
-    public void deleteBook(Long id) {
-    	bookRepository.deleteById(id);
-    }
+	}
 }
