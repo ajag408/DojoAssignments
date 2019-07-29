@@ -6,32 +6,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Languages</title>
+<title>${language.name}</title>
 </head>
 <body>
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Creator</th>
-            <th>Version</th>
-            <th>action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <c:forEach items="${languages}" var="language">
-        <tr>
-            <td><a href = "/languages/${language.id}"><c:out value="${language.name}"/></a></td>
-            <td><c:out value="${language.creator}"/></td>
-            <td><c:out value="${language.version}"/></td>
-            <td><a href = "/languages/delete/${language.id}">delete</a> <a href = "/languages/edit/${language.id}">edit</a></td>
-        </tr>
-        </c:forEach>
-    </tbody>
-</table>
+<a href = "/languages/delete/${language.id}">Delete</a>
+<a href = "/languages">Dashboard</a>
 
-
-<form:form action="/languages" method="post" modelAttribute="language">
+<form:form action="/languages/${language.id}" method="post" modelAttribute="language">
+    <input type="hidden" name="_method" value="put">
     <p>
         <form:label path="name">Name</form:label>
         <form:errors path="name"/>
@@ -46,8 +28,8 @@
         <form:label path="version">Version</form:label>
         <form:errors path="version"/>
         <form:input path="version"/>
-    </p>   
+    </p>    
     <input type="submit" value="Submit"/>
-</form:form>  
+</form:form>
 </body>
 </html>
