@@ -24,7 +24,7 @@
             <td><c:out value="${language.name}"/></td>
             <td><c:out value="${language.creator}"/></td>
             <td><c:out value="${language.version}"/></td>
-            <td><a>delete</a> <a>edit</a></td>
+            <td><a href = "/languages/delete/${language.id}">delete</a> <a>edit</a></td>
         </tr>
         </c:forEach>
     </tbody>

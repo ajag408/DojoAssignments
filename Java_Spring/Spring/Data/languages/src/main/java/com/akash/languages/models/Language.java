@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 @Entity
 @Table(name="languages")
@@ -22,7 +21,7 @@ public class Language {
     private String name;
     @Size(min = 2, max = 20, message = "between 2 and 20 chars")
     private String creator;
-    @NotNull(message = "Version cannot be null")
+    @Size(min=1, message = "Version cannot be null")
     private String version;
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
