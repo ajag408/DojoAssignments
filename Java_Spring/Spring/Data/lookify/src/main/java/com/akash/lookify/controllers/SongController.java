@@ -64,5 +64,26 @@ public class SongController {
         return "redirect:/dashboard";
     }
     
+    @RequestMapping(value="/search/topTen")
+    public String topTen(Model model) {
+        List<Song> topTen = songService.topTen();
+        model.addAttribute("songs", topTen);
+        return "/songs/topTen.jsp";
+    }
+    
+    @RequestMapping(value="/search", method=RequestMethod.POST)
+    public String re(@Valid @ModelAttribute("song") Song song, BindingResult result) {
+    		String artist = song.getArtist();
+            return "redirect:/search/" + artist;
+    }
+    
+    @RequestMapping(value="/search/{artist}")
+    public String topTen(@PathVariable("artist") String artist, Model model) {
+        List<Song> result = songService.search(artist);
+        model.addAttribute("song", new Song());
+        model.addAttribute("artist", artist);
+        model.addAttribute("songs", result);
+        return "/songs/artist.jsp";
+    }
     
 }
