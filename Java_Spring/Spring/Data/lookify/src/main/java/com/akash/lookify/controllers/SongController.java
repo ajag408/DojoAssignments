@@ -58,5 +58,11 @@ public class SongController {
         return "/songs/show.jsp";
     }
     
+    @RequestMapping(value="/songs/delete/{id}")
+    public String destroy(@PathVariable("id") Long id) {
+        songService.deleteSong(id);
+        return "redirect:/dashboard";
+    }
+    
     
 }
