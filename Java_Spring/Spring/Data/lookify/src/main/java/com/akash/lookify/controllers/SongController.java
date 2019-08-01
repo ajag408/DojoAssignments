@@ -80,7 +80,7 @@ public class SongController {
     @RequestMapping(value="/search/{artist}")
     public String topTen(@PathVariable("artist") String artist, Model model) {
         List<Song> result = songService.search(artist);
-        model.addAttribute("song", new Song());
+    	model.addAttribute("song", new Song());
         model.addAttribute("artist", artist);
         model.addAttribute("songs", result);
         return "/songs/artist.jsp";

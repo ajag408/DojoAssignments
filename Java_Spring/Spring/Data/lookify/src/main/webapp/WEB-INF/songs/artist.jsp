@@ -12,7 +12,7 @@
 <body>
 <a href = "/dashboard">Dashboard</a><br><br>
 
-<p>Songs by artist: <c:out value="${song.title}"/></p><br>
+<p>Songs by artist: <c:out value="${artist}"/></p><br>
 
 <form:form action="/search" method="post" modelAttribute="song">
     <p>
