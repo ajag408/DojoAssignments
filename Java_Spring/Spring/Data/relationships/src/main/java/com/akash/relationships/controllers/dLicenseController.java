@@ -47,4 +47,12 @@ public class dLicenseController {
     	model.addAttribute("persons", persons);
     	return "/dLicense/newLicense.jsp";
     }
+    
+    @RequestMapping(value="/license", method=RequestMethod.POST)
+    public String createPerson(@Valid @ModelAttribute("license") License license, BindingResult result) {
+        if (!result.hasErrors()) {
+        	licenseService.createLicense(license);
+        }
+        return "redirect:/licenses/new";
+    }
 }

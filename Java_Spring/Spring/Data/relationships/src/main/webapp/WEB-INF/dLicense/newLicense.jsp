@@ -13,18 +13,22 @@
 <form:form action="/license" method="post" modelAttribute="license">
     <p>
         <form:label path="person">Person:</form:label>
-        <form:select path="person" items="${persons}" />
+        
+        <form:select path="person">
+        	<c:forEach var="person" items="${persons}">
+    			<form:option value="${person}" label = "${person.firstName} ${person.lastName}"/>
+			</c:forEach>
+        </form:select>
     </p>
     <p>
         <form:label path="state">State:</form:label>
         <form:errors path="state"/>
         <form:input path="state"/>
     </p>
-<%--     <p>
-        <form:label path="lastName">Last Name:</form:label>
-        <form:errors path="lastName"/>
-        <form:textarea path="lastName"/>
-    </p> --%>
+	<p>
+        <form:label path="expirationDate">Expiration Date:</form:label>
+        <form:input type = "date" path="expirationDate"/>
+    </p>
     <input type="submit" value="Create"/>
 </form:form> 
 </body>
