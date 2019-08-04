@@ -23,7 +23,7 @@ public class License {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String number;
-    private Date expirationDate;
+    private String expirationDate;
     private String state;
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -34,12 +34,11 @@ public class License {
     @JoinColumn(name="person_id")
     private Person person;
     
-    
     public License() {
         
     }
     
-	public License(String number, Date expirationDate, String state, Person person) {
+	public License(String number, String expirationDate, String state, Person person) {
 		this.number = number;
 		this.expirationDate = expirationDate;
 		this.state = state;
@@ -64,11 +63,11 @@ public class License {
 		this.number = number;
 	}
 
-	public Date getExpirationDate() {
+	public String getExpirationDate() {
 		return expirationDate;
 	}
 
-	public void setExpirationDate(Date expirationDate) {
+	public void setExpirationDate(String expirationDate) {
 		this.expirationDate = expirationDate;
 	}
 
@@ -87,6 +86,7 @@ public class License {
 	public void setPerson(Person person) {
 		this.person = person;
 	}
+	
 
 	@PrePersist
     protected void onCreate(){
