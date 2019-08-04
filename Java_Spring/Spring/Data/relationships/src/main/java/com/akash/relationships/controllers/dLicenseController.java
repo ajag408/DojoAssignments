@@ -21,6 +21,7 @@ import com.akash.relationships.services.PersonService;
 public class dLicenseController {
     private final PersonService personService;
     private final LicenseService licenseService;
+    private int licenseNumber = 1;
     
     public dLicenseController(PersonService personService, LicenseService licenseService) {
         this.personService = personService;
@@ -52,7 +53,9 @@ public class dLicenseController {
     @RequestMapping(value="/license", method=RequestMethod.POST)
     public String createPerson(@Valid @ModelAttribute("license") License license, BindingResult result) {
         if (!result.hasErrors()) {
+        	license.setNumber(licenseNumber);
         	licenseService.createLicense(license);
+        	licenseNumber = licenseNumber+1;
         }
         return "redirect:/licenses/new";
     }

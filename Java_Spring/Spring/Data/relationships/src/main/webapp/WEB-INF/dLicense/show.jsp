@@ -12,7 +12,7 @@
 <body>
 <h1>${person.firstName} ${person.lastName}</h1><br>
 
-<p>License Number: ${person.license.licenseNumber}</p>
+<p>License Number: ${person.license.number}</p>
 <p>State: ${person.license.state}</p>
 <p>Expiration Date: ${person.license.expirationDate}</p>
 </body>

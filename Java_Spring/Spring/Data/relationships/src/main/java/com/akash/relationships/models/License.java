@@ -22,7 +22,7 @@ public class License {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String number;
+    private int number;
     private String expirationDate;
     private String state;
     @Column(updatable=false)
@@ -38,8 +38,7 @@ public class License {
         
     }
     
-	public License(String number, String expirationDate, String state, Person person) {
-		this.number = number;
+	public License(String expirationDate, String state, Person person) {
 		this.expirationDate = expirationDate;
 		this.state = state;
 		this.person = person;
@@ -55,11 +54,11 @@ public class License {
 		this.id = id;
 	}
 
-	public String getNumber() {
+	public int getNumber() {
 		return number;
 	}
 
-	public void setNumber(String number) {
+	public void setNumber(int number) {
 		this.number = number;
 	}
 
