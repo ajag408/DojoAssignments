@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -47,4 +48,22 @@ public class DojoController {
     	model.addAttribute("dojos", dojos);
     	return "/DN/newNinja.jsp";
     }
+    
+    @RequestMapping(value="/ninja", method=RequestMethod.POST)
+    public String createPerson(@Valid @ModelAttribute("ninja") Ninja ninja, BindingResult result) {
+        if (result.hasErrors()) {
+        	return "redirect:/ninjas/new";
+        } else {
+            ninjaService.createNinja(ninja);
+            return "redirect:/ninjas/new";
+        }
+    }
+    
+    @RequestMapping("/dojos/{id}")
+    public String show(@PathVariable("id") Long id, Model model) {
+    	Dojo dojo = dojoService.findDojo(id);
+    	model.addAttribute("dojo", dojo);
+        return "/DN/show.jsp";
+    }
+    
 }

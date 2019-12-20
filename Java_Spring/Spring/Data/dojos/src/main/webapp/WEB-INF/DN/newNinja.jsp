@@ -21,13 +21,19 @@
         </form:select>
     </p>
     <p>
-        <form:label path="state">State:</form:label>
-        <form:errors path="state"/>
-        <form:input path="state"/>
+        <form:label path="firstName">First Name:</form:label>
+        <form:errors path="firstName"/>
+        <form:input path="firstName"/>
     </p>
-	<p>
-        <form:label path="expirationDate">Expiration Date:</form:label>
-        <form:input type = "date" path="expirationDate"/>
+    <p>
+        <form:label path="lastName">Last Name:</form:label>
+        <form:errors path="lastName"/>
+        <form:input path="lastName"/>
+    </p>
+    <p>
+        <form:label path="age">Age:</form:label>
+        <form:errors path="age"/>
+        <form:input path="age"/>
     </p>
     <input type="submit" value="Create"/>
 </form:form> 

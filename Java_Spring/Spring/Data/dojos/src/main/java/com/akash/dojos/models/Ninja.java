@@ -67,6 +67,14 @@ public class Ninja {
 	public void setAge(int age) {
 		this.age = age;
 	}
+
+	public Dojo getDojo() {
+		return dojo;
+	}
+
+	public void setDojo(Dojo dojo) {
+		this.dojo = dojo;
+	}
     
     
 }
